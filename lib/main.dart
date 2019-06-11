@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
+import 'signin.dart';
+import 'package:flutter/cupertino.dart';
+import 'dcsystem.dart';
 import './portalPopup.dart';
 
 final List<String> imgList = [
@@ -53,7 +56,7 @@ List<T> map<T>(List list, Function handler) {
   return result;
 }
 
-void main() => runApp(MyApp());
+void main() => runApp(SigninL());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -62,10 +65,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xFF00b89c),
+        primaryColor: Color(0xFF46B5A6),
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
+  }
+}
+
+class HomePageRoute extends CupertinoPageRoute {
+  HomePageRoute()
+      : super(builder: (BuildContext context) => new MyHomePage());
+
+
+  // OPTIONAL IF YOU WISH TO HAVE SOME EXTRA ANIMATION WHILE ROUTING
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return new FadeTransition(opacity: animation, child: new MyHomePage());
   }
 }
 
@@ -184,9 +200,9 @@ class _MyHomePageState extends State<MyHomePage> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         fit: BoxFit.cover,
-      ),
+        ),
       Scaffold(
-          // backgroundColor: Colors.transparent,
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
             actions: <Widget>[
               IconButton(
@@ -247,9 +263,23 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   }),
                   gridViewButton("DC System", Icons.local_atm, () {
-                    setState(() {
-                      this.i++;
-                    });
+                    Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (BuildContext context, Animation<double> animation,
+                                Animation<double> secondaryAnimation) {
+                              return DCSys();
+                            },
+                            transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+                              return SlideTransition(
+                                position: Tween<Offset>(
+                                    begin: Offset(1.0, 0.0),
+                                    end: Offset(0.0, 0.0),
+                                  ).animate(animation),
+                                  child: child,
+                                );
+                              },
+                            transitionDuration: Duration(milliseconds: 300)));
                   }),
                   gridViewButton("Management System", Icons.build, () {
                     setState(() {
