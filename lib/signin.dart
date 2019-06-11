@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'main.dart';
+import 'package:flutter/cupertino.dart';
 
 class SigninL extends StatelessWidget {
   // This widget is the root of your application.
@@ -6,6 +8,9 @@ class SigninL extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/main' : (BuildContext context) => new MyApp()
+      },
       theme: ThemeData(
         primaryColor: Color(0xFF00b89c),
       ),
@@ -41,13 +46,21 @@ class SigninState extends State<Signin> {
   Widget build (BuildContext context) {
     return Stack(
       children: <Widget>[
+        Image.asset(
+            "assets/bg_0004.jpg",
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            fit: BoxFit.cover,
+        ),
         Scaffold(
+          backgroundColor: Colors.transparent,
           body: Container(
             padding: EdgeInsets.all(32),
-            margin: EdgeInsets.only(top: 350),
-            child: Column(
+            //margin: EdgeInsets.only(top: 250),
+            child: ListView(
               
               children: [
+                SizedBox(height: 250,),
                 TextFormField(
                   controller: userCtrl,
                   decoration: InputDecoration(
@@ -74,30 +87,69 @@ class SigninState extends State<Signin> {
                     
                   ),
                 ),
+                SizedBox(height: 15),
+                GestureDetector(
+                  onTap: () {
+                    
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text('Forget Password?',
+                        style: TextStyle(
+                          color: Colors.red
+                        ),
+                      )
+                    ]  
+                  )
+                ),
                 SizedBox(height: 50),
-                RaisedButton(
-                  onPressed: () {},
-                  textColor: Colors.white,
-                  padding: const EdgeInsets.all(0.0),
-                  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(30)),
-                      gradient: LinearGradient(
-                        colors: <Color>[
-                          Color(0xFF4BA092),
-                          Color(0xFF8AD696),
-                        ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [  
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/main', (Route route) => false);
+                          // PageRouteBuilder(
+                          //   pageBuilder: (BuildContext context, Animation<double> animation,
+                          //       Animation<double> secondaryAnimation) {
+                          //     return MyHomePage();
+                          //   },
+                          //   transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+                          //     return SlideTransition(
+                          //       position: Tween<Offset>(
+                          //           begin: Offset(1.0, 0.0),
+                          //           end: Offset(0.0, 0.0),
+                          //         ).animate(animation),
+                          //         child: child,
+                          //       );
+                          //     },
+                          //   transitionDuration: Duration(milliseconds: 300)));
+                      },
+                      textColor: Colors.white,
+                      padding: const EdgeInsets.all(0.0),
+                      shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          gradient: LinearGradient(
+                            colors: <Color>[
+                              Color(0xFF4BA092),
+                              Color(0xFF8AD696),
+                            ],
+                          ),
+                        ),
+                        padding: const EdgeInsets.only(left: 55, right: 55, top: 10, bottom: 10),
+                        child: const Text(
+                          'Sign In',
+                          style: TextStyle(fontSize: 30,
+                          fontWeight: FontWeight.w300,
+                          ),
+                        )
                       ),
                     ),
-                    padding: const EdgeInsets.only(left: 50, right: 50, top: 10, bottom: 10),
-                    child: const Text(
-                      'Sign In',
-                      style: TextStyle(fontSize: 30,
-                      fontWeight: FontWeight.w300,
-                      ),
-                    )
-                  ),
+                  ]
                 ),
               ]
             )

@@ -11,7 +11,7 @@ class PortalPopup extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if(name == 'HOME') {
-          Navigator.pop(context);
+          Navigator.of(context).pop();
           print('$name is tapped');
         } else if(destination != null) {
           Navigator.of(context).push(route);
