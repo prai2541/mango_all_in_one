@@ -219,13 +219,16 @@ class _ListTabViewState extends State<ListTabView> {
               ),
             )),
             secondaryActions: <Widget>[
-              IconSlideAction(
+              Container(
+                margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
+                child: IconSlideAction(
                   caption: 'Delete',
                   color: Colors.red,
                   icon: Icons.delete,
                   onTap: () {
                     _deleteAlert(i);
-                  })
+                }),
+              )
             ],
           );
         });
