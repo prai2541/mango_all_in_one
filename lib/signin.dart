@@ -9,7 +9,7 @@ class SigninL extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/main' : (BuildContext context) => new MyApp()
+        '/home' : (BuildContext context) => new MyApp()
       },
       theme: ThemeData(
         primaryColor: Color(0xFF00b89c),
@@ -110,7 +110,7 @@ class SigninState extends State<Signin> {
                     RaisedButton(
                       onPressed: () {
                         Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/main', (Route route) => false);
+                          '/home', (Route route) => false);
                           // PageRouteBuilder(
                           //   pageBuilder: (BuildContext context, Animation<double> animation,
                           //       Animation<double> secondaryAnimation) {
