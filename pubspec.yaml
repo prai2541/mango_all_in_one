@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  autocomplete_textfield: ^1.6.6
   flutter:
     sdk: flutter
     
@@ -41,6 +42,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

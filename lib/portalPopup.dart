@@ -1,3 +1,4 @@
+import 'package:app_ui/signin.dart';
 import 'package:flutter/material.dart';
 import './main.dart';
 
@@ -7,17 +8,35 @@ class PortalPopup extends StatelessWidget {
   Widget build(BuildContext context) {
 
     Widget portalButton(String name, destination ) {
-    Route route = MaterialPageRoute(builder: (context) => destination);
     return GestureDetector(
       onTap: () {
-        if(name == 'HOME') {
-          Navigator.of(context).pop();
-          print('$name is tapped');
-        } else if(destination != null) {
-          Navigator.of(context).push(route);
-          print('$name is tapped');
-        } else {
-          print('$name is tapped');
+        switch(name) {
+          case 'HOME': {
+            Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+            print('$name is tapped');
+          }
+          break;
+
+          case 'PROFILE': {
+
+          }
+          break;
+
+          case 'NOTIFICATION': {
+
+          }
+          break;
+
+          case 'ABOUT': {
+
+          }
+          break;
+
+          case 'LOG OUT': {
+            Navigator.of(context).pushNamedAndRemoveUntil('/signin', (Route<dynamic> route) => false);
+            print('$name is tapped');
+          }
+          break;
         }
       },
       child: Container(
@@ -35,7 +54,11 @@ class PortalPopup extends StatelessWidget {
     );
   }
 
-    return Scaffold(
+    return MaterialApp(
+      routes: {
+        '/signin' : (BuildContext context) => SigninL()
+      },
+      home: Scaffold(
         backgroundColor: Color(0xFF001E1E).withOpacity(0.90),
         body: Column(
           children: <Widget>[
@@ -79,6 +102,8 @@ class PortalPopup extends StatelessWidget {
               )
             )
           ],
-        ));
+        )
+      )
+    );
   }
 }
