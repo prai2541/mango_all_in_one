@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'package:flutter/cupertino.dart';
+import 'portalPopup.dart';
 
 class DCSysL extends StatelessWidget {
   // This widget is the root of your application.
@@ -36,53 +37,100 @@ class DCSys extends StatefulWidget {
 
 class DCSysState extends State<DCSys> {
 
-  String prjname = 'help';
+  String prjname = 'Project Name';
   TextEditingController prjnoCtrl = new TextEditingController();
-  TextEditingController prjnameCtrl = new TextEditingController();
+  //TextEditingController prjnameCtrl = new TextEditingController();
   bool textobs = true;
+  String dropdownValue;
+  static ProjectInfo weeb = new ProjectInfo('1','weeb', ['otaku', 'cancer']);
+  List <ProjectInfo> info = [weeb];
+
+
+
  
   Widget build (BuildContext context) {
     return Stack(
       children: <Widget>[
-        Image.asset(
-            "assets/bg_0004.jpg",
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            fit: BoxFit.cover,
-        ),
+        // Image.asset(
+        //     "assets/bg_0004.jpg",
+        //     height: MediaQuery.of(context).size.height,
+        //     width: MediaQuery.of(context).size.width,
+        //     fit: BoxFit.cover,
+        // ),
         Scaffold(
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(backgroundColor: Colors.white.withOpacity(0.8),),
+          backgroundColor: Colors.white,
+          appBar: AppBar(
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(
+                  Icons.apps,
+                  color: Colors.white.withOpacity(0.75),
+                  size: 30.0,
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(PageRouteBuilder(
+                    transitionDuration: Duration(milliseconds: 150),
+                    opaque: false,
+                    pageBuilder: (BuildContext context, _, __) => PortalPopup(),
+                    transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+                      return new FadeTransition(
+                          opacity: animation, 
+                          child: child);
+                    }));
+                },
+              )
+            ],
+          ),
           body: Container(
             padding: EdgeInsets.all(32),
             margin: EdgeInsets.only(top: 170),
             child: ListView(
               physics: const NeverScrollableScrollPhysics(),
-                  
+                 
               children: [
                 SizedBox(height: 10,),
+                // TextFormField(
+                //   controller: prjnoCtrl,
+                //   keyboardType: TextInputType.number,
+                //   decoration: InputDecoration(
+                //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                //     labelText: 'Project No.'
+                //   ),
+
+                // ),
+                // SizedBox(height: 20,),
                 TextFormField(
                   controller: prjnoCtrl,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w300
+                  ),
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                    labelText: 'Project No.'
-                  ),
-
-                ),
-                SizedBox(height: 20,),
-                TextFormField(
-                  controller: prjnameCtrl,
-                  //keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                    labelText: 'Project Name'
+                    labelText: 'Project Number',
+                    suffixIcon: IconButton(
+                      icon: Icon(Icons.search),
+                      onPressed: () {
+                        // List <String> id = info.map((prj) => prj.prjNo);
+                        // String prjno = prjnoCtrl.text;
+                        // if(id.contains(prjno)) {
+                        //   info.forEach((work) => {
+                        //     if (work.prjNo == prjno) {
+                        //       setState(() {
+                        //         prjname = work.prjName;
+                        //       })
+                        //     }
+                        //   });
+                        // }
+                      },
+                      )
                   ),
 
                 ),
                 SizedBox(height: 20,),
                 Container(
-                  padding: EdgeInsets.only(bottom: 20, top: 20, left: 20, right: 10),
+                  padding: EdgeInsets.only(bottom: 20, top: 20, left: 12, right: 10),
                   child: Text(
                     '$prjname',
                     style: TextStyle(
@@ -93,9 +141,108 @@ class DCSysState extends State<DCSys> {
                   decoration: new BoxDecoration(
                     border: Border.all(color: Colors.black),
                     borderRadius: new BorderRadius.all(
-                      const Radius.circular(40.0))),
-                      
-                )
+                      const Radius.circular(40.0)
+                    )
+                  ),
+                ),
+                SizedBox(height: 20,),
+                Container(
+                  padding: EdgeInsets.only(bottom: 10, top: 10, left: 12, right: 10),
+                  decoration: new BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: new BorderRadius.all(
+                      const Radius.circular(40.0)
+                    )
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Job',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w300
+                        ),
+                      ),
+                      Container(
+                        child: DropdownButton<String>(
+                            iconSize: 40,
+                            value: dropdownValue,
+                            isExpanded: false,
+                            onChanged: (String newValue) {
+                              setState(() {
+                                dropdownValue = newValue;
+                              });
+                            },
+                            items: <String>['One', 'Two', 'Free', 'Four']
+                            .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList()
+                          )
+                      )
+                    ]
+                  )
+                ),
+                SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [  
+                    RaisedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (BuildContext context, Animation<double> animation,
+                                Animation<double> secondaryAnimation) {
+                              return MyHomePage();
+                            },
+                            transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+                              return SlideTransition(
+                                position: Tween<Offset>(
+                                    begin: Offset(1.0, 0.0),
+                                    end: Offset(0.0, 0.0),
+                                  ).animate(animation),
+                                  child: child,
+                                );
+                              },
+                            transitionDuration: Duration(milliseconds: 300)));
+                      },
+                      textColor: Colors.white,
+                      padding: const EdgeInsets.all(0.0),
+                      shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                      child: Container(
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          gradient: LinearGradient(
+                            colors: <Color>[
+                              Color(0xFF4BA092),
+                              Color(0xFF8AD696),
+                            ],
+                          ),
+                        ),
+                        padding: const EdgeInsets.only(left: 35, right: 35, top: 10, bottom: 10),
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Search  ',
+                                style: TextStyle(fontSize: 30,
+                                fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              Icon(Icons.search, color: Colors.white)
+                            ]
+                          )
+                        )
+                      ),
+                    ),
+                  ]
+                ),
               ]
             )
           )
@@ -103,4 +250,13 @@ class DCSysState extends State<DCSys> {
       ],
     );
   }
+}
+
+class ProjectInfo {
+  String prjNo;
+  String prjName;
+  List <String> position;
+
+  ProjectInfo(this.prjNo, this.prjName, this.position);
+
 }

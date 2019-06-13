@@ -64,6 +64,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/signin' : (BuildContext context) => new Signin(),
+        '/portal' : (BuildContext context) => new PortalPopup(),
+
+      },
       theme: ThemeData(
         primaryColor: Color(0xFF46B5A6),
       ),
@@ -212,21 +217,22 @@ class _MyHomePageState extends State<MyHomePage> {
                   size: 30.0,
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 150),
-                    opaque: false,
-                    pageBuilder: (BuildContext context, _, __) => PortalPopup(),
-                    transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-                      return new FadeTransition(
-                          opacity: animation, 
-                          child: child);
-                    }));
+                  Navigator.of(context).pushNamed('/portal');
+                    // PageRouteBuilder(
+                    // transitionDuration: Duration(milliseconds: 150),
+                    // opaque: false,
+                    // pageBuilder: (BuildContext context, _, __) => PortalPopup(),
+                    // transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+                    //   return new FadeTransition(
+                    //       opacity: animation, 
+                    //       child: child);
+                    // }));
                 },
               )
             ],
           ),
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+          body: ListView(
+            //crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               getFullScreenCarousel(context),
               GridView.count(

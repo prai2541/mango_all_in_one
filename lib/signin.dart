@@ -8,6 +8,9 @@ class SigninL extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      routes: {
+        '/main' : (BuildContext context) => new MyApp()
+      },
       theme: ThemeData(
         primaryColor: Color(0xFF00b89c),
       ),
@@ -53,10 +56,11 @@ class SigninState extends State<Signin> {
           backgroundColor: Colors.transparent,
           body: Container(
             padding: EdgeInsets.all(32),
-            margin: EdgeInsets.only(top: 270),
+            //margin: EdgeInsets.only(top: 250),
             child: ListView(
-              physics: const NeverScrollableScrollPhysics(),  
+              
               children: [
+                SizedBox(height: 250,),
                 TextFormField(
                   controller: userCtrl,
                   decoration: InputDecoration(
@@ -99,29 +103,29 @@ class SigninState extends State<Signin> {
                     ]  
                   )
                 ),
-                SizedBox(height: 70),
+                SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [  
                     RaisedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (BuildContext context, Animation<double> animation,
-                                Animation<double> secondaryAnimation) {
-                              return MyHomePage();
-                            },
-                            transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                    begin: Offset(1.0, 0.0),
-                                    end: Offset(0.0, 0.0),
-                                  ).animate(animation),
-                                  child: child,
-                                );
-                              },
-                            transitionDuration: Duration(milliseconds: 300)));
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/main', (Route route) => false);
+                          // PageRouteBuilder(
+                          //   pageBuilder: (BuildContext context, Animation<double> animation,
+                          //       Animation<double> secondaryAnimation) {
+                          //     return MyHomePage();
+                          //   },
+                          //   transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+                          //     return SlideTransition(
+                          //       position: Tween<Offset>(
+                          //           begin: Offset(1.0, 0.0),
+                          //           end: Offset(0.0, 0.0),
+                          //         ).animate(animation),
+                          //         child: child,
+                          //       );
+                          //     },
+                          //   transitionDuration: Duration(milliseconds: 300)));
                       },
                       textColor: Colors.white,
                       padding: const EdgeInsets.all(0.0),
