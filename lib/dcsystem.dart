@@ -50,6 +50,7 @@ class DCSysState extends State<DCSys> {
   AutoCompleteTextField searchTextField;
   GlobalKey<AutoCompleteTextFieldState<Players>> key = new GlobalKey();
   String prjnamehidden;
+  String prjid;
   List <String> joblist = ['help','me','pls'];
   
 
@@ -94,15 +95,7 @@ class DCSysState extends State<DCSys> {
                   size: 30.0,
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 150),
-                    opaque: false,
-                    pageBuilder: (BuildContext context, _, __) => PortalPopup(),
-                    transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-                      return new FadeTransition(
-                          opacity: animation, 
-                          child: child);
-                    }));
+                  Navigator.of(context).pushNamed('/portal');
                 },
               )
             ],
@@ -110,7 +103,9 @@ class DCSysState extends State<DCSys> {
           body: ListView(
             padding: EdgeInsets.all(32),
               children: [
-                SizedBox(height: 200,),
+                SizedBox(height: 80,),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text('DC System', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Color(0xFF00b89c)))]),
+                SizedBox(height: 80,),
                 // TextFormField(
                 //   controller: prjnoCtrl,
                 //   keyboardType: TextInputType.number,
@@ -159,13 +154,17 @@ class DCSysState extends State<DCSys> {
                     suffixIcon: IconButton(
                       icon: Icon(Icons.search),
                       onPressed: () {
-                        if(prjnamehidden != null) {
+                        if(prjid != null) {
                           setState(() {
                            prjname = prjnamehidden; 
                           });
+                          key.currentState.clear();
+                          searchTextField.textField.controller.text = prjid;
+                        } else{
+                          //prjid = searchTextField.textField.controller.text;
+                          
                         }
-                        key.currentState.clear();
-                        searchTextField.textField.controller.text = prjname;
+                        
                       },
                     ),
                     //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
@@ -183,6 +182,7 @@ class DCSysState extends State<DCSys> {
                     setState(() {
                       searchTextField.textField.controller.text = item.id.toString();
                       prjnamehidden = item.autocompleteterm;
+                      prjid = item.id.toString();
                     });  
                     key.currentState.updateSuggestions(emptylist);
                     //key.currentState.clear();
@@ -337,23 +337,7 @@ class DCSysState extends State<DCSys> {
                   children: [  
                     RaisedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (BuildContext context, Animation<double> animation,
-                                Animation<double> secondaryAnimation) {
-                              return MyHomePage();
-                            },
-                            transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                    begin: Offset(1.0, 0.0),
-                                    end: Offset(0.0, 0.0),
-                                  ).animate(animation),
-                                  child: child,
-                                );
-                              },
-                            transitionDuration: Duration(milliseconds: 300)));
+                        Navigator.of(context).pushNamed('/dc-detail');
                       },
                       textColor: Colors.white,
                       padding: const EdgeInsets.all(0.0),

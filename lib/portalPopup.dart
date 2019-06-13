@@ -55,9 +55,6 @@ class PortalPopup extends StatelessWidget {
   }
 
     return MaterialApp(
-      routes: {
-        '/signin' : (BuildContext context) => SigninL()
-      },
       home: Scaffold(
         backgroundColor: Color(0xFF001E1E).withOpacity(0.90),
         body: Column(

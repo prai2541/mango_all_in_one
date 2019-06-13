@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
+import 'dc_detail.dart';
 import 'signin.dart';
 import 'package:flutter/cupertino.dart';
 import 'dcsystem.dart';
@@ -65,10 +66,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/home' : (BuildContext context) => new MyApp(),
-        '/signin' : (BuildContext context) => new Signin(),
-        '/portal' : (BuildContext context) => new PortalPopup(),
-
+        '/home': (BuildContext context) => new MyApp(),
+        '/signin': (BuildContext context) => new Signin(),
+        '/dc-detail' : (BuildContext context) => new DCDetail(),
+      },
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/portal':
+            return PageRouteBuilder(
+                    transitionDuration: Duration(milliseconds: 150),
+                    opaque: false,
+                    pageBuilder: (BuildContext context, _, __) => PortalPopup(),
+                    transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+                      return new FadeTransition(
+                          opacity: animation, 
+                          child: child);
+                    });
+        }
       },
       theme: ThemeData(
         primaryColor: Color(0xFF46B5A6),
@@ -79,9 +93,7 @@ class MyApp extends StatelessWidget {
 }
 
 class HomePageRoute extends CupertinoPageRoute {
-  HomePageRoute()
-      : super(builder: (BuildContext context) => new MyHomePage());
-
+  HomePageRoute() : super(builder: (BuildContext context) => new MyHomePage());
 
   // OPTIONAL IF YOU WISH TO HAVE SOME EXTRA ANIMATION WHILE ROUTING
   @override
@@ -206,7 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         fit: BoxFit.cover,
-        ),
+      ),
       Scaffold(
           backgroundColor: Colors.transparent,
           appBar: AppBar(
@@ -219,15 +231,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamed('/portal');
-                    // PageRouteBuilder(
-                    // transitionDuration: Duration(milliseconds: 150),
-                    // opaque: false,
-                    // pageBuilder: (BuildContext context, _, __) => PortalPopup(),
-                    // transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-                    //   return new FadeTransition(
-                    //       opacity: animation, 
-                    //       child: child);
-                    // }));
+                  // PageRouteBuilder(
+                  // transitionDuration: Duration(milliseconds: 150),
+                  // opaque: false,
+                  // pageBuilder: (BuildContext context, _, __) => PortalPopup(),
+                  // transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
+                  //   return new FadeTransition(
+                  //       opacity: animation,
+                  //       child: child);
+                  // }));
                 },
               )
             ],
@@ -271,21 +283,25 @@ class _MyHomePageState extends State<MyHomePage> {
                   }),
                   gridViewButton("DC System", Icons.local_atm, () {
                     Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (BuildContext context, Animation<double> animation,
+                        context,
+                        PageRouteBuilder(
+                            pageBuilder: (BuildContext context,
+                                Animation<double> animation,
                                 Animation<double> secondaryAnimation) {
                               return DCSys();
                             },
-                            transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
+                            transitionsBuilder: (BuildContext context,
+                                Animation<double> animation,
+                                Animation<double> secondaryAnimation,
+                                Widget child) {
                               return SlideTransition(
                                 position: Tween<Offset>(
-                                    begin: Offset(1.0, 0.0),
-                                    end: Offset(0.0, 0.0),
-                                  ).animate(animation),
-                                  child: child,
-                                );
-                              },
+                                  begin: Offset(1.0, 0.0),
+                                  end: Offset(0.0, 0.0),
+                                ).animate(animation),
+                                child: child,
+                              );
+                            },
                             transitionDuration: Duration(milliseconds: 300)));
                   }),
                   gridViewButton("Management System", Icons.build, () {
