@@ -94,15 +94,7 @@ class DCSysState extends State<DCSys> {
                   size: 30.0,
                 ),
                 onPressed: () {
-                  Navigator.of(context).push(PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 150),
-                    opaque: false,
-                    pageBuilder: (BuildContext context, _, __) => PortalPopup(),
-                    transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-                      return new FadeTransition(
-                          opacity: animation, 
-                          child: child);
-                    }));
+                  Navigator.of(context).pushNamed('/portal');
                 },
               )
             ],
@@ -337,23 +329,7 @@ class DCSysState extends State<DCSys> {
                   children: [  
                     RaisedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (BuildContext context, Animation<double> animation,
-                                Animation<double> secondaryAnimation) {
-                              return MyHomePage();
-                            },
-                            transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secondaryAnimation, Widget child) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                    begin: Offset(1.0, 0.0),
-                                    end: Offset(0.0, 0.0),
-                                  ).animate(animation),
-                                  child: child,
-                                );
-                              },
-                            transitionDuration: Duration(milliseconds: 300)));
+                        Navigator.of(context).pushNamed('/dc-detail');
                       },
                       textColor: Colors.white,
                       padding: const EdgeInsets.all(0.0),
@@ -390,7 +366,7 @@ class DCSysState extends State<DCSys> {
               ]
             )
           )
-        )
+        ))
       ],
     );
   }
