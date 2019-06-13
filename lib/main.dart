@@ -65,6 +65,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
+        '/home' : (BuildContext context) => new MyApp(),
         '/signin' : (BuildContext context) => new Signin(),
         '/portal' : (BuildContext context) => new PortalPopup(),
 
