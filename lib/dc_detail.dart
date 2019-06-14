@@ -1,7 +1,12 @@
+import 'dart:io';
+
+import 'package:app_ui/newDCEntry.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+//import 'package:image_picker/image_picker.dart';
 
 List<String> name = [
   "Satsawat Suttawuttiwong",
@@ -21,6 +26,7 @@ class DCDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Color(0xFF00b89c),
       ),
@@ -82,7 +88,7 @@ class DCDetail extends StatelessWidget {
                         style: TextStyle(fontSize: 20),
                       ),
                       Text(
-                        'Inspector : Mr.Inspector',
+                        'Inspector : Mr. Inspector',
                         style: TextStyle(fontSize: 20),
                       ),
                     ],
@@ -108,6 +114,8 @@ class ListTabView extends StatefulWidget {
 }
 
 class _ListTabViewState extends State<ListTabView> {
+  File image;
+
   Color colorStatus(String status) {
     switch (status) {
       case 'DONE':
@@ -137,6 +145,8 @@ class _ListTabViewState extends State<ListTabView> {
         }
     }
   }
+
+  
 
   Future<void> _deleteAlert(index) async {
     return showDialog<void>(
@@ -198,66 +208,40 @@ class _ListTabViewState extends State<ListTabView> {
   }
 
   Future<void> _addFunction() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false, // user must tap button!
-      builder: (BuildContext context) {
-        return CupertinoAlertDialog(
-          title: Text('Test'),
-          actions: <Widget>[
-            FlatButton(
-              child: Text(
-                'YES',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
-              ),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            FlatButton(
-                child: Text(
-                  'NO',
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
-                ),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                })
-          ],
-        );
-      },
-    );
+    return Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewDCEntryL()));
+  
   }
 
   Container getActionButton(String status, index) {
     switch (status) {
-      case 'DONE': {
-        return Container(
-                margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
-                child: IconSlideAction(
-                  caption: 'Delete',
-                  color: Colors.red,
-                  icon: Icons.delete,
-                  onTap: () {
-                    _deleteAlert(index);
+      case 'DONE':
+        {
+          return Container(
+            margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
+            child: IconSlideAction(
+                caption: 'Delete',
+                color: Colors.red,
+                icon: Icons.delete,
+                onTap: () {
+                  _deleteAlert(index);
                 }),
-              );
-      }
-      break;
+          );
+        }
+        break;
 
-      case 'ADD': {
-        return Container(
-                margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
-                child: IconSlideAction(
-                  caption: 'Add',
-                  color: Colors.blueGrey,
-                  icon: Icons.add_box,
-                  onTap: () {
-                    _addFunction();
+      case 'ADD':
+        {
+          return Container(
+            margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
+            child: IconSlideAction(
+                caption: 'Add',
+                color: Colors.blueGrey,
+                icon: Icons.add_box,
+                onTap: () {
+                  _addFunction();
                 }),
-              );
-      }
+          );
+        }
     }
   }
 
@@ -276,15 +260,13 @@ class _ListTabViewState extends State<ListTabView> {
                 width: 10,
                 color: colorStatus(status[i]),
               ),
-              title: Text(name[i]),
+              title: Text(name[i], style: TextStyle(fontSize: 16),),
               trailing: Text(
                 status[i],
                 style: TextStyle(color: textColor(status[i])),
               ),
             )),
-            secondaryActions: <Widget>[
-              getActionButton(status[i], i)
-            ],
+            secondaryActions: <Widget>[getActionButton(status[i], i)],
           );
         });
   }
@@ -305,15 +287,33 @@ class _DetailTabViewState extends State<DetailTabView> {
         itemBuilder: (context, i) {
           return Card(
               child: ListTile(
-                leading: CircleAvatar(
-                  backgroundImage: NetworkImage('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25e384a9-c599-45c5-bc56-929c3111276c/d6k8a2r-3391ff86-4af8-4695-bfad-14350ae04bfe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1ZTM4NGE5LWM1OTktNDVjNS1iYzU2LTkyOWMzMTExMjc2Y1wvZDZrOGEyci0zMzkxZmY4Ni00YWY4LTQ2OTUtYmZhZC0xNDM1MGFlMDRiZmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Bx0q3W1dS8p6f8DSiUCPrjHzt4LWxhJQw0d3k0Qz06Q'),
+            leading: CircleAvatar(
+              radius: 25,
+              backgroundImage: NetworkImage(
+                  'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25e384a9-c599-45c5-bc56-929c3111276c/d6k8a2r-3391ff86-4af8-4695-bfad-14350ae04bfe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1ZTM4NGE5LWM1OTktNDVjNS1iYzU2LTkyOWMzMTExMjc2Y1wvZDZrOGEyci0zMzkxZmY4Ni00YWY4LTQ2OTUtYmZhZC0xNDM1MGFlMDRiZmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Bx0q3W1dS8p6f8DSiUCPrjHzt4LWxhJQw0d3k0Qz06Q'),
+            ),
+            title: Text(name[i]),
+            subtitle: Row(
+              children: <Widget>[
+                Text('Working Day :'),
+                Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Badge(
+                    badgeColor: Colors.red,
+                    borderRadius: 5,
+                    padding: EdgeInsets.only(top: 1, bottom: 1, left: 9, right: 9),
+                    shape: BadgeShape.square,
+                    badgeContent: Text(
+                      '5',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
                 ),
-                title: Text(name[i]),
-                subtitle: Text('Working Day : 5 Days'),
-                trailing: Icon(Icons.arrow_forward_ios),
-              )
-          );
-        }
-    );     
+                Text('Days')
+              ],
+            ),
+            trailing: Icon(Icons.arrow_forward_ios),
+          ));
+        });
   }
 }

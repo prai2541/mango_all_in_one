@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
@@ -5,7 +7,8 @@ import 'dc_detail.dart';
 import 'signin.dart';
 import 'package:flutter/cupertino.dart';
 import 'dcsystem.dart';
-import './portalPopup.dart';
+import 'portalPopup.dart';
+import 'newDCEntry.dart';
 
 final List<String> imgList = [
 'assets/AR-Account-Receivable-System.JPG',
@@ -67,6 +70,7 @@ class MyApp extends StatelessWidget {
         '/home': (BuildContext context) => new MyApp(),
         '/signin': (BuildContext context) => new Signin(),
         '/dc-detail' : (BuildContext context) => new DCDetail(),
+        '/dc-detail/add' : (BuildContext context) => new NewDCEntryL(),
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
@@ -321,7 +325,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               )
             ],
-          ))
+          ),)
     ]);
   }
 }
