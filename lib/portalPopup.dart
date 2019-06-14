@@ -55,6 +55,7 @@ class PortalPopup extends StatelessWidget {
   }
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Color(0xFF001E1E).withOpacity(0.90),
         body: Column(
