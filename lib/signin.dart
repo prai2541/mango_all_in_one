@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 
 class SigninL extends StatelessWidget {
   // This widget is the root of your application.
@@ -44,6 +46,16 @@ class SigninState extends State<Signin> {
   bool textobs = true;
  
   Widget build (BuildContext context) {
+
+    double defaultScreenWidth = 1440.0;
+    double defaultScreenHeight = 2960.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
+
     return Stack(
       children: <Widget>[
         Image.asset(
@@ -55,12 +67,12 @@ class SigninState extends State<Signin> {
         Scaffold(
           backgroundColor: Colors.transparent,
           body: Container(
-            padding: EdgeInsets.all(32),
+            padding: EdgeInsets.all(ScreenUtil.instance.setWidth(64)),
             //margin: EdgeInsets.only(top: 250),
             child: ListView(
               
               children: [
-                SizedBox(height: 250,),
+                SizedBox(height: ScreenUtil.instance.setHeight(1000)),
                 TextFormField(
                   controller: userCtrl,
                   decoration: InputDecoration(
@@ -69,7 +81,7 @@ class SigninState extends State<Signin> {
                     
                   ),
                 ),
-                SizedBox(height: 30),
+                SizedBox(height: ScreenUtil.instance.setHeight(60)),
                 TextFormField(
                   controller: passCtrl,
                   obscureText: textobs,
@@ -87,7 +99,7 @@ class SigninState extends State<Signin> {
                     
                   ),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: ScreenUtil.instance.setHeight(30)),
                 GestureDetector(
                   onTap: () {
                     
@@ -103,7 +115,7 @@ class SigninState extends State<Signin> {
                     ]  
                   )
                 ),
-                SizedBox(height: 50),
+                SizedBox(height: ScreenUtil.instance.setHeight(100)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [  

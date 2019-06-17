@@ -7,6 +7,7 @@ import 'portalPopup.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 //import 'package:autosuggest_demo/players.dart';
 import 'players.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DCSysL extends StatelessWidget {
   // This widget is the root of your application.
@@ -72,6 +73,15 @@ class DCSysState extends State<DCSys> {
 
  
   Widget build (BuildContext context) {
+    double defaultScreenWidth = 1440.0;
+    double defaultScreenHeight = 2960.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
+   
     return Stack(
       children: <Widget>[
         // Image.asset(
@@ -103,11 +113,11 @@ class DCSysState extends State<DCSys> {
             ],
           ),
           body: ListView(
-            padding: EdgeInsets.all(32),
+            padding: EdgeInsets.all(ScreenUtil.instance.setWidth(100)),
               children: [
-                SizedBox(height: 80,),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text('DC System', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40, color: Color(0xFF00b89c)))]),
-                SizedBox(height: 80,),
+                SizedBox(height: ScreenUtil.instance.setWidth(150),),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text('DC System', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(150), color: Color(0xFF00b89c)))]),
+                SizedBox(height: ScreenUtil.instance.setWidth(250),),
                 // TextFormField(
                 //   controller: prjnoCtrl,
                 //   keyboardType: TextInputType.number,
@@ -228,7 +238,7 @@ class DCSysState extends State<DCSys> {
                   }
                   
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: ScreenUtil.instance.setHeight(75),),
                 Container(
                   padding: EdgeInsets.only(bottom: 20, top: 20, left: 12, right: 10),
                   child: Text(
@@ -245,7 +255,7 @@ class DCSysState extends State<DCSys> {
                     )
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: ScreenUtil.instance.setHeight(75),),
                 Container( 
                   padding: EdgeInsets.only(bottom: 7.5, top: 7.5, left: 12, right: 10),
                   decoration: new BoxDecoration(
@@ -333,7 +343,7 @@ class DCSysState extends State<DCSys> {
                 //   )
                 // ),
                 
-                SizedBox(height: 40),
+                SizedBox(height: ScreenUtil.instance.setHeight(150),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [  

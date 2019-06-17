@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'dcsystem.dart';
 import 'portalPopup.dart';
 import 'newDCEntry.dart';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 final List<String> imgList = [
 'assets/AR-Account-Receivable-System.JPG',
@@ -64,6 +65,7 @@ void main() => runApp(SigninL());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -138,11 +140,22 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _current = 0;
+  
 
+  
   Widget getFullScreenCarousel(BuildContext mediaContext) {
+    double defaultScreenWidth = 1440.0;
+    double defaultScreenHeight = 2960.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
+
     return Column(children: [
       Container(
-          height: 250,
+          height: ScreenUtil.instance.setHeight(800),
           width: 1000.0,
           child: CarouselSlider(
               autoPlay: true,
@@ -161,7 +174,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Image.asset (
                         name,
                         fit: BoxFit.cover,
-                        width: 1000.0,
+                        width: defaultScreenWidth,
+                        height: ScreenUtil.instance.setHeight(500),
                       ),
                     ),
                   );
@@ -179,8 +193,8 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _current == index
-                      ? Color.fromRGBO(0, 0, 0, 0.9)
-                      : Color.fromRGBO(0, 0, 0, 0.4)),
+                      ? Color.fromRGBO(99, 178, 166, 0.9)
+                      : Color.fromRGBO(99, 178, 166, 0.4)),
             );
           },
         ),
@@ -188,19 +202,28 @@ class _MyHomePageState extends State<MyHomePage> {
     ]);
   }
 
-  Badge gridViewButton(String name, IconData icon, Function onPressed) {
-    return new Badge(
-      position: BadgePosition.topRight(top: -10, right: -3),
+  Widget gridViewButton(String name, IconData icon, Function onPressed) {
+    double defaultScreenWidth = 1440.0;
+    double defaultScreenHeight = 2960.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
+
+    return Badge(
+      position: BadgePosition.topRight(top: -5, right: -5),
       animationDuration: Duration(milliseconds: 300),
       animationType: BadgeAnimationType.scale,
-      padding: EdgeInsets.all(7.5),
+      padding: EdgeInsets.all(ScreenUtil.instance.setWidth(22.5)),
       badgeContent: Text(
         '$i',
         style: TextStyle(color: Colors.white, fontSize: 17.5),
       ),
       child: Container(
           height: 300.0,
-          color: Colors.transparent,
+          //color: Colors.transparent,
           child: InkWell(
             borderRadius: new BorderRadius.all(const Radius.circular(30.0)),
             onTap: onPressed,
@@ -217,13 +240,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(icon,
-                                size: 45,
+                                size: ScreenUtil.instance.setWidth(175) ,
                                 color: Theme.of(context).primaryColor),
                             Text(
                               '$name',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Theme.of(context).primaryColor,
+                                fontSize: ScreenUtil.instance.setSp(50),
                               ),
                             )
                           ])),
@@ -236,6 +260,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double defaultScreenWidth = 1440.0;
+    double defaultScreenHeight = 2960.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
+
+
     return Stack(children: <Widget>[
       Image.asset(
         "assets/bg_0004.jpg",
@@ -270,15 +304,16 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           body: ListView(
             //crossAxisAlignment: CrossAxisAlignment.center,
+            // physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               getFullScreenCarousel(context),
               GridView.count(
                 shrinkWrap: true,
                 primary: false,
-                padding: const EdgeInsets.all(25.0),
-                crossAxisSpacing: 20,
+                padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(64), right:ScreenUtil.instance.setWidth(64), top: ScreenUtil.instance.setHeight(30)),
+                crossAxisSpacing: ScreenUtil.instance.setWidth(40),
                 crossAxisCount: 3,
-                mainAxisSpacing: 20,
+                mainAxisSpacing: ScreenUtil.instance.setWidth(40),
                 children: <Widget>[
                   gridViewButton("Approved", Icons.check, () {
                     setState(() {

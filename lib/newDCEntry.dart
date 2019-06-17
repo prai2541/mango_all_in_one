@@ -4,6 +4,7 @@ import 'package:app_ui/dc_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import 'package:image_picker/image_picker.dart';
 
 class NewDCEntryL extends StatelessWidget {
@@ -31,6 +32,8 @@ class NewDCEntry extends StatefulWidget {
 }
 
 class NewDCEntryState extends State<NewDCEntry> {
+
+  
   File picUrl;
   List<ListWork> list = [];
   ListWork help = new ListWork(
@@ -167,6 +170,15 @@ class NewDCEntryState extends State<NewDCEntry> {
   // }
 
   Widget caption1() {
+     double defaultScreenWidth = 1440.0;
+    double defaultScreenHeight = 2960.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
+
     if(img1 == null) {
        return GestureDetector(
         onTap: getImage1,
@@ -187,7 +199,7 @@ class NewDCEntryState extends State<NewDCEntry> {
             mainAxisAlignment: MainAxisAlignment.start ,
             children: [
               Icon(Icons.insert_photo,
-                size: 100,
+                size: ScreenUtil.instance.setWidth(350),
                 color: Colors.grey,
               ),
               Text('Add a photo', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.grey),)
@@ -207,7 +219,7 @@ class NewDCEntryState extends State<NewDCEntry> {
       badgeContent: Icon(Icons.edit, color: Colors.black,),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Image.file(img1, fit: BoxFit.contain, height: 150),
+          child: Image.file(img1, fit: BoxFit.contain, height: ScreenUtil.instance.setHeight(550)),
         )
       ));
 
@@ -215,6 +227,15 @@ class NewDCEntryState extends State<NewDCEntry> {
   }
 
   Widget caption2() {
+     double defaultScreenWidth = 1440.0;
+    double defaultScreenHeight = 2960.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
+
     if(img2 == null) {
        return GestureDetector(
         onTap: getImage2,
@@ -235,7 +256,7 @@ class NewDCEntryState extends State<NewDCEntry> {
             mainAxisAlignment: MainAxisAlignment.start ,
             children: [
               Icon(Icons.insert_photo,
-                size: 100,
+                size: ScreenUtil.instance.setWidth(350),
                 color: Colors.grey,
               ),
               Text('Add a photo', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.grey),)
@@ -278,6 +299,15 @@ class NewDCEntryState extends State<NewDCEntry> {
   }
 
   Widget build(BuildContext context) {
+     double defaultScreenWidth = 1440.0;
+    double defaultScreenHeight = 2960.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
+
     return Stack(
       children: [
         GestureDetector(
@@ -326,7 +356,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                               children: <Widget>[
                                 caption1(),
                                 SizedBox(
-                                  width: 15,
+                                  width: 25,
                                 ),
                                 Expanded(
                                   child: TextFormField(
@@ -386,7 +416,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                               children: <Widget>[
                                 caption2(),
                                 SizedBox(
-                                  width: 15,
+                                  width: 25,
                                 ),
                                 Expanded(
                                   child: TextFormField(
