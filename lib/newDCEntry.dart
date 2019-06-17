@@ -326,7 +326,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                               children: <Widget>[
                                 caption1(),
                                 SizedBox(
-                                  width: 15,
+                                  width: 25,
                                 ),
                                 Expanded(
                                   child: TextFormField(
@@ -386,7 +386,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                               children: <Widget>[
                                 caption2(),
                                 SizedBox(
-                                  width: 15,
+                                  width: 25,
                                 ),
                                 Expanded(
                                   child: TextFormField(
