@@ -70,7 +70,7 @@ class MyApp extends StatelessWidget {
         '/home': (BuildContext context) => new MyApp(),
         '/signin': (BuildContext context) => new Signin(),
         '/dc-detail' : (BuildContext context) => new DCDetail(),
-        '/dc-detail/add' : (BuildContext context) => new NewDCEntryL(),
+        '/dc-detail/add' : (BuildContext context) => new NewDCEntryL()
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
