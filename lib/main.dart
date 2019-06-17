@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
+import 'package:flutter/widgets.dart' as prefix0;
 import 'dc_detail.dart';
 import 'editDCEntry.dart';
 import 'signin.dart';
@@ -278,6 +279,57 @@ class _MyHomePageState extends State<MyHomePage> {
         fit: BoxFit.cover,
       ),
       Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              Container(
+                height: 0.16*MediaQuery.of(context).size.height,
+                child: DrawerHeader(
+                  padding: EdgeInsets.only(left: 15, top: 30),
+                  margin: EdgeInsets.only(bottom:15),
+                  child: Text('Navigator', style: TextStyle(color: Colors.white, fontSize: 20)),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF46B5A6)),
+                )
+              ),
+              ListTile(
+                leading: Icon(Icons.home, color: Color(0xFF46B5A6),),
+                title: Text('Home'),
+                onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.person, color: Color(0xFF46B5A6)),
+                title: Text('Profile'),
+                onTap: () {
+
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.notifications, color: Color(0xFF46B5A6)),
+                title: Text('Notification'),
+                onTap: () {
+
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.info, color: Color(0xFF46B5A6)),
+                title: Text('About'),
+                onTap: () {
+
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.exit_to_app, color: Color(0xFF46B5A6)),
+                title: Text('Log Out'),
+                onTap: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil('/signin', (Route<dynamic> route) => false);
+                },
+              ),
+            ],),
+        ),
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             actions: <Widget>[
@@ -307,7 +359,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               getFullScreenCarousel(context),
-              GridView.count(
+             GridView.count(
                 shrinkWrap: true,
                 primary: false,
                 padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(64), right:ScreenUtil.instance.setWidth(64), top: ScreenUtil.instance.setHeight(30)),

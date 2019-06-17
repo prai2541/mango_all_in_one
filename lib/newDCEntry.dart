@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:badges/badges.dart';
-import 'package:app_ui/dc_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
@@ -214,7 +213,7 @@ class NewDCEntryState extends State<NewDCEntry> {
           elevation: 5,
           badgeColor: Colors.white,
       
-      position: BadgePosition.bottomRight(bottom: -15, right: -10),
+      position: BadgePosition.bottomRight(bottom: -5, right: -10),
       padding: EdgeInsets.all(5),
       badgeContent: Icon(Icons.edit, color: Colors.black,),
       child: ClipRRect(
@@ -268,15 +267,14 @@ class NewDCEntryState extends State<NewDCEntry> {
       return GestureDetector(
         onTap: getImage2,
         child: Badge(
-          elevation: 5,
-          badgeColor: Colors.white,
-      
-      position: BadgePosition.bottomRight(bottom: -15, right: -10),
+      badgeColor: Colors.white,
+      elevation: 5,
+      position: BadgePosition.bottomRight(bottom: -5, right: -10),
       padding: EdgeInsets.all(5),
-      badgeContent: Icon(Icons.edit, color: Colors.black,),
+      badgeContent: Icon(Icons.edit),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Image.file(img2, fit: BoxFit.contain, height: 140),
+          child: Image.file(img2, fit: BoxFit.contain, height: 125),
         )
       ));
 
@@ -321,22 +319,18 @@ class NewDCEntryState extends State<NewDCEntry> {
                 //   child: Icon(Icons.add_a_photo),
                 // ),
                 appBar: AppBar(
-                  leading: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // leading: IconButton(
+                  //   icon: Icon(Icons.arrow_back_ios),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                   actions: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(top:15, right: 20),
-                      child:GestureDetector(
-                        child: Text('Save', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),),
-                        onTap: () {
+                    IconButton(icon: Icon(Icons.save),
+                    onPressed: (){
                       widget.callback(widget.index);
                       Navigator.of(context).pop();
-                        },
-                      )
+                    }
                     )
                   ],
                 ),
@@ -349,7 +343,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             SizedBox(
-                              height: 20,
+                              height: 40,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -409,7 +403,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             SizedBox(
-                              height: 10,
+                              height: 40,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -516,7 +510,6 @@ class NewDCEntryState extends State<NewDCEntry> {
                                   hintText: 'Enter location',
                                   hintStyle: TextStyle(fontSize: 20)),
                             ),
-                            SizedBox(height: 40,)
                           ],
                         )]
                     )

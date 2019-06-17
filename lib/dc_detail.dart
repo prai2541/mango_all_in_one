@@ -11,10 +11,10 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'editDCEntry.dart';
 
 List<String> name = [
-  "Satsawat Suttawuttiwong",
-  'Boonsita Vatcharakomonphan',
-  'Akekamon Boonsith',
-  'Tanapong Tetiranont'
+  "Suzanne	Steele",
+  'Lila	Cummings',
+  'Joe	Young',
+  'Samuel	Barker'
 ];
 List<String> status = ["DONE", "ADD", "ADD", "DONE"];
 
@@ -27,19 +27,11 @@ class DCDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Color(0xFF00b89c),
-      ),
-      home: DefaultTabController(
+    return Scaffold(
+      body: DefaultTabController(
         length: 2,
         child: Scaffold(
             appBar: AppBar(
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
               actions: <Widget>[
                 IconButton(
                   icon: Icon(
@@ -79,19 +71,19 @@ class DCDetail extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'Project : 202019',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 17),
                       ),
                       Text(
                         'Project Name : Center Store',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 17),
                       ),
                       Text(
                         'Job : CML',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 17),
                       ),
                       Text(
                         'Inspector : Mr. Inspector',
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 17),
                       ),
                     ],
                   ),
@@ -285,7 +277,7 @@ class _DetailTabViewState extends State<DetailTabView> {
           return Card(
               child: ListTile(
             leading: CircleAvatar(
-              radius: 25,
+              radius: 22,
               backgroundImage: NetworkImage(
                   'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25e384a9-c599-45c5-bc56-929c3111276c/d6k8a2r-3391ff86-4af8-4695-bfad-14350ae04bfe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1ZTM4NGE5LWM1OTktNDVjNS1iYzU2LTkyOWMzMTExMjc2Y1wvZDZrOGEyci0zMzkxZmY4Ni00YWY4LTQ2OTUtYmZhZC0xNDM1MGFlMDRiZmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Bx0q3W1dS8p6f8DSiUCPrjHzt4LWxhJQw0d3k0Qz06Q'),
             ),
@@ -298,11 +290,11 @@ class _DetailTabViewState extends State<DetailTabView> {
                   child: Badge(
                     badgeColor: Colors.red,
                     borderRadius: 5,
-                    padding: EdgeInsets.only(top: 1, bottom: 1, left: 9, right: 9),
+                    padding: EdgeInsets.only(top: 1, bottom: 1, left: 7, right: 7),
                     shape: BadgeShape.square,
                     badgeContent: Text(
                       '5',
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(color: Colors.white, fontSize: 14),
                     ),
                   ),
                 ),

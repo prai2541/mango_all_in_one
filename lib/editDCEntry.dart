@@ -283,12 +283,12 @@ class EditDCEntryState extends State<EditDCEntry> {
                 //   child: Icon(Icons.add_a_photo),
                 // ),
                 appBar: AppBar(
-                  leading: IconButton(
-                    icon: Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  ),
+                  // leading: IconButton(
+                  //   icon: Icon(Icons.arrow_back_ios),
+                  //   onPressed: () {
+                  //     Navigator.of(context).pop();
+                  //   },
+                  // ),
                   actions: <Widget>[
                     Container(
                       padding: EdgeInsets.only(top:15, right: 20),
