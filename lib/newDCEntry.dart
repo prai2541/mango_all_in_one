@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'package:badges/badges.dart';
-import 'package:app_ui/dc_detail.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,13 +10,8 @@ class NewDCEntryL extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {'/home': (BuildContext context) => new MyApp()},
-      theme: ThemeData(
-        primaryColor: Color(0xFF00b89c),
-      ),
-      home: NewDCEntry(title: 'Flutter Demo Home Page'),
+    return Scaffold(
+      body: NewDCEntry(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -259,7 +253,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                   leading: IconButton(
                     icon: Icon(Icons.arrow_back),
                     onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => DCDetail()));
+                      Navigator.of(context).pop();
                     },
                   ),
                   actions: <Widget>[

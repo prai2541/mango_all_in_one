@@ -6,7 +6,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:image_picker/image_picker.dart';
 
 List<String> name = [
   "Satsawat Suttawuttiwong",
@@ -207,11 +206,6 @@ class _ListTabViewState extends State<ListTabView> {
     );
   }
 
-  Future<void> _addFunction() async {
-    return Navigator.of(context).push(MaterialPageRoute(builder: (context) => NewDCEntryL()));
-  
-  }
-
   Container getActionButton(String status, index) {
     switch (status) {
       case 'DONE':
@@ -238,7 +232,7 @@ class _ListTabViewState extends State<ListTabView> {
                 color: Colors.blueGrey,
                 icon: Icons.add_box,
                 onTap: () {
-                  _addFunction();
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => new NewDCEntryL()));
                 }),
           );
         }
