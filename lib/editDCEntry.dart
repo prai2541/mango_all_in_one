@@ -1,36 +1,35 @@
 import 'dart:io';
 import 'package:badges/badges.dart';
-import 'package:app_ui/dc_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 //import 'package:image_picker/image_picker.dart';
 
-class NewDCEntryL extends StatelessWidget {
-  int index;
+class EditDCEntryL extends StatelessWidget {
   Function callback;
-  
-  NewDCEntryL(this.callback, this.index);
+  int index;
+
+  EditDCEntryL(this.callback, this.index);
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: NewDCEntry(callback, index),
+      body: EditDCEntry(callback, index),
     );
   }
 }
 
-class NewDCEntry extends StatefulWidget {
-  int index;
+class EditDCEntry extends StatefulWidget {
   Function callback;
+  int index;
 
-  NewDCEntry(this.callback, this.index);
+  EditDCEntry(this.callback, this.index);
 
   @override
-  NewDCEntryState createState() => NewDCEntryState();
+  EditDCEntryState createState() => EditDCEntryState();
 }
 
-class NewDCEntryState extends State<NewDCEntry> {
+class EditDCEntryState extends State<EditDCEntry> {
   File picUrl;
   List<ListWork> list = [];
   ListWork help = new ListWork(
@@ -168,33 +167,15 @@ class NewDCEntryState extends State<NewDCEntry> {
 
   Widget caption1() {
     if(img1 == null) {
-       return GestureDetector(
-        onTap: getImage1,
-        child: Badge(
-          elevation: 5,
-          badgeColor: Colors.white,
-      
-      position: BadgePosition.bottomRight(bottom: -15, right: -10),
-      padding: EdgeInsets.all(5),
-      badgeContent: Icon(Icons.add_a_photo, color: Colors.black,),
-      child: Container(
-        padding: EdgeInsets.only(top:5, bottom: 20, left: 5, right: 5),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(15)
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start ,
-            children: [
-              Icon(Icons.insert_photo,
-                size: 100,
-                color: Colors.grey,
-              ),
-              Text('Add a photo', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.grey),)
-            ]
-          )
-        )
-      ));
+       return ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: IconButton(
+            icon: Icon(Icons.add_a_photo),
+            //size: 100,
+            color: Colors.grey,
+            onPressed: getImage1,
+            iconSize: 100,
+          ));
     } else {
       return GestureDetector(
         onTap: getImage1,
@@ -202,12 +183,12 @@ class NewDCEntryState extends State<NewDCEntry> {
           elevation: 5,
           badgeColor: Colors.white,
       
-      position: BadgePosition.bottomRight(bottom: -15, right: -10),
+      position: BadgePosition.bottomRight(bottom: -5, right: -10),
       padding: EdgeInsets.all(5),
       badgeContent: Icon(Icons.edit, color: Colors.black,),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Image.file(img1, fit: BoxFit.contain, height: 150),
+          child: Image.file(img1, fit: BoxFit.contain, height: 125),
         )
       ));
 
@@ -215,47 +196,28 @@ class NewDCEntryState extends State<NewDCEntry> {
   }
 
   Widget caption2() {
-    if(img2 == null) {
-       return GestureDetector(
-        onTap: getImage2,
-        child: Badge(
-          elevation: 5,
-          badgeColor: Colors.white,
-      
-      position: BadgePosition.bottomRight(bottom: -15, right: -10),
-      padding: EdgeInsets.all(5),
-      badgeContent: Icon(Icons.add_a_photo, color: Colors.black,),
-      child: Container(
-        padding: EdgeInsets.only(top:5, bottom: 20, left: 5, right: 5),
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey),
-            borderRadius: BorderRadius.circular(15)
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start ,
-            children: [
-              Icon(Icons.insert_photo,
-                size: 100,
-                color: Colors.grey,
-              ),
-              Text('Add a photo', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.grey),)
-            ]
-          )
-        )
-      ));
+   if(img2 == null) {
+       return ClipRRect(
+          borderRadius: BorderRadius.circular(15),
+          child: IconButton(
+            icon: Icon(Icons.add_a_photo),
+            //size: 100,
+            color: Colors.grey,
+            onPressed: getImage1,
+            iconSize: 100,
+          ));
     } else {
       return GestureDetector(
         onTap: getImage2,
         child: Badge(
-          elevation: 5,
-          badgeColor: Colors.white,
-      
-      position: BadgePosition.bottomRight(bottom: -15, right: -10),
+      badgeColor: Colors.white,
+      elevation: 5,
+      position: BadgePosition.bottomRight(bottom: -5, right: -10),
       padding: EdgeInsets.all(5),
-      badgeContent: Icon(Icons.edit, color: Colors.black,),
+      badgeContent: Icon(Icons.edit),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Image.file(img2, fit: BoxFit.contain, height: 140),
+          child: Image.file(img2, fit: BoxFit.contain, height: 125),
         )
       ));
 
@@ -298,15 +260,10 @@ class NewDCEntryState extends State<NewDCEntry> {
                     },
                   ),
                   actions: <Widget>[
-                    Container(
-                      padding: EdgeInsets.only(top:15, right: 20),
-                      child:GestureDetector(
-                        child: Text('Save', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),),
-                        onTap: () {
-                      widget.callback(widget.index);
-                      Navigator.of(context).pop();
-                        },
-                      )
+                    IconButton(icon: Icon(Icons.save),
+                    onPressed: (){
+
+                    }
                     )
                   ],
                 ),
@@ -314,12 +271,11 @@ class NewDCEntryState extends State<NewDCEntry> {
                     padding: EdgeInsets.only(left: 32, right: 32),
                     child: ListView(
                       children: <Widget>[
-                      
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             SizedBox(
-                              height: 20,
+                              height: 40,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -379,7 +335,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             SizedBox(
-                              height: 10,
+                              height: 40,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -442,7 +398,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                                   fontSize: 30,),
                             ),
                             SizedBox(
-                              height: 20,
+                              height: 25,
                             ),
                             Row(children: <Widget>[
                               Checkbox(
@@ -486,9 +442,9 @@ class NewDCEntryState extends State<NewDCEntry> {
                                   hintText: 'Enter location',
                                   hintStyle: TextStyle(fontSize: 20)),
                             ),
-                            SizedBox(height: 40,)
                           ],
-                        )]
+                        ),
+                        ]
                     )
                 )
             )

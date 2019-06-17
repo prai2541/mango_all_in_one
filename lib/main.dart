@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
 import 'dc_detail.dart';
+import 'editDCEntry.dart';
 import 'signin.dart';
 import 'package:flutter/cupertino.dart';
 import 'dcsystem.dart';
 import 'portalPopup.dart';
 import 'newDCEntry.dart';
+
 
 final List<String> imgList = [
 'assets/AR-Account-Receivable-System.JPG',
@@ -69,8 +71,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (BuildContext context) => new MyApp(),
         '/signin': (BuildContext context) => new Signin(),
-        '/dc-detail' : (BuildContext context) => new DCDetail(),
-        '/dc-detail/add' : (BuildContext context) => new NewDCEntryL()
+        '/dc-system/detail' : (BuildContext context) => new DCDetail(),
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
@@ -84,6 +85,27 @@ class MyApp extends StatelessWidget {
                           opacity: animation, 
                           child: child);
                     });
+          
+          case '/dc-system' :
+          return PageRouteBuilder(
+                            pageBuilder: (BuildContext context,
+                                Animation<double> animation,
+                                Animation<double> secondaryAnimation) {
+                              return DCSys();
+                            },
+                            transitionsBuilder: (BuildContext context,
+                                Animation<double> animation,
+                                Animation<double> secondaryAnimation,
+                                Widget child) {
+                              return SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: Offset(1.0, 0.0),
+                                  end: Offset(0.0, 0.0),
+                                ).animate(animation),
+                                child: child,
+                              );
+                            },
+                            transitionDuration: Duration(milliseconds: 300));
         }
       },
       theme: ThemeData(
@@ -284,27 +306,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   }),
                   gridViewButton("DC System", Icons.local_atm, () {
-                    Navigator.push(
-                        context,
-                        PageRouteBuilder(
-                            pageBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation) {
-                              return DCSys();
-                            },
-                            transitionsBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation,
-                                Widget child) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: Offset(1.0, 0.0),
-                                  end: Offset(0.0, 0.0),
-                                ).animate(animation),
-                                child: child,
-                              );
-                            },
-                            transitionDuration: Duration(milliseconds: 300)));
+                    Navigator.of(context).pushNamed('/dc-system');
                   }),
                   gridViewButton("Management System", Icons.build, () {
                     setState(() {

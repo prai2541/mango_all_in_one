@@ -8,6 +8,8 @@ import 'package:intl/intl.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 //import 'package:image_picker/image_picker.dart';
 
+import 'editDCEntry.dart';
+
 List<String> name = [
   "Satsawat Suttawuttiwong",
   'Boonsita Vatcharakomonphan',
@@ -114,7 +116,19 @@ class ListTabView extends StatefulWidget {
 }
 
 class _ListTabViewState extends State<ListTabView> {
-  File image;
+  
+  deleteCallback(int index) {
+    setState(() {
+      name.removeAt(index);
+      status.removeAt(index);
+    });
+  }
+
+  doneCallback(int index) {
+    setState(() {
+      status[index] = 'DONE';
+    });
+  }
 
   Color colorStatus(String status) {
     switch (status) {
@@ -181,61 +195,49 @@ class _ListTabViewState extends State<ListTabView> {
                 })
           ],
         );
-
-        // return AlertDialog(
-        //   title: Text('Would you like to delete this data?'),
-        //   actions: <Widget>[
-        //     FlatButton(
-        //       child: Text('YES', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),),
-        //       onPressed: () {
-        //         setState(() {
-        //           name.removeAt(index);
-        //           status.removeAt(index);
-        //         });
-        //         Navigator.of(context).pop();
-        //       },
-        //     ),
-        //     FlatButton(
-        //       child: Text('NO', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),),
-        //       onPressed: () {
-        //         Navigator.of(context).pop();
-        //       }
-        //     )
-        //   ],
-        // );
       },
     );
   }
 
-  Container getActionButton(String status, index) {
+  getActionButton(String status, index) {
     switch (status) {
       case 'DONE':
         {
-          return Container(
+          return <Widget> [Container(
             margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
             child: IconSlideAction(
-                caption: 'Delete',
+                caption: 'Edit',
+                color: Color(0xfffec636),
+                icon: Icons.edit,
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(settings: RouteSettings(name: '/dc-system/detail/edit'), builder: (context) => new EditDCEntry(deleteCallback, index)));
+                }),
+          ),
+          Container(
+            margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
+            child: IconSlideAction(
+                caption: 'DELETE',
                 color: Colors.red,
                 icon: Icons.delete,
                 onTap: () {
                   _deleteAlert(index);
                 }),
-          );
+          )];
         }
         break;
 
       case 'ADD':
         {
-          return Container(
+          return <Widget> [Container(
             margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
             child: IconSlideAction(
                 caption: 'Add',
                 color: Colors.blueGrey,
                 icon: Icons.add_box,
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => new NewDCEntryL()));
+                  Navigator.of(context).push(MaterialPageRoute(settings: RouteSettings(name: '/dc-system/detail/add'), builder: (context) => new NewDCEntryL(doneCallback, index)));
                 }),
-          );
+          )];
         }
     }
   }
@@ -261,7 +263,7 @@ class _ListTabViewState extends State<ListTabView> {
                 style: TextStyle(color: textColor(status[i])),
               ),
             )),
-            secondaryActions: <Widget>[getActionButton(status[i], i)],
+            secondaryActions: getActionButton(status[i], i),
           );
         });
   }

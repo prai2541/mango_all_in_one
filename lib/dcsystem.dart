@@ -1,4 +1,6 @@
+import 'package:app_ui/dc_detail.dart' as prefix0;
 import 'package:flutter/material.dart';
+import 'dc_detail.dart';
 import 'main.dart';
 import 'package:flutter/cupertino.dart';
 import 'portalPopup.dart';
@@ -337,7 +339,7 @@ class DCSysState extends State<DCSys> {
                   children: [  
                     RaisedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/dc-detail');
+                        Navigator.of(context).pushNamed('/dc-system/detail');               
                       },
                       textColor: Colors.white,
                       padding: const EdgeInsets.all(0.0),
