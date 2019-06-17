@@ -210,7 +210,7 @@ class _ListTabViewState extends State<ListTabView> {
                 color: Color(0xfffec636),
                 icon: Icons.edit,
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(settings: RouteSettings(name: '/dc-system/detail/edit'), builder: (context) => new EditDCEntry(deleteCallback, index)));
+                  Navigator.of(context).push(MaterialPageRoute(settings: RouteSettings(name: '/dc-system/detail/edit'), builder: (context) => new EditDCEntry()));
                 }),
           ),
           Container(

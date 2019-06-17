@@ -1,29 +1,22 @@
 import 'dart:io';
 import 'package:badges/badges.dart';
+import 'package:app_ui/dc_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 //import 'package:image_picker/image_picker.dart';
 
 class EditDCEntryL extends StatelessWidget {
-  Function callback;
-  int index;
-
-  EditDCEntryL(this.callback, this.index);
-  // This widget is the root of your application.
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: EditDCEntry(callback, index),
+      body: EditDCEntry(),
     );
   }
 }
 
 class EditDCEntry extends StatefulWidget {
-  Function callback;
-  int index;
-
-  EditDCEntry(this.callback, this.index);
 
   @override
   EditDCEntryState createState() => EditDCEntryState();
@@ -167,15 +160,33 @@ class EditDCEntryState extends State<EditDCEntry> {
 
   Widget caption1() {
     if(img1 == null) {
-       return ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: IconButton(
-            icon: Icon(Icons.add_a_photo),
-            //size: 100,
-            color: Colors.grey,
-            onPressed: getImage1,
-            iconSize: 100,
-          ));
+       return GestureDetector(
+        onTap: getImage1,
+        child: Badge(
+          elevation: 5,
+          badgeColor: Colors.white,
+      
+      position: BadgePosition.bottomRight(bottom: -15, right: -10),
+      padding: EdgeInsets.all(5),
+      badgeContent: Icon(Icons.add_a_photo, color: Colors.black,),
+      child: Container(
+        padding: EdgeInsets.only(top:5, bottom: 20, left: 5, right: 5),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(15)
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start ,
+            children: [
+              Icon(Icons.insert_photo,
+                size: 100,
+                color: Colors.grey,
+              ),
+              Text('Add a photo', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.grey),)
+            ]
+          )
+        )
+      ));
     } else {
       return GestureDetector(
         onTap: getImage1,
@@ -183,12 +194,12 @@ class EditDCEntryState extends State<EditDCEntry> {
           elevation: 5,
           badgeColor: Colors.white,
       
-      position: BadgePosition.bottomRight(bottom: -5, right: -10),
+      position: BadgePosition.bottomRight(bottom: -15, right: -10),
       padding: EdgeInsets.all(5),
       badgeContent: Icon(Icons.edit, color: Colors.black,),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Image.file(img1, fit: BoxFit.contain, height: 125),
+          child: Image.file(img1, fit: BoxFit.contain, height: 150),
         )
       ));
 
@@ -196,28 +207,47 @@ class EditDCEntryState extends State<EditDCEntry> {
   }
 
   Widget caption2() {
-   if(img2 == null) {
-       return ClipRRect(
-          borderRadius: BorderRadius.circular(15),
-          child: IconButton(
-            icon: Icon(Icons.add_a_photo),
-            //size: 100,
-            color: Colors.grey,
-            onPressed: getImage1,
-            iconSize: 100,
-          ));
+    if(img2 == null) {
+       return GestureDetector(
+        onTap: getImage2,
+        child: Badge(
+          elevation: 5,
+          badgeColor: Colors.white,
+      
+      position: BadgePosition.bottomRight(bottom: -15, right: -10),
+      padding: EdgeInsets.all(5),
+      badgeContent: Icon(Icons.add_a_photo, color: Colors.black,),
+      child: Container(
+        padding: EdgeInsets.only(top:5, bottom: 20, left: 5, right: 5),
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(15)
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start ,
+            children: [
+              Icon(Icons.insert_photo,
+                size: 100,
+                color: Colors.grey,
+              ),
+              Text('Add a photo', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, color: Colors.grey),)
+            ]
+          )
+        )
+      ));
     } else {
       return GestureDetector(
         onTap: getImage2,
         child: Badge(
-      badgeColor: Colors.white,
-      elevation: 5,
-      position: BadgePosition.bottomRight(bottom: -5, right: -10),
+          elevation: 5,
+          badgeColor: Colors.white,
+      
+      position: BadgePosition.bottomRight(bottom: -15, right: -10),
       padding: EdgeInsets.all(5),
-      badgeContent: Icon(Icons.edit),
+      badgeContent: Icon(Icons.edit, color: Colors.black,),
       child: ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Image.file(img2, fit: BoxFit.contain, height: 125),
+          child: Image.file(img2, fit: BoxFit.contain, height: 140),
         )
       ));
 
@@ -260,10 +290,14 @@ class EditDCEntryState extends State<EditDCEntry> {
                     },
                   ),
                   actions: <Widget>[
-                    IconButton(icon: Icon(Icons.save),
-                    onPressed: (){
-
-                    }
+                    Container(
+                      padding: EdgeInsets.only(top:15, right: 20),
+                      child:GestureDetector(
+                        child: Text('Save', style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),),
+                        onTap: () {
+                      Navigator.of(context).pop();
+                        },
+                      )
                     )
                   ],
                 ),
@@ -271,11 +305,12 @@ class EditDCEntryState extends State<EditDCEntry> {
                     padding: EdgeInsets.only(left: 32, right: 32),
                     child: ListView(
                       children: <Widget>[
+                      
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             SizedBox(
-                              height: 40,
+                              height: 20,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -335,7 +370,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             SizedBox(
-                              height: 40,
+                              height: 10,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -398,7 +433,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                                   fontSize: 30,),
                             ),
                             SizedBox(
-                              height: 25,
+                              height: 20,
                             ),
                             Row(children: <Widget>[
                               Checkbox(
@@ -442,9 +477,9 @@ class EditDCEntryState extends State<EditDCEntry> {
                                   hintText: 'Enter location',
                                   hintStyle: TextStyle(fontSize: 20)),
                             ),
+                            SizedBox(height: 40,)
                           ],
-                        ),
-                        ]
+                        )]
                     )
                 )
             )
