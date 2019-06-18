@@ -1,9 +1,9 @@
-import 'package:app_ui/dc_detail.dart' as prefix0;
+//import 'package:app_ui/dc_detail.dart' as prefix0;
 import 'package:flutter/material.dart';
-import 'dc_detail.dart';
-import 'main.dart';
+//import 'dc_detail.dart';
+//import 'main.dart';
 import 'package:flutter/cupertino.dart';
-import 'portalPopup.dart';
+//import 'portalPopup.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 //import 'package:autosuggest_demo/players.dart';
 import 'players.dart';
