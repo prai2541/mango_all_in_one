@@ -46,12 +46,12 @@ class EmployeeDetail extends StatelessWidget {
             ],
             title: Text('Working History'),
           flexibleSpace: FlexibleSpaceBar(
-            title: Card(
+            title: Center(child: Card(
             elevation: 5,
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(405), left: ScreenUtil.instance.setWidth(50), right: ScreenUtil.instance.setWidth(50)),
+            margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(405), left: ScreenUtil.instance.setWidth(40), right: ScreenUtil.instance.setWidth(40)),
             child: Container(
-              padding: EdgeInsets.all(10),
+              // padding: EdgeInsets.all(10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget> [
@@ -85,7 +85,7 @@ class EmployeeDetail extends StatelessWidget {
                 
               ),
             )
-          ),
+          ),),
           ),
           backgroundColor: Color(0xFF46B5A6),
           leading: IconButton(
