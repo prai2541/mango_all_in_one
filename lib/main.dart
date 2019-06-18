@@ -1,24 +1,20 @@
-import 'dart:developer';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
-import 'package:flutter/widgets.dart' as prefix0;
 import 'dc_detail.dart';
-import 'editDCEntry.dart';
 import 'signin.dart';
 import 'package:flutter/cupertino.dart';
 import 'dcsystem.dart';
 import 'portalPopup.dart';
-import 'newDCEntry.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 final List<String> imgList = [
-'assets/AR-Account-Receivable-System.JPG',
-'assets/BD-Bidding-System.JPG',
-'assets/FA-Fixed-Asset-System.JPG',
-'assets/IC-Inventory-Control-System.JPG'
+  'assets/AR-Account-Receivable-System.JPG',
+  'assets/BD-Bidding-System.JPG',
+  'assets/FA-Fixed-Asset-System.JPG',
+  'assets/IC-Inventory-Control-System.JPG'
 ];
 
 final List child = map<Widget>(
@@ -66,7 +62,7 @@ void main() => runApp(SigninL());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -74,41 +70,39 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (BuildContext context) => new MyApp(),
         '/signin': (BuildContext context) => new Signin(),
-        '/dc-system/detail' : (BuildContext context) => new DCDetail(),
+        '/dc-system/detail': (BuildContext context) => new DCDetail(),
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
           case '/portal':
             return PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 150),
-                    opaque: false,
-                    pageBuilder: (BuildContext context, _, __) => PortalPopup(),
-                    transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-                      return new FadeTransition(
-                          opacity: animation, 
-                          child: child);
-                    });
-          
-          case '/dc-system' :
-          return PageRouteBuilder(
-                            pageBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation) {
-                              return DCSys();
-                            },
-                            transitionsBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation,
-                                Widget child) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: Offset(1.0, 0.0),
-                                  end: Offset(0.0, 0.0),
-                                ).animate(animation),
-                                child: child,
-                              );
-                            },
-                            transitionDuration: Duration(milliseconds: 300));
+                transitionDuration: Duration(milliseconds: 150),
+                opaque: false,
+                pageBuilder: (BuildContext context, _, __) => PortalPopup(),
+                transitionsBuilder:
+                    (_, Animation<double> animation, __, Widget child) {
+                  return new FadeTransition(opacity: animation, child: child);
+                });
+
+          case '/dc-system':
+            return PageRouteBuilder(
+                pageBuilder: (BuildContext context, Animation<double> animation,
+                    Animation<double> secondaryAnimation) {
+                  return DCSys();
+                },
+                transitionsBuilder: (BuildContext context,
+                    Animation<double> animation,
+                    Animation<double> secondaryAnimation,
+                    Widget child) {
+                  return SlideTransition(
+                    position: Tween<Offset>(
+                      begin: Offset(1.0, 0.0),
+                      end: Offset(0.0, 0.0),
+                    ).animate(animation),
+                    child: child,
+                  );
+                },
+                transitionDuration: Duration(milliseconds: 300));
         }
       },
       theme: ThemeData(
@@ -122,7 +116,6 @@ class MyApp extends StatelessWidget {
 class HomePageRoute extends CupertinoPageRoute {
   HomePageRoute() : super(builder: (BuildContext context) => new MyHomePage());
 
-  // OPTIONAL IF YOU WISH TO HAVE SOME EXTRA ANIMATION WHILE ROUTING
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation) {
@@ -141,18 +134,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _current = 0;
-  
 
-  
   Widget getFullScreenCarousel(BuildContext mediaContext) {
     double defaultScreenWidth = 1440.0;
     double defaultScreenHeight = 2960.0;
-    
+
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
-   )..init(context);
+    )..init(context);
 
     return Column(children: [
       Container(
@@ -172,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   return Container(
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(0.0)),
-                      child: Image.asset (
+                      child: Image.asset(
                         name,
                         fit: BoxFit.cover,
                         width: defaultScreenWidth,
@@ -206,12 +197,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget gridViewButton(String name, IconData icon, Function onPressed) {
     double defaultScreenWidth = 1440.0;
     double defaultScreenHeight = 2960.0;
-    
+
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
-   )..init(context);
+    )..init(context);
 
     return Badge(
       position: BadgePosition.topRight(top: -5, right: -5),
@@ -241,7 +232,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(icon,
-                                size: ScreenUtil.instance.setWidth(175) ,
+                                size: ScreenUtil.instance.setWidth(175),
                                 color: Theme.of(context).primaryColor),
                             Text(
                               '$name',
@@ -263,158 +254,148 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     double defaultScreenWidth = 1440.0;
     double defaultScreenHeight = 2960.0;
-    
+
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
-   )..init(context);
-
+    )..init(context);
 
     return Stack(children: <Widget>[
-      Image.asset(
-        "assets/bg_0004.jpg",
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        fit: BoxFit.cover,
-      ),
+      // Image.asset(
+      //   "assets/bg_0004.jpg",
+      //   height: MediaQuery.of(context).size.height,
+      //   width: MediaQuery.of(context).size.width,
+      //   fit: BoxFit.cover,
+      // ),
       Scaffold(
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
             children: <Widget>[
-              Container(
-                height: 0.16*MediaQuery.of(context).size.height,
-                child: DrawerHeader(
-                  padding: EdgeInsets.only(left: 15, top: 30),
-                  margin: EdgeInsets.only(bottom:15),
-                  child: Text('Navigator', style: TextStyle(color: Colors.white, fontSize: 20)),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF46B5A6)),
-                )
+              DrawerHeader(
+                padding: EdgeInsets.only(top: 10),
+                // margin: EdgeInsets.only(bottom: 15),
+                child: Column(children: <Widget>[
+                  Center(
+                      child: CircleAvatar(
+                    radius: 55,
+                    backgroundImage: NetworkImage(
+                        'https://www.sbp-creative.com/wp-content/uploads/2017/01/profile-placeholder.png'),
+                    backgroundColor: Colors.transparent,
+                  )),
+                  Container(
+                      margin: EdgeInsets.only(top: 10),
+                      child: Text(
+                        'Profile 1',
+                        style: TextStyle(color: Colors.white, fontSize: 16),
+                      ))
+                ]),
+                decoration: BoxDecoration(color: Color(0xFF46B5A6)),
               ),
               ListTile(
-                leading: Icon(Icons.home, color: Color(0xFF46B5A6),),
+                leading: Icon(
+                  Icons.home,
+                  color: Color(0xFF46B5A6),
+                ),
                 title: Text('Home'),
                 onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/home', (Route<dynamic> route) => false);
                 },
               ),
               ListTile(
                 leading: Icon(Icons.person, color: Color(0xFF46B5A6)),
                 title: Text('Profile'),
-                onTap: () {
-
-                },
+                onTap: () {},
               ),
               ListTile(
                 leading: Icon(Icons.notifications, color: Color(0xFF46B5A6)),
                 title: Text('Notification'),
-                onTap: () {
-
-                },
+                onTap: () {},
               ),
               ListTile(
                 leading: Icon(Icons.info, color: Color(0xFF46B5A6)),
                 title: Text('About'),
-                onTap: () {
-
-                },
+                onTap: () {},
               ),
               ListTile(
                 leading: Icon(Icons.exit_to_app, color: Color(0xFF46B5A6)),
                 title: Text('Log Out'),
                 onTap: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil('/signin', (Route<dynamic> route) => false);
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/signin', (Route<dynamic> route) => false);
                 },
               ),
-            ],),
-        ),
-          backgroundColor: Colors.transparent,
-          appBar: AppBar(
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.apps,
-                  color: Colors.white.withOpacity(0.75),
-                  size: 30.0,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/portal');
-                  // PageRouteBuilder(
-                  // transitionDuration: Duration(milliseconds: 150),
-                  // opaque: false,
-                  // pageBuilder: (BuildContext context, _, __) => PortalPopup(),
-                  // transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-                  //   return new FadeTransition(
-                  //       opacity: animation,
-                  //       child: child);
-                  // }));
-                },
-              )
             ],
           ),
-          body: ListView(
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            // physics: NeverScrollableScrollPhysics(),
-            children: <Widget>[
-              getFullScreenCarousel(context),
-             GridView.count(
-                shrinkWrap: true,
-                primary: false,
-                padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(64), right:ScreenUtil.instance.setWidth(64), top: ScreenUtil.instance.setHeight(30)),
-                crossAxisSpacing: ScreenUtil.instance.setWidth(40),
-                crossAxisCount: 3,
-                mainAxisSpacing: ScreenUtil.instance.setWidth(40),
-                children: <Widget>[
-                  gridViewButton("Approved", Icons.check, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("Notifications", Icons.notifications, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("Projection", Icons.lightbulb_outline, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("Count Asset", Icons.monetization_on, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("PO Receive", Icons.library_books, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("DC System", Icons.local_atm, () {
-                    Navigator.of(context).pushNamed('/dc-system');
-                  }),
-                  gridViewButton("Management System", Icons.build, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("Purchase Requisition", Icons.shopping_cart,
-                      () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("Application", Icons.apps, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                ],
-              )
-            ],
-          ),)
+        ),
+        backgroundColor: Colors.white,
+        appBar: AppBar(),
+        body: ListView(
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          // physics: NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            getFullScreenCarousel(context),
+            GridView.count(
+              shrinkWrap: true,
+              primary: false,
+              padding: EdgeInsets.only(
+                  left: ScreenUtil.instance.setWidth(64),
+                  right: ScreenUtil.instance.setWidth(64),
+                  top: ScreenUtil.instance.setHeight(30)),
+              crossAxisSpacing: ScreenUtil.instance.setWidth(40),
+              crossAxisCount: 3,
+              mainAxisSpacing: ScreenUtil.instance.setWidth(40),
+              children: <Widget>[
+                gridViewButton("Approved", Icons.check, () {
+                  setState(() {
+                    this.i++;
+                  });
+                }),
+                gridViewButton("Notifications", Icons.notifications, () {
+                  setState(() {
+                    this.i++;
+                  });
+                }),
+                gridViewButton("Projection", Icons.lightbulb_outline, () {
+                  setState(() {
+                    this.i++;
+                  });
+                }),
+                gridViewButton("Count Asset", Icons.monetization_on, () {
+                  setState(() {
+                    this.i++;
+                  });
+                }),
+                gridViewButton("PO Receive", Icons.library_books, () {
+                  setState(() {
+                    this.i++;
+                  });
+                }),
+                gridViewButton("DC System", Icons.local_atm, () {
+                  Navigator.of(context).pushNamed('/dc-system');
+                }),
+                gridViewButton("Management System", Icons.build, () {
+                  setState(() {
+                    this.i++;
+                  });
+                }),
+                gridViewButton("Purchase Requisition", Icons.shopping_cart, () {
+                  setState(() {
+                    this.i++;
+                  });
+                }),
+                gridViewButton("Application", Icons.apps, () {
+                  setState(() {
+                    this.i++;
+                  });
+                }),
+              ],
+            )
+          ],
+        ),
+      )
     ]);
   }
 }

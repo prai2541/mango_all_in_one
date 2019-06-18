@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:app_ui/employeeDetail.dart';
 import 'package:app_ui/newDCEntry.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,6 +17,7 @@ List<String> name = [
   'Joe	Young',
   'Samuel	Barker'
 ];
+
 List<String> status = ["DONE", "ADD", "ADD", "DONE"];
 
 class DCDetail extends StatelessWidget {
@@ -35,12 +37,13 @@ class DCDetail extends StatelessWidget {
               actions: <Widget>[
                 IconButton(
                   icon: Icon(
-                    Icons.apps,
+                    Icons.home,
                     color: Colors.white.withOpacity(0.75),
                     size: 30.0,
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/portal');
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/home', (Route<dynamic> route) => false);
                   },
                 )
               ],
@@ -64,26 +67,40 @@ class DCDetail extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Container(
-                  color: Colors.black.withOpacity(0.08),
-                  padding: EdgeInsets.only(top: 30, bottom: 30, left: 20),
+                Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)),
+                  margin: EdgeInsets.all(10),
+                  elevation: 5,
                   child: ListBody(
                     children: <Widget>[
-                      Text(
-                        'Project : 202019',
-                        style: TextStyle(fontSize: 17),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, top: 10, bottom: 1),
+                        child: Text(
+                          'Project : 202019',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
-                      Text(
-                        'Project Name : Center Store',
-                        style: TextStyle(fontSize: 17),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, bottom: 1),
+                        child: Text(
+                          'Project Name : สโตร์กลาง',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
-                      Text(
-                        'Job : CML',
-                        style: TextStyle(fontSize: 17),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, bottom: 1),
+                        child: Text(
+                          'Job : CML',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
-                      Text(
-                        'Inspector : Mr. Inspector',
-                        style: TextStyle(fontSize: 17),
+                      Container(
+                        padding: EdgeInsets.only(left: 20, bottom: 10),
+                        child: Text(
+                          'ผู้ตรวจ : ผู้ตรวจการ ',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                     ],
                   ),
@@ -108,7 +125,6 @@ class ListTabView extends StatefulWidget {
 }
 
 class _ListTabViewState extends State<ListTabView> {
-  
   deleteCallback(int index) {
     setState(() {
       name.removeAt(index);
@@ -152,8 +168,6 @@ class _ListTabViewState extends State<ListTabView> {
     }
   }
 
-  
-
   Future<void> _deleteAlert(index) async {
     return showDialog<void>(
       context: context,
@@ -195,44 +209,55 @@ class _ListTabViewState extends State<ListTabView> {
     switch (status) {
       case 'DONE':
         {
-          return <Widget> [Container(
-            margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
-            child: IconSlideAction(
-                caption: 'Edit',
-                color: Color(0xfffec636),
-                icon: Icons.edit,
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(settings: RouteSettings(name: '/dc-system/detail/edit'), builder: (context) => new EditDCEntry()));
-                }),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
-            child: IconSlideAction(
-                caption: 'DELETE',
-                color: Colors.red,
-                icon: Icons.delete,
-                onTap: () {
-                  _deleteAlert(index);
-                }),
-          )];
+          return <Widget>[
+            Container(
+              padding: EdgeInsets.only(top: 4.0, bottom: 4.0),
+              child: IconSlideAction(
+                  caption: 'Edit',
+                  color: Color(0xfff5b62d),
+                  icon: Icons.edit,
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        settings: RouteSettings(name: '/dc-system/detail/edit'),
+                        builder: (context) => new EditDCEntry()));
+                  }),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 4.0, bottom: 4.0),
+              child: IconSlideAction(
+                  caption: 'DELETE',
+                  color: Colors.red,
+                  icon: Icons.delete,
+                  onTap: () {
+                    _deleteAlert(index);
+                  }),
+            )
+          ];
         }
         break;
 
       case 'ADD':
         {
-          return <Widget> [Container(
-            margin: EdgeInsets.only(top: 4.0, bottom: 4.0),
-            child: IconSlideAction(
-                caption: 'Add',
-                color: Colors.blueGrey,
-                icon: Icons.add_box,
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(settings: RouteSettings(name: '/dc-system/detail/add'), builder: (context) => new NewDCEntryL(doneCallback, index)));
-                }),
-          )];
+          return <Widget>[
+            Container(
+              padding: EdgeInsets.only(top: 4.0, bottom: 4.0),
+              child: IconSlideAction(
+                  caption: 'Add',
+                  color: Color(0xff718996),
+                  icon: Icons.add_box,
+                  onTap: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        settings: RouteSettings(name: '/dc-system/detail/add'),
+                        builder: (context) =>
+                            new NewDCEntryL(doneCallback, index)));
+                  }),
+            )
+          ];
         }
     }
   }
+
+  final SlidableController slidableController = SlidableController();
 
   @override
   Widget build(BuildContext context) {
@@ -240,8 +265,9 @@ class _ListTabViewState extends State<ListTabView> {
         itemCount: name.length,
         itemBuilder: (context, i) {
           return Slidable(
-            actionExtentRatio: 0.25,
-            actionPane: SlidableDrawerActionPane(),
+            controller: slidableController,
+            actionExtentRatio: 0.20,
+            actionPane: SlidableScrollActionPane(),
             child: Card(
                 child: ListTile(
               contentPadding: EdgeInsets.only(right: 20),
@@ -249,7 +275,10 @@ class _ListTabViewState extends State<ListTabView> {
                 width: 10,
                 color: colorStatus(status[i]),
               ),
-              title: Text(name[i], style: TextStyle(fontSize: 16),),
+              title: Text(
+                name[i],
+                style: TextStyle(fontSize: 16),
+              ),
               trailing: Text(
                 status[i],
                 style: TextStyle(color: textColor(status[i])),
@@ -290,7 +319,8 @@ class _DetailTabViewState extends State<DetailTabView> {
                   child: Badge(
                     badgeColor: Colors.red,
                     borderRadius: 5,
-                    padding: EdgeInsets.only(top: 1, bottom: 1, left: 7, right: 7),
+                    padding:
+                        EdgeInsets.only(top: 1, bottom: 1, left: 7, right: 7),
                     shape: BadgeShape.square,
                     badgeContent: Text(
                       '5',
@@ -302,6 +332,9 @@ class _DetailTabViewState extends State<DetailTabView> {
               ],
             ),
             trailing: Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => new EmployeeDetail(name[i])));
+            },
           ));
         });
   }

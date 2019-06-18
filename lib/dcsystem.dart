@@ -42,7 +42,6 @@ class DCSys extends StatefulWidget {
 }
 
 class DCSysState extends State<DCSys> {
-
   String prjname = 'Project Name';
   TextEditingController controller = new TextEditingController();
   //TextEditingController prjnameCtrl = new TextEditingController();
@@ -54,9 +53,7 @@ class DCSysState extends State<DCSys> {
   GlobalKey<AutoCompleteTextFieldState<Players>> key = new GlobalKey();
   String prjnamehidden;
   String prjid;
-  List <String> joblist = ['help','me','pls'];
-  
-
+  List<String> joblist = ['help', 'me', 'pls'];
 
   void _loadData() async {
     await PlayersViewModel.loadPlayers();
@@ -67,21 +64,17 @@ class DCSysState extends State<DCSys> {
     _loadData();
     super.initState();
   }
-  
 
-
-
- 
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     double defaultScreenWidth = 1440.0;
     double defaultScreenHeight = 2960.0;
-    
+
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
-   )..init(context);
-   
+    )..init(context);
+
     return Stack(
       children: <Widget>[
         // Image.asset(
@@ -91,302 +84,318 @@ class DCSysState extends State<DCSys> {
         //     fit: BoxFit.cover,
         // ),
         GestureDetector(
-          onTap: () {
-            FocusScope.of(context).requestFocus(new FocusNode());
-            //searchTextField.textField.controller.text = '';
-            key.currentState.clear();
-          },
-          child:Scaffold(
-          backgroundColor: Colors.white,
-          appBar: AppBar(
-            actions: <Widget>[
-              IconButton(
-                icon: Icon(
-                  Icons.apps,
-                  color: Colors.white.withOpacity(0.75),
-                  size: 30.0,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/portal');
-                },
-              )
-            ],
-          ),
-          body: ListView(
-            padding: EdgeInsets.all(ScreenUtil.instance.setWidth(100)),
-              children: [
-                SizedBox(height: ScreenUtil.instance.setWidth(150),),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text('DC System', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(150), color: Color(0xFF00b89c)))]),
-                SizedBox(height: ScreenUtil.instance.setWidth(250),),
-                // TextFormField(
-                //   controller: prjnoCtrl,
-                //   keyboardType: TextInputType.number,
-                //   decoration: InputDecoration(
-                //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                //     labelText: 'Project No.'
-                //   ),
-
-                // ),
-                // SizedBox(height: 20,),
-                // TextFormField(
-                //   controller: prjnoCtrl,
-                //   style: TextStyle(
-                //     fontSize: 20,
-                //     fontWeight: FontWeight.w300,
-                //     color: Colors.black
-                //   ),
-                //   keyboardType: TextInputType.number,
-                //   decoration: InputDecoration(
-                //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                //     labelText: 'Project Number',
-                //     suffixIcon: IconButton(
-                //       icon: Icon(Icons.search),
-                //       onPressed: () {
-                //         // List <String> id = info.map((prj) => prj.prjNo);
-                //         // String prjno = prjnoCtrl.text;
-                //         // if(id.contains(prjno)) {
-                //         //   info.forEach((work) => {
-                //         //     if (work.prjNo == prjno) {
-                //         //       setState(() {
-                //         //         prjname = work.prjName;
-                //         //       })
-                //         //     }
-                //         //   });
-                //         // }
-                //       },
-                //       )
-                //   ),
-
-                // ),
-                searchTextField = AutoCompleteTextField<Players>(
-                  style: new TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.w300),
-                  keyboardType: TextInputType.number,
-                  decoration: new InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: () {
-                        if(prjid != null) {
-                          setState(() {
-                           prjname = prjnamehidden; 
-                          });
-                          key.currentState.clear();
-                          searchTextField.textField.controller.text = prjid;
-                        } else{
-                          //prjid = searchTextField.textField.controller.text;
-                          
-                        }
-                        
-                      },
-                    ),
-                    //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
-                    filled: true,
-                    hintText: 'Project Number',
-                    hintStyle: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w300,
-                          color: Colors.black
-                        ),
-                  ),
-                  suggestionsAmount: 5,
-                  itemSubmitted: (item) {
-                    List emptylist = [];
-                    setState(() {
-                      searchTextField.textField.controller.text = item.id.toString();
-                      prjnamehidden = item.autocompleteterm;
-                      prjid = item.id.toString();
-                    });  
-                    key.currentState.updateSuggestions(emptylist);
-                    //key.currentState.clear();
-                  },
-                  clearOnSubmit: false,
-                  submitOnSuggestionTap: true,
-                  key: key,
-                  suggestions: PlayersViewModel.players,
-                  itemBuilder: (context, item) {
-                    return Container(
-                      padding: EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(20))
+            onTap: () {
+              FocusScope.of(context).requestFocus(new FocusNode());
+              //searchTextField.textField.controller.text = '';
+              key.currentState.clear();
+            },
+            child: Scaffold(
+                backgroundColor: Colors.white,
+                appBar: AppBar(
+                  actions: <Widget>[
+                    IconButton(
+                      icon: Icon(
+                        Icons.home,
+                        color: Colors.white.withOpacity(0.75),
+                        size: 30.0,
                       ),
-                      child:Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Text(item.id.toString(),
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w300
-                        ),),
-                        Padding(
-                          padding: EdgeInsets.all(15.0),
-                        ),
-                        Text(item.autocompleteterm,
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w300
-                        ),
-                        )
-                      ],
-                      )
-                    );
-                  },
-                  itemSorter: (a, b) {
-                    return a.id.compareTo(b.id);
-                  },
-                  itemFilter: (item, query) {
-                    return item.id.toString().startsWith(query.toLowerCase());
-                  }
-                  
-                ),
-                SizedBox(height: ScreenUtil.instance.setHeight(75),),
-                Container(
-                  padding: EdgeInsets.only(bottom: 20, top: 20, left: 12, right: 10),
-                  child: Text(
-                    '$prjname',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w300
-                    ),
-                  ),
-                  decoration: new BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: new BorderRadius.all(
-                      const Radius.circular(40.0)
-                    )
-                  ),
-                ),
-                SizedBox(height: ScreenUtil.instance.setHeight(75),),
-                Container( 
-                  padding: EdgeInsets.only(bottom: 7.5, top: 7.5, left: 12, right: 10),
-                  decoration: new BoxDecoration(
-                    border: Border.all(color: Colors.black),
-                    borderRadius: new BorderRadius.all(
-                      const Radius.circular(40.0)
-                    )
-                  ),
-                  child: DropdownButtonHideUnderline(
-                    child: DropdownButton<String>(
-                              icon: Icon(Icons.arrow_drop_down),
-                              iconSize: 35,
-                              isExpanded: true,
-                              value: dropdownValue,
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black
-                              ),
-                              //underline:,
-                              hint: Text('Select a job',
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black
-                              ),
-                              ),
-                              
-                              items: joblist.map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text('$value')
-                                  );
-                              }).toList(),
-                              onChanged: (String newValue) {
-                                  setState(() {
-                                    dropdownValue = newValue;
-                                  });
-                                },
-                              
-                            ),
-                  ),
-                ),
-                // Container(
-                //   padding: EdgeInsets.only(bottom: 7.5, top: 7.5, left: 12, right: 10),
-                //   decoration: new BoxDecoration(
-                //     border: Border.all(color: Colors.black),
-                //     borderRadius: new BorderRadius.all(
-                //       const Radius.circular(40.0)
-                //     )
-                //   ),
-                //   child: Row(
-                //     mainAxisSize: MainAxisSize.min,
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       Text(
-                //         'Job  ',
-                //         style: TextStyle(
-                //           fontSize: 20,
-                //           fontWeight: FontWeight.w300
-                //         ),
-                //       ),
-                //         Expanded(
-                //         child: DropdownButton<String>(
-                //             iconSize: 35,
-                //             underline: null,
-                //             value: dropdownValue,
-                //             isExpanded: false,
-                //             onChanged: (String newValue) {
-                //               setState(() {
-                //                 dropdownValue = newValue;
-                //               });
-                //             },
-                //             items: <String>['One', 'Two', 'Free', 'Four']
-                //             .map<DropdownMenuItem<String>>((String value) {
-                //               return DropdownMenuItem<String>(
-                //                 value: value,
-                //                 child: Text(value),
-                //               );
-                //             }).toList()
-                //           )
-                      
-                //         )   
-                //     ]
-                //   )
-                // ),
-                
-                SizedBox(height: ScreenUtil.instance.setHeight(150),),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [  
-                    RaisedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/dc-system/detail');               
+                        Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
                       },
-                      textColor: Colors.white,
-                      padding: const EdgeInsets.all(0.0),
-                      shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                          gradient: LinearGradient(
-                            colors: <Color>[
-                              Color(0xFF4BA092),
-                              Color(0xFF8AD696),
-                            ],
+                    )
+                  ],
+                ),
+                body: ListView(
+                    padding: EdgeInsets.all(ScreenUtil.instance.setWidth(100)),
+                    children: [
+                      SizedBox(
+                        height: ScreenUtil.instance.setWidth(150),
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('DC System',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: ScreenUtil.instance.setSp(150),
+                                    color: Color(0xFF00b89c)))
+                          ]),
+                      SizedBox(
+                        height: ScreenUtil.instance.setWidth(250),
+                      ),
+                      // TextFormField(
+                      //   controller: prjnoCtrl,
+                      //   keyboardType: TextInputType.number,
+                      //   decoration: InputDecoration(
+                      //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                      //     labelText: 'Project No.'
+                      //   ),
+
+                      // ),
+                      // SizedBox(height: 20,),
+                      // TextFormField(
+                      //   controller: prjnoCtrl,
+                      //   style: TextStyle(
+                      //     fontSize: 20,
+                      //     fontWeight: FontWeight.w300,
+                      //     color: Colors.black
+                      //   ),
+                      //   keyboardType: TextInputType.number,
+                      //   decoration: InputDecoration(
+                      //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                      //     labelText: 'Project Number',
+                      //     suffixIcon: IconButton(
+                      //       icon: Icon(Icons.search),
+                      //       onPressed: () {
+                      //         // List <String> id = info.map((prj) => prj.prjNo);
+                      //         // String prjno = prjnoCtrl.text;
+                      //         // if(id.contains(prjno)) {
+                      //         //   info.forEach((work) => {
+                      //         //     if (work.prjNo == prjno) {
+                      //         //       setState(() {
+                      //         //         prjname = work.prjName;
+                      //         //       })
+                      //         //     }
+                      //         //   });
+                      //         // }
+                      //       },
+                      //       )
+                      //   ),
+
+                      // ),
+                      searchTextField = AutoCompleteTextField<Players>(
+                          style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: 20.0,
+                              fontWeight: FontWeight.w300),
+                          keyboardType: TextInputType.number,
+                          decoration: new InputDecoration(
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(40)),
+                            suffixIcon: IconButton(
+                              icon: Icon(Icons.search),
+                              onPressed: () {
+                                if (prjid != null) {
+                                  setState(() {
+                                    prjname = prjnamehidden;
+                                  });
+                                  key.currentState.clear();
+                                  searchTextField.textField.controller.text =
+                                      prjid;
+                                } else {
+                                  //prjid = searchTextField.textField.controller.text;
+
+                                }
+                              },
+                            ),
+                            //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
+                            filled: true,
+                            hintText: 'Project Number',
+                            hintStyle: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black),
+                          ),
+                          suggestionsAmount: 5,
+                          itemSubmitted: (item) {
+                            List emptylist = [];
+                            setState(() {
+                              searchTextField.textField.controller.text =
+                                  item.id.toString();
+                              prjnamehidden = item.autocompleteterm;
+                              prjid = item.id.toString();
+                            });
+                            key.currentState.updateSuggestions(emptylist);
+                            //key.currentState.clear();
+                          },
+                          clearOnSubmit: false,
+                          submitOnSuggestionTap: true,
+                          key: key,
+                          suggestions: PlayersViewModel.players,
+                          itemBuilder: (context, item) {
+                            return Container(
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      item.id.toString(),
+                                      style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(15.0),
+                                    ),
+                                    Text(
+                                      item.autocompleteterm,
+                                      style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w300),
+                                    )
+                                  ],
+                                ));
+                          },
+                          itemSorter: (a, b) {
+                            return a.id.compareTo(b.id);
+                          },
+                          itemFilter: (item, query) {
+                            return item.id
+                                .toString()
+                                .startsWith(query.toLowerCase());
+                          }),
+                      SizedBox(
+                        height: ScreenUtil.instance.setHeight(75),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            bottom: 20, top: 20, left: 12, right: 10),
+                        child: Text(
+                          '$prjname',
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w300),
+                        ),
+                        decoration: new BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: new BorderRadius.all(
+                                const Radius.circular(40.0))),
+                      ),
+                      SizedBox(
+                        height: ScreenUtil.instance.setHeight(75),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            bottom: 7.5, top: 7.5, left: 12, right: 10),
+                        decoration: new BoxDecoration(
+                            border: Border.all(color: Colors.black),
+                            borderRadius: new BorderRadius.all(
+                                const Radius.circular(40.0))),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            icon: Icon(Icons.arrow_drop_down),
+                            iconSize: 35,
+                            isExpanded: true,
+                            value: dropdownValue,
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black),
+                            //underline:,
+                            hint: Text(
+                              'Select a job',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w300,
+                                  color: Colors.black),
+                            ),
+
+                            items: joblist
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                  value: value, child: Text('$value'));
+                            }).toList(),
+                            onChanged: (String newValue) {
+                              setState(() {
+                                dropdownValue = newValue;
+                              });
+                            },
                           ),
                         ),
-                        padding: const EdgeInsets.only(left: 35, right: 35, top: 10, bottom: 10),
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                'Search  ',
-                                style: TextStyle(fontSize: 30,
-                                fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                              Icon(Icons.search, color: Colors.white)
-                            ]
-                          )
-                        )
                       ),
-                    ),
-                  ]
-                ),
-              ]
-            )
-          )
-        )
+                      // Container(
+                      //   padding: EdgeInsets.only(bottom: 7.5, top: 7.5, left: 12, right: 10),
+                      //   decoration: new BoxDecoration(
+                      //     border: Border.all(color: Colors.black),
+                      //     borderRadius: new BorderRadius.all(
+                      //       const Radius.circular(40.0)
+                      //     )
+                      //   ),
+                      //   child: Row(
+                      //     mainAxisSize: MainAxisSize.min,
+                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //     children: [
+                      //       Text(
+                      //         'Job  ',
+                      //         style: TextStyle(
+                      //           fontSize: 20,
+                      //           fontWeight: FontWeight.w300
+                      //         ),
+                      //       ),
+                      //         Expanded(
+                      //         child: DropdownButton<String>(
+                      //             iconSize: 35,
+                      //             underline: null,
+                      //             value: dropdownValue,
+                      //             isExpanded: false,
+                      //             onChanged: (String newValue) {
+                      //               setState(() {
+                      //                 dropdownValue = newValue;
+                      //               });
+                      //             },
+                      //             items: <String>['One', 'Two', 'Free', 'Four']
+                      //             .map<DropdownMenuItem<String>>((String value) {
+                      //               return DropdownMenuItem<String>(
+                      //                 value: value,
+                      //                 child: Text(value),
+                      //               );
+                      //             }).toList()
+                      //           )
+
+                      //         )
+                      //     ]
+                      //   )
+                      // ),
+
+                      SizedBox(
+                        height: ScreenUtil.instance.setHeight(150),
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RaisedButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed('/dc-system/detail');
+                              },
+                              textColor: Colors.white,
+                              padding: const EdgeInsets.all(0.0),
+                              shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(30.0)),
+                              child: Container(
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      colors: <Color>[
+                                        Color(0xFF4BA092),
+                                        Color(0xFF8AD696),
+                                      ],
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.only(
+                                      left: 35, right: 35, top: 10, bottom: 10),
+                                  child: Container(
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                        Text(
+                                          'Search  ',
+                                          style: TextStyle(
+                                            fontSize: 30,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                        ),
+                                        Icon(Icons.search, color: Colors.white)
+                                      ]))),
+                            ),
+                          ]),
+                    ])))
       ],
     );
   }
@@ -395,8 +404,7 @@ class DCSysState extends State<DCSys> {
 class ProjectInfo {
   String prjNo;
   String prjName;
-  List <String> position;
+  List<String> position;
 
   ProjectInfo(this.prjNo, this.prjName, this.position);
-
 }
