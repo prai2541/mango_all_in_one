@@ -9,17 +9,8 @@ class PRcontinueL extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Color(0xFF00b89c),
-      ),
-      home: PRcontinue(title: 'Flutter Demo Home Page'),
-      routes: {
-        '/pr-add' : (BuildContext context) => new PRAdd(),
-         
-      },
-      
+    return Scaffold(
+      body: PRcontinue(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -215,19 +206,23 @@ class PRcontinueState extends State<PRcontinue>{
       allowFontScaling: true,
    )..init(context);
 
-    return Scaffold(
+    return GestureDetector(
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+      },
+      child: Scaffold(
       appBar: AppBar(
             actions: <Widget>[
               IconButton(
-                icon: Icon(
-                  Icons.apps,
-                  color: Colors.white.withOpacity(0.75),
-                  size: 30.0,
-                ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed('/portal');
-                },
-              )
+                  icon: Icon(
+                    Icons.home,
+                    color: Colors.white,
+                    size: ScreenUtil.instance.setSp(100),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                  }
+                )
             ],
           ),
       body:Container(
@@ -325,7 +320,7 @@ class PRcontinueState extends State<PRcontinue>{
           ],
         )
       )
-    );
+    ));
   }
 
 }

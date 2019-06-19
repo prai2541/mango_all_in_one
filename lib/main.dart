@@ -81,7 +81,7 @@ class MyApp extends StatelessWidget {
         '/dc-system/detail' : (BuildContext context) => new DCDetail(),
         '/pr-main' : (BuildContext context) => new PRmainL(),
         '/pr-main/con' : (BuildContext context) => new PRcontinueL(),
-        '/pr-add' : (BuildContext context) => new PRAdd()
+        '/pr-add' : (BuildContext context) => new PRAdd(),
         '/projection' : (BuildContext context) => new Projection(),
         '/notification' : (BuildContext context) => new NotificationPage(),
       },
@@ -330,7 +330,10 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
                 leading: Icon(Icons.notifications, color: Color(0xFF46B5A6)),
                 title: Text('Notification'),
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pushNamed('/notification');
+                },
               ),
               ListTile(
                 leading: Icon(Icons.info, color: Color(0xFF46B5A6)),
