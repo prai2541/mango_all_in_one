@@ -75,7 +75,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
   int qty;
   int unit; 
   int ppn;
-  bool customizable = false;
+  bool customizable = true;
   String matName = 'Material Name';
   TextEditingController mcCtrl = TextEditingController();
   TextEditingController mnCtrl = TextEditingController();
@@ -254,6 +254,10 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                         MaterialObj newdata = MaterialObj(matcode: mcCtrl.text, matname: matname, qty: int.parse(qtyCtrl.text), unit: int.parse(unitCtrl.text), ppn: int.parse(ppnCtrl.text));
                         setState(() {
                           data.add(newdata);
+                          mcCtrl.text = '';
+                          qtyCtrl.text = '';
+                          unitCtrl.text = '';
+                          ppnCtrl.text = '';
                         });
                         tabctrl.animateTo((tabctrl.index +1) %2);
                                       
@@ -519,7 +523,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                           position: BadgePosition.topRight(top: -5, right: -5),
                           animationDuration: Duration(milliseconds: 300),
                           animationType: BadgeAnimationType.scale,
-                          padding: EdgeInsets.all(ScreenUtil.instance.setWidth(22.5)),
+                          padding: EdgeInsets.all(7.5),
                           badgeContent: Text(
                             '${data.length}',
                             style: TextStyle(color: Colors.white, fontSize: 12.5),
