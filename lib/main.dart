@@ -1,6 +1,7 @@
 //import 'dart:developer';
 import 'dart:ui';
 
+import 'package:app_ui/projection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
@@ -77,7 +78,8 @@ class MyApp extends StatelessWidget {
         '/signin': (BuildContext context) => new Signin(),
         '/dc-system/detail' : (BuildContext context) => new DCDetail(),
         '/pr-main' : (BuildContext context) => new PRmainL(),
-        '/pr-main/con' : (BuildContext context) => new PRcontinueL()
+        '/pr-main/con' : (BuildContext context) => new PRcontinueL(),
+        '/projection' : (BuildContext context) => new Projection(),
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
@@ -279,6 +281,8 @@ class _MyHomePageState extends State<MyHomePage> {
       //   fit: BoxFit.cover,
       // ),
       Scaffold(
+        appBar: AppBar(
+        ),
         drawer: Drawer(
           child: ListView(
             padding: EdgeInsets.zero,
@@ -364,9 +368,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   }),
                   gridViewButton("Projection", Icons.lightbulb_outline, () {
-                    setState(() {
-                      this.i++;
-                    });
+                    Navigator.of(context).pushNamed('/projection');
                   }),
                   gridViewButton("Count Asset", Icons.monetization_on, () {
                     setState(() {
