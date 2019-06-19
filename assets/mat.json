@@ -1,0 +1,105 @@
+{
+	"materials": [{
+		"matname": "Sachin",
+		"matcode": 11,
+		"qty": 1,
+        "unit": 6,
+        "ppn" : 3
+	}, {
+		"matname": "Adam",
+		"matcode": 12,
+		"qty": 1,
+		"unit": 1,
+        "ppn" : 3
+	}, {
+		"matname": "Brian",
+		"matcode": 13,
+		"qty": 2,
+		"unit": "West Indies",
+        "ppn" : 3
+	}, {
+		"matname": "Wasim",
+		"matcode": 24,
+		"qty": 4,
+		"unit": 3,
+        "ppn" : 3
+	}, {
+		"matname": "Rahul",
+		"matcode": 35,
+		"qty": 1,
+		"unit": 6,
+        "ppn" : 3
+	}, {
+		"matname": "Sourav",
+		"matcode": 15,
+		"qty": 1,
+		"unit": 6,
+        "ppn" : 3
+	}, {
+		"matname": "Alan",
+		"matcode": 21,
+		"qty": 6,
+		"unit": 9,
+        "ppn" : 3
+	}, {
+		"matname": "Anil",
+		"matcode": 2,
+		"qty": 4,
+		"unit": 6,
+        "ppn" : 3
+	}, {
+		"matname": "Waqar",
+		"matcode": 4,
+		"qty": 1,
+		"unit": 3,
+        "ppn" : 3
+	}, {
+		"matname": "Sunil",
+		"matcode": 1,
+		"qty": 3,
+		"unit": 6,
+        "ppn" : 3
+	}, {
+		"matname": "Brett",
+		"matcode": 3,
+		"qty": 2,
+		"unit": 1,
+        "ppn" : 3
+	}, {
+		"matname": "Shane",
+		"matcode": 31,
+		"qty": 3,
+		"unit": 1,
+        "ppn" : 3
+	}, {
+		"matname": "Saqlain",
+		"matcode": 145,
+		"qty": 9,
+		"unit": 3,
+        "ppn" : 3
+	}, {
+		"matname": "Chris",
+		"matcode": 14,
+		"qty": 1,
+		"unit": 8,
+        "ppn" : 3
+	}, {
+		"matname": "Chris",
+		"matcode": 57,
+		"qty": 1,
+		"unit": 8,
+        "ppn" : 3
+	}, {
+		"matname": "Ricky",
+		"matcode": 59,
+		"qty": 1,
+		"unit": 1,
+        "ppn" : 3
+	}, {
+		"matname": "Glen",
+		"matcode": 78,
+		"qty": 1,
+		"unit": 1,
+        "ppn" : 3
+	}]
+}
