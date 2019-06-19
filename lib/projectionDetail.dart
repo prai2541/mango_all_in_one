@@ -166,6 +166,7 @@ class ProjectionDetail extends StatelessWidget {
           preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(632)),
           child: AppBar(
             flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
               title: Center(
                 child: Card(
                     elevation: 5,

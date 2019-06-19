@@ -14,15 +14,9 @@ class PRmainL extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Color(0xFF00b89c),
-      ),
-      home: PRmain(title: 'Flutter Demo Home Page'),
-      routes: {
-        '/pr-main/con' : (BuildContext context) => new PRcontinueL()
-      },
+    return Scaffold(
+      resizeToAvoidBottomPadding: false,
+      body: PRmain(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -81,87 +75,23 @@ class PRmainState extends State<PRmain>{
     //tctrl =TabController(vsync: this, length: 2);
   }
 
-  Widget createAutoComField(textctrl, hint, gkey, field) {
-    return AutoCompleteTextField<Players>(
-                  style: new TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w300),
-                  keyboardType: TextInputType.number,
-                  decoration: new InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
-                    suffixIcon: IconButton(
-                      icon: Icon(Icons.search),
-                      onPressed: () {
-                        // if(prjnum != null) {
-                        //   setState(() {
-                        //    textctrl.text = field; 
-                        //   });
-                        //   gkey.currentState.clear();
-                        //   //textctrl.text = prjid;
-                        // } else{
-                        //   //prjid = searchTextField.textField.controller.text;
-                          
-                        // }
-                        
-                      },
-                    ),
-                    //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
-                    filled: true,
-                    hintText: '$hint',
-                    hintStyle: TextStyle(
-                          fontSize: 18.0,
-                          fontWeight: FontWeight.w300,
-                          color: Colors.black
-                        ),
-                  ),
-                  suggestionsAmount: 5,
-                  itemSubmitted: (item) {
-                    // List emptylist = [];
-                    // setState(() {
-                    //   //textctrl.text = item.id.toString();
-                    //   //prjnamehidden = item.autocompleteterm;
-                    //   //prjid = item.id.toString();
-                    // });  
-                    // gkey.currentState.updateSuggestions(emptylist);
-                    // //key.currentState.clear();
-                  },
-                  clearOnSubmit: false,
-                  submitOnSuggestionTap: true,
-                  key: gkey,
-                  suggestions: PlayersViewModel.players,
-                  itemBuilder: (context, item) {
-                    // return Container(
-                    //   padding: EdgeInsets.all(5),
-                    //   decoration: BoxDecoration(
-                    //     borderRadius: BorderRadius.all(Radius.circular(20))
-                    //   ),
-                    //   child:Row(
-                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    //   children: <Widget>[
-                    //     Text(item.id.toString(),
-                    //     style: TextStyle(
-                    //       fontSize: 18.0,
-                    //       fontWeight: FontWeight.w300
-                    //     ),),
-                    //     Padding(
-                    //       padding: EdgeInsets.all(15.0),
-                    //     ),
-                    //     Text(item.autocompleteterm,
-                    //     style: TextStyle(
-                    //       fontSize: 18.0,
-                    //       fontWeight: FontWeight.w300
-                    //     ),
-                    //     )
-                    //   ],
-                    //   )
-                    // );
-                  },
-                  itemSorter: (a, b) {
-                    //return a.id.compareTo(b.id);
-                  },
-                  itemFilter: (item, query) {
-                    //return item.id.toString().startsWith(query.toLowerCase());
-                  }
-                  
-                );
+  Widget createAutoComField(textctrl, hint) {
+    return TextFormField(
+      controller: textctrl,
+      keyboardType: TextInputType.number,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30))
+        ),
+        suffixIcon: IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () {
+
+          },
+        ),
+        hintText: hint,
+      ),
+    );
   }
 
 
@@ -177,12 +107,13 @@ class PRmainState extends State<PRmain>{
    )..init(context);
     return ListView(
             padding: EdgeInsets.all(ScreenUtil.instance.setWidth(100)),
+            shrinkWrap: true,
               children: [
-                prjcode = createAutoComField(pcodectrl, 'Project code', key1, prjnum),
+                createAutoComField(pcodectrl, 'Project code'),
                 SizedBox(height: ScreenUtil.instance.setHeight(75),),
-                jobcode = createAutoComField(jcodectrl, 'Job code', key2, jobnum),
+                createAutoComField(jcodectrl, 'Job code'),
                 SizedBox(height: ScreenUtil.instance.setHeight(75),),
-                depcode = createAutoComField(dcodectrl, 'Department code', key3, depnum),
+                createAutoComField(dcodectrl, 'Department code'),
                 SizedBox(height: ScreenUtil.instance.setHeight(150),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -241,14 +172,14 @@ class PRmainState extends State<PRmain>{
       height: defaultScreenHeight,
       allowFontScaling: true,
    )..init(context);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Color(0xFF00b89c),
-      ),
-      home: DefaultTabController(
+
+    return DefaultTabController(
         length: 2,
-        child: Scaffold(
+        child: GestureDetector(
+          onTap: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
+          },
+          child: Scaffold(
             appBar: AppBar(
               leading: IconButton(
                 icon: Icon(Icons.arrow_back_ios),
@@ -305,8 +236,7 @@ class PRmainState extends State<PRmain>{
                   ),
                 ),
               ],
-            )),
-      ),
+            ))),
     );
   }
 }

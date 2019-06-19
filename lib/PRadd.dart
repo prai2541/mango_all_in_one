@@ -37,12 +37,8 @@ class PRAdd extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Color(0xFF00b89c),
-      ),
-      home: PRAdds(),
+    return Scaffold(
+      body: PRAdds(),
     );
   }
 }
@@ -440,33 +436,35 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                             iconSize: 20,
                             color: Colors.red,
                             onPressed: () {
-                              // showDialog(
-                              //   context: context,
-                              //   builder: (context) {
-                              //     return AlertDialog(
-                              //       title: Text('Confirm Delete?'),
-                              //       content: Text('This will delete your current entry'),
-                              //       actions: <Widget>[
-                              //         FlatButton(
-                              //           child: Text('Yes'),
-                              //           onPressed: () {
-                              //             //Navigator.of(context).pop();
-                              //             setState(() {
-                              //               data.removeAt(index); 
-                              //             });
-                              //           },
-                              //         ),
-                              //         FlatButton(
-                              //           child: Text('No'),
-                              //           onPressed: () {
-                              //             Navigator.of(context).pop();
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text('Confirm Delete?'),
+                                    content: Text('This will delete your current entry'),
+                                    actions: <Widget>[
+                                      FlatButton(
+                                        child: Text('Yes'),
+                                        onPressed: () {
+                                          //Navigator.of(context).pop();
+                                          setState(() {
+                                            data.removeAt(index); 
+                                          });
+
+                                          Navigator.of(context).pop();
+                                        },
+                                      ),
+                                      FlatButton(
+                                        child: Text('No'),
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
                                           
-                              //           },
-                              //         )
-                              //       ],
-                              //     );
-                              //   }
-                              // );
+                                        },
+                                      )
+                                    ],
+                                  );
+                                }
+                              );
                             }
                           )
                         ]
@@ -494,13 +492,12 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                 IconButton(
                   icon: Icon(
                     Icons.home,
-                    color: Colors.white.withOpacity(0.75),
-                    size: 30.0,
+                    color: Colors.white,
+                    size: ScreenUtil.instance.setSp(100),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/home', (Route<dynamic> route) => false);
-                  },
+                    Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                  }
                 )
               ],
               bottom: TabBar(
