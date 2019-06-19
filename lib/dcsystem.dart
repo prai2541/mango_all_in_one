@@ -225,33 +225,93 @@ class DCSysState extends State<DCSys> {
                             borderRadius: new BorderRadius.all(
                                 const Radius.circular(40.0))),
                       ),
-                      SizedBox(
-                        height: ScreenUtil.instance.setHeight(75),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(
-                            bottom: 7.5, top: 7.5, left: 12, right: 10),
-                        decoration: new BoxDecoration(
-                            border: Border.all(color: Colors.black),
-                            borderRadius: new BorderRadius.all(
-                                const Radius.circular(40.0))),
-                        child: DropdownButtonHideUnderline(
-                          child: DropdownButton<String>(
-                            icon: Icon(Icons.arrow_drop_down),
-                            iconSize: 35,
-                            isExpanded: true,
-                            value: dropdownValue,
-                            style: TextStyle(
-                                fontSize: 20,
+                      child:Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(item.id.toString(),
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w300
+                        ),),
+                        Padding(
+                          padding: EdgeInsets.all(15.0),
+                        ),
+                        Text(item.autocompleteterm,
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.w300
+                        ),
+                        )
+                      ],
+                      )
+                    );
+                  },
+                  itemSorter: (a, b) {
+                    return a.id.compareTo(b.id);
+                  },
+                  itemFilter: (item, query) {
+                    return item.id.toString().startsWith(query.toLowerCase());
+                  }
+                  
+                ),
+                SizedBox(height: ScreenUtil.instance.setHeight(75),),
+                Container(
+                  padding: EdgeInsets.only(bottom: 18, top: 18, left: 12, right: 10),
+                  child: Text(
+                    '$prjname',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300
+                    ),
+                  ),
+                  decoration: new BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: new BorderRadius.all(
+                      const Radius.circular(40.0)
+                    )
+                  ),
+                ),
+                SizedBox(height: ScreenUtil.instance.setHeight(75),),
+                Container( 
+                  padding: EdgeInsets.only(bottom: 7.5, top: 7.5, left: 12, right: 10),
+                  decoration: new BoxDecoration(
+                    border: Border.all(color: Colors.black),
+                    borderRadius: new BorderRadius.all(
+                      const Radius.circular(40.0)
+                    )
+                  ),
+                  child: DropdownButtonHideUnderline(
+                    child: DropdownButton<String>(
+                              icon: Icon(Icons.arrow_drop_down),
+                              iconSize: 35,
+                              isExpanded: true,
+                              value: dropdownValue,
+                              style: TextStyle(
+                                fontSize: 18,
                                 fontWeight: FontWeight.w300,
                                 color: Colors.black),
                             //underline:,
                             hint: Text(
                               'Select a job',
                               style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w300,
-                                  color: Colors.black),
+                                fontSize: 18,
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black
+                              ),
+                              ),
+                              
+                              items: joblist.map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text('$value')
+                                  );
+                              }).toList(),
+                              onChanged: (String newValue) {
+                                  setState(() {
+                                    dropdownValue = newValue;
+                                  });
+                                },
+                              
                             ),
 
                             items: joblist
@@ -266,6 +326,21 @@ class DCSysState extends State<DCSys> {
                             },
                           ),
                         ),
+                        padding: const EdgeInsets.only(left: 35, right: 35, top: 10, bottom: 10),
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                'Search  ',
+                                style: TextStyle(fontSize: 25,
+                                fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              Icon(Icons.search, color: Colors.white)
+                            ]
+                          )
+                        )
                       ),
                       
 
