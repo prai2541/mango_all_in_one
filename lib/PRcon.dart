@@ -1,3 +1,4 @@
+import 'package:app_ui/PRadd.dart';
 import 'package:app_ui/players.dart';
 import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,6 +15,10 @@ class PRcontinueL extends StatelessWidget {
         primaryColor: Color(0xFF00b89c),
       ),
       home: PRcontinue(title: 'Flutter Demo Home Page'),
+      routes: {
+        '/pr-add' : (BuildContext context) => new PRAdd(),
+         
+      },
       
     );
   }
@@ -230,7 +235,30 @@ class PRcontinueState extends State<PRcontinue>{
         child:ListView(
           children: <Widget>[
             SizedBox(height: ScreenUtil.instance.setHeight(50),),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[Text('PURCHASE REQUISITION', style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: Color(0xFF00b89c)))]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center, 
+              children: <Widget>[
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('PURCHASE', 
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(110), 
+                      fontWeight: FontWeight.w700, 
+                      color: Color(0xFF00b89c)
+                      )
+                    ),
+                    Text('REQUISITION', 
+                    style: TextStyle(
+                      fontSize: ScreenUtil.instance.setSp(110), 
+                      fontWeight: FontWeight.w700, 
+                      color: Color(0xFF00b89c)
+                      )
+                    ),
+                  ]
+                )
+              ]
+            ),
             SizedBox(height: ScreenUtil.instance.setHeight(200),),
             sup = createAutoComField(supctrl, 'Supplier', key1),
             SizedBox(height: ScreenUtil.instance.setHeight(100),),
@@ -243,7 +271,7 @@ class PRcontinueState extends State<PRcontinue>{
                   children: [  
                     RaisedButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/pr-main/con');               
+                        Navigator.of(context).pushNamed('/pr-add');               
                       },
                       textColor: Colors.white,
                       padding: const EdgeInsets.all(0.0),

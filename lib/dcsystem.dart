@@ -123,46 +123,7 @@ class DCSysState extends State<DCSys> {
                       SizedBox(
                         height: ScreenUtil.instance.setWidth(250),
                       ),
-                      // TextFormField(
-                      //   controller: prjnoCtrl,
-                      //   keyboardType: TextInputType.number,
-                      //   decoration: InputDecoration(
-                      //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                      //     labelText: 'Project No.'
-                      //   ),
-
-                      // ),
-                      // SizedBox(height: 20,),
-                      // TextFormField(
-                      //   controller: prjnoCtrl,
-                      //   style: TextStyle(
-                      //     fontSize: 20,
-                      //     fontWeight: FontWeight.w300,
-                      //     color: Colors.black
-                      //   ),
-                      //   keyboardType: TextInputType.number,
-                      //   decoration: InputDecoration(
-                      //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-                      //     labelText: 'Project Number',
-                      //     suffixIcon: IconButton(
-                      //       icon: Icon(Icons.search),
-                      //       onPressed: () {
-                      //         // List <String> id = info.map((prj) => prj.prjNo);
-                      //         // String prjno = prjnoCtrl.text;
-                      //         // if(id.contains(prjno)) {
-                      //         //   info.forEach((work) => {
-                      //         //     if (work.prjNo == prjno) {
-                      //         //       setState(() {
-                      //         //         prjname = work.prjName;
-                      //         //       })
-                      //         //     }
-                      //         //   });
-                      //         // }
-                      //       },
-                      //       )
-                      //   ),
-
-                      // ),
+                      
                       searchTextField = AutoCompleteTextField<Players>(
                           style: new TextStyle(
                               color: Colors.black,
@@ -306,49 +267,7 @@ class DCSysState extends State<DCSys> {
                           ),
                         ),
                       ),
-                      // Container(
-                      //   padding: EdgeInsets.only(bottom: 7.5, top: 7.5, left: 12, right: 10),
-                      //   decoration: new BoxDecoration(
-                      //     border: Border.all(color: Colors.black),
-                      //     borderRadius: new BorderRadius.all(
-                      //       const Radius.circular(40.0)
-                      //     )
-                      //   ),
-                      //   child: Row(
-                      //     mainAxisSize: MainAxisSize.min,
-                      //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //     children: [
-                      //       Text(
-                      //         'Job  ',
-                      //         style: TextStyle(
-                      //           fontSize: 20,
-                      //           fontWeight: FontWeight.w300
-                      //         ),
-                      //       ),
-                      //         Expanded(
-                      //         child: DropdownButton<String>(
-                      //             iconSize: 35,
-                      //             underline: null,
-                      //             value: dropdownValue,
-                      //             isExpanded: false,
-                      //             onChanged: (String newValue) {
-                      //               setState(() {
-                      //                 dropdownValue = newValue;
-                      //               });
-                      //             },
-                      //             items: <String>['One', 'Two', 'Free', 'Four']
-                      //             .map<DropdownMenuItem<String>>((String value) {
-                      //               return DropdownMenuItem<String>(
-                      //                 value: value,
-                      //                 child: Text(value),
-                      //               );
-                      //             }).toList()
-                      //           )
-
-                      //         )
-                      //     ]
-                      //   )
-                      // ),
+                      
 
                       SizedBox(
                         height: ScreenUtil.instance.setHeight(150),

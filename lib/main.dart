@@ -15,6 +15,7 @@ import 'portalPopup.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'PRmain.dart';
 import 'PRcon.dart';
+import 'PRadd.dart';
 
 final List<String> imgList = [
   'assets/AR-Account-Receivable-System.JPG',
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
         '/dc-system/detail' : (BuildContext context) => new DCDetail(),
         '/pr-main' : (BuildContext context) => new PRmainL(),
         '/pr-main/con' : (BuildContext context) => new PRcontinueL(),
+        '/pr-add' : (BuildContext context) => new PRAdd()
         '/projection' : (BuildContext context) => new Projection(),
       },
       onGenerateRoute: (RouteSettings settings) {
