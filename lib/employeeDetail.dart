@@ -25,79 +25,87 @@ class EmployeeDetail extends StatelessWidget {
       allowFontScaling: true,
     )..init(context);
 
-
     return MaterialApp(
-      home: Scaffold(
-        appBar: PreferredSize(
-          preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(795)),
-          child: AppBar(
-            actions: <Widget>[
-              IconButton(
+        home: Scaffold(
+            appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(ScreenUtil.instance.setHeight(795)),
+              child: AppBar(
+                actions: <Widget>[
+                  IconButton(
+                    icon: Icon(
+                      Icons.home,
+                      color: Colors.white.withOpacity(0.75),
+                      size: 30.0,
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/home', (Route<dynamic> route) => false);
+                    },
+                  )
+                ],
+                title: Text('Working History'),
+                flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  title: Card(
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: EdgeInsets.only(
+                          top: ScreenUtil.instance.setHeight(405),
+                          left: ScreenUtil.instance.setWidth(40),
+                          right: ScreenUtil.instance.setWidth(40)),
+                      child: Container(
+                        // padding: EdgeInsets.all(10),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  CircleAvatar(
+                                    radius: ScreenUtil.instance.setHeight(160),
+                                    backgroundImage: NetworkImage(
+                                        'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25e384a9-c599-45c5-bc56-929c3111276c/d6k8a2r-3391ff86-4af8-4695-bfad-14350ae04bfe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1ZTM4NGE5LWM1OTktNDVjNS1iYzU2LTkyOWMzMTExMjc2Y1wvZDZrOGEyci0zMzkxZmY4Ni00YWY4LTQ2OTUtYmZhZC0xNDM1MGFlMDRiZmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Bx0q3W1dS8p6f8DSiUCPrjHzt4LWxhJQw0d3k0Qz06Q'),
+                                  )
+                                ],
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text(
+                                    '$name',
+                                    style: TextStyle(
+                                        fontSize: ScreenUtil.instance.setSp(65),
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text('Working Day : 5 Days',
+                                      style: TextStyle(
+                                          fontSize:
+                                              ScreenUtil.instance.setSp(40))),
+                                  Text('Tel. $telephone',
+                                      style: TextStyle(
+                                          fontSize:
+                                              ScreenUtil.instance.setSp(40)))
+                                ],
+                              )
+                            ]),
+                      )),
+                ),
+                backgroundColor: Color(0xFF46B5A6),
+                leading: IconButton(
                   icon: Icon(
-                    Icons.home,
-                    color: Colors.white.withOpacity(0.75),
-                    size: 30.0,
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/home', (Route<dynamic> route) => false);
+                    Navigator.of(context).pop();
                   },
-              )
-            ],
-            title: Text('Working History'),
-          flexibleSpace: FlexibleSpaceBar(
-            title: Center(child: Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(405), left: ScreenUtil.instance.setWidth(40), right: ScreenUtil.instance.setWidth(40)),
-            child: Container(
-              // padding: EdgeInsets.all(10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget> [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                     CircleAvatar(
-                       radius: ScreenUtil.instance.setHeight(160),
-                       backgroundImage: NetworkImage('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25e384a9-c599-45c5-bc56-929c3111276c/d6k8a2r-3391ff86-4af8-4695-bfad-14350ae04bfe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1ZTM4NGE5LWM1OTktNDVjNS1iYzU2LTkyOWMzMTExMjc2Y1wvZDZrOGEyci0zMzkxZmY4Ni00YWY4LTQ2OTUtYmZhZC0xNDM1MGFlMDRiZmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Bx0q3W1dS8p6f8DSiUCPrjHzt4LWxhJQw0d3k0Qz06Q'),
-                     )
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        '$name',
-                        style: TextStyle(fontSize: ScreenUtil.instance.setSp(65), fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        'Working Day : 5 Days',
-                        style: TextStyle(fontSize: ScreenUtil.instance.setSp(40))
-                      ),
-                      Text('Tel. $telephone',
-                      style: TextStyle(fontSize: ScreenUtil.instance.setSp(40))
-                      )
-                    ],
-                  )
-                ]
-                
+                ),
               ),
-            )
-          ),),
-          ),
-          backgroundColor: Color(0xFF46B5A6),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white,),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-        ),),
-        body: WorkingCalendar(name, telephone)  
-        )
-    );
+            ),
+            body: WorkingCalendar(name, telephone)));
   }
 }
 
@@ -117,11 +125,11 @@ class WorkingCalendarState extends State<WorkingCalendar> {
   String telephone;
 
   WorkingCalendarState(this.name, this.telephone);
-  
+
   DateTime _currentDate = DateTime.now();
   DateTime _currentDate2 = DateTime.now();
   String _currentMonth = '';
-  
+
   EventList<Event> _markedDateMap = new EventList<Event>(
     events: {
       new DateTime(2019, 6, 15): [
@@ -144,12 +152,11 @@ class WorkingCalendarState extends State<WorkingCalendar> {
       ],
     },
   );
-  
+
   CalendarCarousel _calendarCarousel;
 
   @override
   Widget build(BuildContext context) {
-   
     _calendarCarousel = CalendarCarousel<Event>(
       selectedDayButtonColor: Colors.blue,
       selectedDayTextStyle: TextStyle(color: Colors.white),
@@ -167,7 +174,8 @@ class WorkingCalendarState extends State<WorkingCalendar> {
       selectedDateTime: _currentDate2,
 //          daysHaveCircularBorder: false, /// null for not rendering any border, true for circular border, false for rectangular border
       customGridViewPhysics: NeverScrollableScrollPhysics(),
-      markedDateMoreShowTotal: false, // null for not showing hidden events indicator
+      markedDateMoreShowTotal:
+          false, // null for not showing hidden events indicator
       onCalendarChanged: (DateTime date) {
         this.setState(() => _currentMonth = DateFormat.yMMM().format(date));
       },
@@ -176,11 +184,9 @@ class WorkingCalendarState extends State<WorkingCalendar> {
     );
 
     return Container(
-      // margin: EdgeInsets.only(top: 10),
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 15.0),
-        child: _calendarCarousel
-      )
-);
+        // margin: EdgeInsets.only(top: 10),
+        child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 15.0),
+            child: _calendarCarousel));
   }
 }
