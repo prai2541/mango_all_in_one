@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
 import 'dc_detail.dart';
+import './notification.dart';
 //import 'editDCEntry.dart';
 import 'signin.dart';
 import 'package:flutter/cupertino.dart';
@@ -82,6 +83,7 @@ class MyApp extends StatelessWidget {
         '/pr-main/con' : (BuildContext context) => new PRcontinueL(),
         '/pr-add' : (BuildContext context) => new PRAdd()
         '/projection' : (BuildContext context) => new Projection(),
+        '/notification' : (BuildContext context) => new NotificationPage(),
       },
       onGenerateRoute: (RouteSettings settings) {
         switch (settings.name) {
@@ -365,9 +367,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     });
                   }),
                   gridViewButton("Notifications", Icons.notifications, () {
-                    setState(() {
-                      this.i++;
-                    });
+                    Navigator.of(context).pushNamed('/notification');
                   }),
                   gridViewButton("Projection", Icons.lightbulb_outline, () {
                     Navigator.of(context).pushNamed('/projection');
