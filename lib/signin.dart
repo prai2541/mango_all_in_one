@@ -29,8 +29,8 @@ class SigninState extends State<Signin> {
   bool textobs = true;
 
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -49,23 +49,40 @@ class SigninState extends State<Signin> {
         Scaffold(
             backgroundColor: Colors.transparent,
             body: Container(
-                padding: EdgeInsets.all(ScreenUtil.instance.setWidth(64)),
+                padding: EdgeInsets.all(ScreenUtil.instance.setWidth(32)),
                 //margin: EdgeInsets.only(top: 250),
-                child: ListView(children: [
-                  SizedBox(height: ScreenUtil.instance.setHeight(1000)),
+                child: ListView(
+                  physics: NeverScrollableScrollPhysics(),
+                  children: [
+                  SizedBox(height: ScreenUtil.instance.setHeight(275)),
                   TextFormField(
+                    
+                    autocorrect: false,
+                    style: TextStyle(
+                          fontSize: ScreenUtil.instance.setSp(16)
+                        ),
                     controller: userCtrl,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.person),
-                        hintText: 'Enter Username'),
+                        hintText: 'Enter Username',
+                        hintStyle: TextStyle(
+                          fontSize: ScreenUtil.instance.setSp(16)
+                        )
+                        ),
                   ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(60)),
+                  SizedBox(height: ScreenUtil.instance.setHeight(30)),
                   TextFormField(
+                    style: TextStyle(
+                          fontSize: ScreenUtil.instance.setSp(16)
+                        ),
                     controller: passCtrl,
                     obscureText: textobs,
                     decoration: InputDecoration(
                         prefixIcon: Icon(Icons.vpn_key),
                         hintText: 'Enter Password',
+                        hintStyle: TextStyle(
+                          fontSize: ScreenUtil.instance.setSp(16)
+                        ),
                         suffixIcon: IconButton(
                           icon: Icon(Icons.remove_red_eye),
                           onPressed: () {
@@ -75,7 +92,7 @@ class SigninState extends State<Signin> {
                           },
                         )),
                   ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(30)),
+                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
                   GestureDetector(
                       onTap: () {},
                       child: Row(
@@ -86,7 +103,7 @@ class SigninState extends State<Signin> {
                               style: TextStyle(color: Colors.red),
                             )
                           ])),
-                  SizedBox(height: ScreenUtil.instance.setHeight(100)),
+                  SizedBox(height: ScreenUtil.instance.setHeight(30)),
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                     RaisedButton(
                       onPressed: () {
@@ -109,10 +126,10 @@ class SigninState extends State<Signin> {
                           ),
                           padding: const EdgeInsets.only(
                               left: 55, right: 55, top: 10, bottom: 10),
-                          child: const Text(
+                          child: Text(
                             'LOG IN',
                             style: TextStyle(
-                              fontSize: 30,
+                              fontSize: ScreenUtil.instance.setSp(20),
                               fontWeight: FontWeight.w300,
                             ),
                           )),

@@ -75,7 +75,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
   int qty;
   int unit; 
   int ppn;
-  bool customizable = false;
+  bool customizable = true;
   String matName = 'Material Name';
   TextEditingController mcCtrl = TextEditingController();
   TextEditingController mnCtrl = TextEditingController();
@@ -90,13 +90,24 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
   ];
 
   Widget matCodeField(ctrl) {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
     return TextFormField(
       controller: ctrl,
       enabled: customizable,
       keyboardType: TextInputType.number,
+      style: TextStyle(
+        fontSize: ScreenUtil.instance.setSp(16)
+      ),
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30))
+          borderRadius: BorderRadius.all(Radius.circular(5))
         ),
         suffixIcon: IconButton(
           icon: Icon(Icons.search),
@@ -105,43 +116,54 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
           },
         ),
         hintText: 'Material Code',
+        hintStyle: TextStyle(
+        fontSize: ScreenUtil.instance.setSp(16)
+      ),
       ),
     );
   }
 
   Widget matNameField(ctrl) {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
     
     if (customizable) {
       return Container(
-        padding: EdgeInsets.only(bottom: 20, top: 20, left: 12, right: 10),
+        padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(25), top: ScreenUtil.instance.setHeight(25), left: ScreenUtil.instance.setWidth(12), right: ScreenUtil.instance.setWidth(10)),
         child: Text(
           '$matName',
           style: TextStyle(
-          fontSize: 16,
+          fontSize: ScreenUtil.instance.setSp(16),
           color: Colors.grey[600]
           ),
         ),
         decoration: new BoxDecoration(
           border: Border.all(color: Colors.grey[600]),
           borderRadius: new BorderRadius.all(
-            const Radius.circular(40.0)
+            const Radius.circular(5.0)
           )
         ),
       );
     } else {
       return Container(
-        padding: EdgeInsets.only(bottom: 20, top: 20, left: 12, right: 10),
+        padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(25), top: ScreenUtil.instance.setHeight(25), left: ScreenUtil.instance.setWidth(12), right: ScreenUtil.instance.setWidth(10)),
         child: Text(
           '$matName',
           style: TextStyle(
-          fontSize: 16,
+          fontSize: ScreenUtil.instance.setSp(16),
           color: Colors.grey
           ),
         ),
         decoration: new BoxDecoration(
           border: Border.all(color: Colors.grey[300]),
           borderRadius: new BorderRadius.all(
-            const Radius.circular(40.0)
+            const Radius.circular(5.0)
           )
         ),
       );
@@ -149,21 +171,35 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
   }
 
   Widget textField(text, ctrl) {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
     return TextFormField(
       controller: ctrl,
       keyboardType: TextInputType.number,
+      style: TextStyle(
+        fontSize: ScreenUtil.instance.setSp(16)
+      ),
       decoration: InputDecoration(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30))
+          borderRadius: BorderRadius.all(Radius.circular(5))
         ),
         hintText: text,
+        hintStyle: TextStyle(
+        fontSize: ScreenUtil.instance.setSp(16)
+      ),
       ),
     );
   }
 
   Widget addPage() {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -178,7 +214,8 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
               //key.currentState.clear();
             },
             child: ListView(
-              padding: EdgeInsets.all(ScreenUtil.instance.setWidth(80)),
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(30), right: ScreenUtil.instance.setWidth(30), top:ScreenUtil.instance.setHeight(20),),
               children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -198,6 +235,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                             activeColor: Color(0xFF00b89c),
                           ),
                           Text('  กำหนดเอง',
+                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                           )
                         ],
                       ),
@@ -217,7 +255,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                         ),
                         child: Row(
                           children: <Widget>[
-                            Text('เพิ่ม ', style: TextStyle(color: Color(0xFF00b89c))),
+                            Text('เพิ่ม ', style: TextStyle(color: Color(0xFF00b89c),fontSize: ScreenUtil.instance.setSp(16))),
                             Icon(Icons.playlist_add, color: Color(0xFF00b89c),),
                             SizedBox(width: 10,)
                           ],
@@ -226,26 +264,26 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                     )
                   ]
                 ),
-                SizedBox(height: ScreenUtil.instance.setHeight(100)),
+                SizedBox(height: ScreenUtil.instance.setHeight(30)),
                 matCodeField(mcCtrl),
-                SizedBox(height: ScreenUtil.instance.setHeight(60)),
+                SizedBox(height: ScreenUtil.instance.setHeight(20)),
                 matNameField(mnCtrl),
-                SizedBox(height: ScreenUtil.instance.setHeight(60)),
+                SizedBox(height: ScreenUtil.instance.setHeight(20)),
                 textField('Quantity', qtyCtrl),
-                SizedBox(height: ScreenUtil.instance.setHeight(60)),
+                SizedBox(height: ScreenUtil.instance.setHeight(20)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Flexible(
                       child: textField('Unit', unitCtrl),
                     ),
-                    SizedBox(width: ScreenUtil.instance.setWidth(70)),
+                    SizedBox(width: ScreenUtil.instance.setWidth(20)),
                     Flexible(
                       child: textField('Price / Unit', ppnCtrl),
                     )
                   ],
                 ),
-                SizedBox(height: ScreenUtil.instance.setHeight(600)),
+                SizedBox(height: ScreenUtil.instance.setHeight(100)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [  
@@ -254,6 +292,10 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                         MaterialObj newdata = MaterialObj(matcode: mcCtrl.text, matname: matname, qty: int.parse(qtyCtrl.text), unit: int.parse(unitCtrl.text), ppn: int.parse(ppnCtrl.text));
                         setState(() {
                           data.add(newdata);
+                          mcCtrl.text = '';
+                          qtyCtrl.text = '';
+                          unitCtrl.text = '';
+                          ppnCtrl.text = '';
                         });
                         tabctrl.animateTo((tabctrl.index +1) %2);
                                       
@@ -271,14 +313,14 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                             ],
                           ),
                         ),
-                        padding: const EdgeInsets.only(left: 35, right: 35, top: 10, bottom: 10),
+                        padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(10), top: ScreenUtil.instance.setHeight(10), left: ScreenUtil.instance.setWidth(35), right: ScreenUtil.instance.setWidth(35)),
                         child: Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 Text(
                                   'Continue',
-                                  style: TextStyle(fontSize: 25,
+                                  style: TextStyle(fontSize: ScreenUtil.instance.setSp(25),
                                     fontWeight: FontWeight.w300,
                                   ),
                                 ),
@@ -299,8 +341,8 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
 
   Widget listPage() {
 
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -309,7 +351,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
     )..init(context);
 
     return Container(
-      padding: EdgeInsets.all(ScreenUtil.instance.setWidth(60)),
+      padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(30), right: ScreenUtil.instance.setWidth(30), top:ScreenUtil.instance.setHeight(20),),
       child: Column(
         children: <Widget>[
           Row(
@@ -330,7 +372,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                   ),
                   child: Row(
                     children: <Widget>[
-                      Text('Confirm ', style: TextStyle(color: Color(0xFF00b89c))),
+                      Text('Confirm ', style: TextStyle(color: Color(0xFF00b89c), fontSize: ScreenUtil.instance.setSp(16))),
                       Icon(Icons.playlist_add, color: Color(0xFF00b89c),),
                       SizedBox(width: 10,)
                     ],
@@ -339,7 +381,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
               )
             ],
           ),
-          SizedBox(height: ScreenUtil.instance.setHeight(40)),
+          SizedBox(height: ScreenUtil.instance.setHeight(15)),
           Flexible(
             child:ListView.builder(
             physics: BouncingScrollPhysics(),
@@ -358,31 +400,31 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                             children: [
                                   Text('Material Code', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil.instance.setHeight(10)),
                                   Text('Material Name', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil.instance.setHeight(10)),
                                   Text('Quantity', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil.instance.setHeight(10)),
                                   Text('Units', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil.instance.setHeight(10)),
                                   Text('Price per Unit', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                 ],
@@ -393,31 +435,31 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                             children: [
                                   Text(': ${data[index].matcode}', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil.instance.setHeight(10)),
                                   Text(': ${data[index].matname}', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil.instance.setHeight(10)),
                                   Text(': ${data[index].qty}', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil.instance.setHeight(10)),
                                   Text(': ${data[index].unit}', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                   SizedBox(height: ScreenUtil.instance.setHeight(10)),
                                   Text(': ${data[index].ppn}', 
                                     style: TextStyle(
-                                      fontSize: 18
+                                      fontSize: ScreenUtil.instance.setSp(16)
                                     ),
                                   ),
                                 ],
@@ -433,7 +475,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                         children: [
                           IconButton(
                             icon: Icon(Icons.delete_outline),
-                            iconSize: 20,
+                            iconSize: ScreenUtil.instance.setSp(20),
                             color: Colors.red,
                             onPressed: () {
                               showDialog(
@@ -493,7 +535,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                   icon: Icon(
                     Icons.home,
                     color: Colors.white,
-                    size: ScreenUtil.instance.setSp(100),
+                    size: ScreenUtil.instance.setSp(30),
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
@@ -504,7 +546,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                 indicatorColor: Color(0xFFB8001C),
                 indicatorWeight: 3.0,
                 labelColor: Color(0xFFB8001C),
-                labelStyle: TextStyle(fontSize: 18),
+                labelStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                 unselectedLabelColor: Colors.white,
                 controller: tabctrl,
                 tabs: [
@@ -514,15 +556,15 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text('List'),
-                        SizedBox(width: ScreenUtil.instance.setWidth(40)),
+                        SizedBox(width: ScreenUtil.instance.setWidth(10)),
                         Badge(
                           position: BadgePosition.topRight(top: -5, right: -5),
                           animationDuration: Duration(milliseconds: 300),
                           animationType: BadgeAnimationType.scale,
-                          padding: EdgeInsets.all(ScreenUtil.instance.setWidth(22.5)),
+                          padding: EdgeInsets.all(7.5),
                           badgeContent: Text(
                             '${data.length}',
-                            style: TextStyle(color: Colors.white, fontSize: 12.5),
+                            style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(12)),
                           ),)
                     ])
                   ),

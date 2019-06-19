@@ -66,8 +66,8 @@ class DCSysState extends State<DCSys> {
   }
 
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -105,11 +105,12 @@ class DCSysState extends State<DCSys> {
                     )
                   ],
                 ),
-                body: ListView(
-                    padding: EdgeInsets.all(ScreenUtil.instance.setWidth(100)),
+                body: Center(child:Container(child:ListView(
+                  physics: NeverScrollableScrollPhysics(),
+                    padding: EdgeInsets.all(ScreenUtil.instance.setWidth(32)),
                     children: [
                       SizedBox(
-                        height: ScreenUtil.instance.setWidth(150),
+                        height: ScreenUtil.instance.setWidth(50),
                       ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -117,22 +118,28 @@ class DCSysState extends State<DCSys> {
                             Text('DC System',
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: ScreenUtil.instance.setSp(150),
+                                    fontSize: ScreenUtil.instance.setSp(35),
                                     color: Color(0xFF00b89c)))
                           ]),
                       SizedBox(
-                        height: ScreenUtil.instance.setWidth(250),
+                        height: ScreenUtil.instance.setWidth(75),
                       ),
                       
                       searchTextField = AutoCompleteTextField<Players>(
                           style: new TextStyle(
                               color: Colors.black,
-                              fontSize: 20.0,
+                              fontSize: ScreenUtil.instance.setSp(16),
                               fontWeight: FontWeight.w300),
                           keyboardType: TextInputType.number,
                           decoration: new InputDecoration(
+                            fillColor: Colors.white,
+                            hintText: 'Project Number',
+                            hintStyle: TextStyle(
+                                fontSize: ScreenUtil.instance.setSp(16),
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black),
                             border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(40)),
+                              borderRadius: BorderRadius.circular(5),borderSide: BorderSide(color: Colors.grey[600])),
                             suffixIcon: IconButton(
                               icon: Icon(Icons.search),
                               onPressed: () {
@@ -151,11 +158,7 @@ class DCSysState extends State<DCSys> {
                             ),
                             //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
                             filled: true,
-                            hintText: 'Project Number',
-                            hintStyle: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.w300,
-                                color: Colors.black),
+                            
                           ),
                           suggestionsAmount: 5,
                           itemSubmitted: (item) {
@@ -186,7 +189,7 @@ class DCSysState extends State<DCSys> {
                                     Text(
                                       item.id.toString(),
                                       style: TextStyle(
-                                          fontSize: 20.0,
+                                          fontSize: ScreenUtil.instance.setSp(16),
                                           fontWeight: FontWeight.w300),
                                     ),
                                     Padding(
@@ -210,31 +213,31 @@ class DCSysState extends State<DCSys> {
                                 .startsWith(query.toLowerCase());
                           }),
                       SizedBox(
-                        height: ScreenUtil.instance.setHeight(75),
+                        height: ScreenUtil.instance.setHeight(25),
                       ),
                       Container(
                         padding: EdgeInsets.only(
-                            bottom: 20, top: 20, left: 12, right: 10),
+                            bottom: 18, top: 18, left: 10, right: 10),
                         child: Text(
                           '$prjname',
                           style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.w300),
+                              fontSize: ScreenUtil.instance.setSp(16), fontWeight: FontWeight.w300),
                         ),
                         decoration: new BoxDecoration(
-                            border: Border.all(color: Colors.black),
+                            border: Border.all(color: Colors.grey[600]),
                             borderRadius: new BorderRadius.all(
-                                const Radius.circular(40.0))),
+                                Radius.circular(5.0))),
                       ),
                       SizedBox(
-                        height: ScreenUtil.instance.setHeight(75),
+                        height: ScreenUtil.instance.setHeight(25),
                       ),
                       Container(
                         padding: EdgeInsets.only(
-                            bottom: 7.5, top: 7.5, left: 12, right: 10),
+                            bottom: ScreenUtil.instance.setHeight(5), top: ScreenUtil.instance.setHeight(5), left: 12, right: 10),
                         decoration: new BoxDecoration(
-                            border: Border.all(color: Colors.black),
+                            border: Border.all(color: Colors.grey[600]),
                             borderRadius: new BorderRadius.all(
-                                const Radius.circular(40.0))),
+                                const Radius.circular(5.0))),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton<String>(
                             icon: Icon(Icons.arrow_drop_down),
@@ -242,14 +245,14 @@ class DCSysState extends State<DCSys> {
                             isExpanded: true,
                             value: dropdownValue,
                             style: TextStyle(
-                                fontSize: 20,
+                                fontSize: ScreenUtil.instance.setSp(16),
                                 fontWeight: FontWeight.w300,
                                 color: Colors.black),
                             //underline:,
                             hint: Text(
                               'Select a job',
                               style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: ScreenUtil.instance.setSp(16),
                                   fontWeight: FontWeight.w300,
                                   color: Colors.black),
                             ),
@@ -270,7 +273,7 @@ class DCSysState extends State<DCSys> {
                       
 
                       SizedBox(
-                        height: ScreenUtil.instance.setHeight(150),
+                        height: ScreenUtil.instance.setHeight(100),
                       ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -306,7 +309,7 @@ class DCSysState extends State<DCSys> {
                                         Text(
                                           'Search  ',
                                           style: TextStyle(
-                                            fontSize: 30,
+                                            fontSize: ScreenUtil.instance.setSp(21),
                                             fontWeight: FontWeight.w300,
                                           ),
                                         ),
@@ -314,7 +317,7 @@ class DCSysState extends State<DCSys> {
                                       ]))),
                             ),
                           ]),
-                    ])))
+                    ])))))
       ],
     );
   }

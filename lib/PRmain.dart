@@ -8,7 +8,7 @@ import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 //import 'package:autosuggest_demo/players.dart';
 import 'players.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'PRcon.dart';
+//import 'PRcon.dart';
 
 class PRmainL extends StatelessWidget {
   // This widget is the root of your application.
@@ -48,12 +48,12 @@ class PRmainState extends State<PRmain>{
   
   //String dropdownValue;
   
-  AutoCompleteTextField prjcode;
-  AutoCompleteTextField jobcode;
-  AutoCompleteTextField depcode;
-  GlobalKey<AutoCompleteTextFieldState<Players>> key1 = new GlobalKey();
-  GlobalKey<AutoCompleteTextFieldState<Players>> key2 = new GlobalKey();
-  GlobalKey<AutoCompleteTextFieldState<Players>> key3 = new GlobalKey();
+  // AutoCompleteTextField prjcode;
+  // AutoCompleteTextField jobcode;
+  // AutoCompleteTextField depcode;
+  // GlobalKey<AutoCompleteTextFieldState<Players>> key1 = new GlobalKey();
+  // GlobalKey<AutoCompleteTextFieldState<Players>> key2 = new GlobalKey();
+  // GlobalKey<AutoCompleteTextFieldState<Players>> key3 = new GlobalKey();
   //String prjnamehidden;
   //String prjid;
   String prjnum;
@@ -76,12 +76,25 @@ class PRmainState extends State<PRmain>{
   }
 
   Widget createAutoComField(textctrl, hint) {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
     return TextFormField(
       controller: textctrl,
       keyboardType: TextInputType.number,
+      style: TextStyle(
+        fontSize: ScreenUtil.instance.setSp(16)
+      ),
       decoration: InputDecoration(
+        
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(30))
+          borderRadius: BorderRadius.all(Radius.circular(5)),
+          borderSide: BorderSide(color: Colors.grey[600])
         ),
         suffixIcon: IconButton(
           icon: Icon(Icons.search),
@@ -90,6 +103,9 @@ class PRmainState extends State<PRmain>{
           },
         ),
         hintText: hint,
+        hintStyle: TextStyle(
+          fontSize: ScreenUtil.instance.setSp(16)
+        )
       ),
     );
   }
@@ -97,24 +113,25 @@ class PRmainState extends State<PRmain>{
 
   Widget createPR() {
 
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
    )..init(context);
-    return ListView(
-            padding: EdgeInsets.all(ScreenUtil.instance.setWidth(100)),
+    return Center(child:Container(child:ListView(
+            physics: NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(20), left: ScreenUtil.instance.setWidth(32), right: ScreenUtil.instance.setWidth(32)),
             shrinkWrap: true,
               children: [
                 createAutoComField(pcodectrl, 'Project code'),
-                SizedBox(height: ScreenUtil.instance.setHeight(75),),
+                SizedBox(height: ScreenUtil.instance.setHeight(20),),
                 createAutoComField(jcodectrl, 'Job code'),
-                SizedBox(height: ScreenUtil.instance.setHeight(75),),
+                SizedBox(height: ScreenUtil.instance.setHeight(20),),
                 createAutoComField(dcodectrl, 'Department code'),
-                SizedBox(height: ScreenUtil.instance.setHeight(150),),
+                SizedBox(height: ScreenUtil.instance.setHeight(40),),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [  
@@ -135,14 +152,14 @@ class PRmainState extends State<PRmain>{
                             ],
                           ),
                         ),
-                        padding: const EdgeInsets.only(left: 35, right: 35, top: 10, bottom: 10),
+                        padding: EdgeInsets.only(left: ScreenUtil.instance.setWidth(35), right: ScreenUtil.instance.setWidth(35), top: ScreenUtil.instance.setHeight(10), bottom: ScreenUtil.instance.setHeight(10)),
                         child: Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Text(
                                 'Continue',
-                                style: TextStyle(fontSize: 25,
+                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(25),
                                 fontWeight: FontWeight.w300,
                                 ),
                               ),
@@ -155,7 +172,7 @@ class PRmainState extends State<PRmain>{
                   ]
                 ),
               ]
-            );
+            )));
   }
   
 
@@ -164,8 +181,8 @@ class PRmainState extends State<PRmain>{
  
  Widget build(BuildContext context) {
 
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -178,6 +195,7 @@ class PRmainState extends State<PRmain>{
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(new FocusNode());
+            
           },
           child: Scaffold(
             appBar: AppBar(
@@ -208,13 +226,13 @@ class PRmainState extends State<PRmain>{
               children: <Widget>[
                 Container(
                   color: Colors.black.withOpacity(0.08),
-                  padding: EdgeInsets.only(top: 30, bottom: 30, left: 20),
+                  padding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(30), bottom: ScreenUtil.instance.setHeight(30), left: 0),
                   child: ListBody(
                     
                     children: <Widget>[
-                      SizedBox(height: ScreenUtil.instance.setWidth(100),),
-                      Column(mainAxisAlignment: MainAxisAlignment.center, children: [Text('Purchase', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(150), color: Color(0xFF00b89c))), Text('Requisition', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(150), color: Color(0xFF00b89c)))]),
-                      SizedBox(height: ScreenUtil.instance.setWidth(150),),
+                      SizedBox(height: ScreenUtil.instance.setWidth(30),),
+                      Column(mainAxisAlignment: MainAxisAlignment.center, children: [Text('Purchase', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(40), color: Color(0xFF00b89c))), Text('Requisition', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(40), color: Color(0xFF00b89c)))]),
+                      SizedBox(height: ScreenUtil.instance.setWidth(30),),
                       
                     ],
                   ),
@@ -223,7 +241,7 @@ class PRmainState extends State<PRmain>{
                         indicatorColor: Color(0xFFB8001C),
                         indicatorWeight: 3.0,
                         labelColor: Color(0xFFB8001C),
-                        labelStyle: TextStyle(fontSize: 18),
+                        labelStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(18)),
                         unselectedLabelColor: Colors.black,
                         tabs: [
                           Tab(child: Text('CREATE')),

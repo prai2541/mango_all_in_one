@@ -45,11 +45,22 @@ class PRcontinueState extends State<PRcontinue>{
 
 
   Widget createAutoComField(textctrl, hint, key) {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
     return AutoCompleteTextField<Players>(
-                  style: new TextStyle(color: Colors.black, fontSize: 18.0, fontWeight: FontWeight.w300),
+                  style: new TextStyle(color: Colors.black, fontSize: ScreenUtil.instance.setSp(16), fontWeight: FontWeight.w300),
                   keyboardType: TextInputType.number,
                   decoration: new InputDecoration(
-                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(40)),
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(color: Colors.grey[600])
+                    ),
                     suffixIcon: IconButton(
                       icon: Icon(Icons.search),
                       onPressed: () {
@@ -70,7 +81,7 @@ class PRcontinueState extends State<PRcontinue>{
                     filled: true,
                     hintText: '$hint',
                     hintStyle: TextStyle(
-                          fontSize: 18.0,
+                          fontSize: ScreenUtil.instance.setSp(16),
                           fontWeight: FontWeight.w300,
                           color: Colors.black
                         ),
@@ -141,27 +152,36 @@ class PRcontinueState extends State<PRcontinue>{
   }
 
   Widget datepicker() {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+    
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+   )..init(context);
     if(selectedDate == null) {
       return Container(
-                  padding: EdgeInsets.only(bottom: 8, top: 8, left: 12, right: 0),
+                  padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(8), top: ScreenUtil.instance.setHeight(8), left: ScreenUtil.instance.setWidth(12), right: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [Text(
                     'Select delivery date',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: ScreenUtil.instance.setSp(16),
                       fontWeight: FontWeight.w300
                     ),
                     ),
                     IconButton(
                       icon: Icon(Icons.calendar_today),
+                      iconSize: ScreenUtil.instance.setSp(24),
                       onPressed: () => _selectDate(context),
                     )
                   ]),
                   decoration: new BoxDecoration(
-                    border: Border.all(color: Colors.black),
+                    border: Border.all(color: Colors.grey[600]),
                     borderRadius: new BorderRadius.all(
-                      const Radius.circular(40.0)
+                      const Radius.circular(5.0)
                     )
                   ),
                 );
@@ -169,13 +189,13 @@ class PRcontinueState extends State<PRcontinue>{
       var unix = selectedDate;
       var date = '${unix.day}/${unix.month}/${unix.year}';
       return Container(
-                  padding: EdgeInsets.only(bottom: 8, top: 8, left: 12, right: 0),
+                  padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(8), top: ScreenUtil.instance.setHeight(8), left: ScreenUtil.instance.setWidth(12), right: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [Text(
                     '$date',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: ScreenUtil.instance.setSp(16),
                       fontWeight: FontWeight.w300
                     ),
                     ),
@@ -197,8 +217,8 @@ class PRcontinueState extends State<PRcontinue>{
 
   Widget build(BuildContext context) {
 
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -217,7 +237,7 @@ class PRcontinueState extends State<PRcontinue>{
                   icon: Icon(
                     Icons.home,
                     color: Colors.white,
-                    size: ScreenUtil.instance.setSp(100),
+                    size: ScreenUtil.instance.setSp(30),
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
@@ -226,10 +246,11 @@ class PRcontinueState extends State<PRcontinue>{
             ],
           ),
       body:Container(
-        margin: EdgeInsets.all(ScreenUtil.instance.setWidth(100)),
+        margin: EdgeInsets.all(ScreenUtil.instance.setWidth(30)),
         child:ListView(
+          physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
-            SizedBox(height: ScreenUtil.instance.setHeight(50),),
+            SizedBox(height: ScreenUtil.instance.setHeight(15),),
             Row(
               mainAxisAlignment: MainAxisAlignment.center, 
               children: <Widget>[
@@ -238,14 +259,14 @@ class PRcontinueState extends State<PRcontinue>{
                   children: [
                     Text('PURCHASE', 
                     style: TextStyle(
-                      fontSize: ScreenUtil.instance.setSp(110), 
+                      fontSize: ScreenUtil.instance.setSp(30), 
                       fontWeight: FontWeight.w700, 
                       color: Color(0xFF00b89c)
                       )
                     ),
                     Text('REQUISITION', 
                     style: TextStyle(
-                      fontSize: ScreenUtil.instance.setSp(110), 
+                      fontSize: ScreenUtil.instance.setSp(30), 
                       fontWeight: FontWeight.w700, 
                       color: Color(0xFF00b89c)
                       )
@@ -254,13 +275,13 @@ class PRcontinueState extends State<PRcontinue>{
                 )
               ]
             ),
-            SizedBox(height: ScreenUtil.instance.setHeight(200),),
+            SizedBox(height: ScreenUtil.instance.setHeight(50),),
             sup = createAutoComField(supctrl, 'Supplier', key1),
-            SizedBox(height: ScreenUtil.instance.setHeight(100),),
+            SizedBox(height: ScreenUtil.instance.setHeight(25),),
             del = createAutoComField(supctrl, 'Delivery Place', key2),
-            SizedBox(height: ScreenUtil.instance.setHeight(100),),
+            SizedBox(height: ScreenUtil.instance.setHeight(25),),
             datepicker(),
-            SizedBox(height: ScreenUtil.instance.setHeight(200),),
+            SizedBox(height: ScreenUtil.instance.setHeight(100),),
             Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [  
@@ -281,14 +302,14 @@ class PRcontinueState extends State<PRcontinue>{
                             ],
                           ),
                         ),
-                        padding: const EdgeInsets.only(left: 35, right: 35, top: 10, bottom: 10),
+                        padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(10), top: ScreenUtil.instance.setHeight(10), left: ScreenUtil.instance.setWidth(35), right: ScreenUtil.instance.setWidth(35)),
                         child: Container(
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Text(
                                 'Continue',
-                                style: TextStyle(fontSize: 25,
+                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(25),
                                 fontWeight: FontWeight.w300,
                                 ),
                               ),
@@ -300,12 +321,12 @@ class PRcontinueState extends State<PRcontinue>{
                     ),
                   ]
             ),
-            SizedBox(height: ScreenUtil.instance.setHeight(100),),
+            SizedBox(height: ScreenUtil.instance.setHeight(30),),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 GestureDetector(
-                  child: Text('Skip', style: TextStyle(color: Colors.grey, fontSize: 20, decoration: TextDecoration.underline),),
+                  child: Text('Skip', style: TextStyle(color: Colors.grey, fontSize: ScreenUtil.instance.setSp(18), decoration: TextDecoration.underline),),
                   onTap: () {
 
                   },

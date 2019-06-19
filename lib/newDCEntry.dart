@@ -48,8 +48,8 @@ class NewDCEntryState extends State<NewDCEntry> {
   File img2;
 
   Widget caption1() {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -68,6 +68,7 @@ class NewDCEntryState extends State<NewDCEntry> {
               badgeContent: Icon(
                 Icons.add_a_photo,
                 color: Colors.black,
+                size: ScreenUtil.instance.setWidth(24)
               ),
               child: Container(
                   padding:
@@ -80,13 +81,13 @@ class NewDCEntryState extends State<NewDCEntry> {
                       children: [
                         Icon(
                           Icons.insert_photo,
-                          size: ScreenUtil.instance.setWidth(350),
+                          size: ScreenUtil.instance.setWidth(100),
                           color: Colors.grey,
                         ),
                         Text(
                           'Add a photo',
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: ScreenUtil.instance.setSp(18),
                               fontWeight: FontWeight.w800,
                               color: Colors.grey),
                         )
@@ -102,19 +103,20 @@ class NewDCEntryState extends State<NewDCEntry> {
               badgeContent: Icon(
                 Icons.edit,
                 color: Colors.black,
+                size: ScreenUtil.instance.setWidth(24)
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image.file(img1,
                     fit: BoxFit.contain,
-                    height: ScreenUtil.instance.setHeight(550)),
+                    height: ScreenUtil.instance.setHeight(160)),
               )));
     }
   }
 
   Widget caption2() {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -133,6 +135,7 @@ class NewDCEntryState extends State<NewDCEntry> {
               badgeContent: Icon(
                 Icons.add_a_photo,
                 color: Colors.black,
+                size: ScreenUtil.instance.setWidth(24),
               ),
               child: Container(
                   padding:
@@ -145,13 +148,13 @@ class NewDCEntryState extends State<NewDCEntry> {
                       children: [
                         Icon(
                           Icons.insert_photo,
-                          size: ScreenUtil.instance.setWidth(350),
+                          size: ScreenUtil.instance.setWidth(100),
                           color: Colors.grey,
                         ),
                         Text(
                           'Add a photo',
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: ScreenUtil.instance.setSp(18),
                               fontWeight: FontWeight.w800,
                               color: Colors.grey),
                         )
@@ -164,10 +167,11 @@ class NewDCEntryState extends State<NewDCEntry> {
               elevation: 5,
               position: BadgePosition.bottomRight(bottom: -5, right: -10),
               padding: EdgeInsets.all(5),
-              badgeContent: Icon(Icons.edit),
+              badgeContent: Icon(Icons.edit,
+              size: ScreenUtil.instance.setWidth(24)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Image.file(img2, fit: BoxFit.contain, height: 125),
+                child: Image.file(img2, fit: BoxFit.contain, height: ScreenUtil.instance.setHeight(160)),
               )));
     }
   }
@@ -189,8 +193,8 @@ class NewDCEntryState extends State<NewDCEntry> {
   }
 
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -217,45 +221,52 @@ class NewDCEntryState extends State<NewDCEntry> {
                 //   },
                 // ),
                 actions: <Widget>[
-                  IconButton(
-                      icon: Icon(Icons.save),
-                      onPressed: () {
+                  // IconButton(
+                  //     icon: Icon(Icons.save),
+                  //     onPressed: () {
+                  //       widget.callback(widget.index);
+                  //       Navigator.of(context).pop();
+                  //     }),
+                  FlatButton(
+                    child: Text('Save', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
+                    onPressed: () {
                         widget.callback(widget.index);
                         Navigator.of(context).pop();
-                      })
+                      },
+                  )
                 ],
               ),
               body: Container(
-                  padding: EdgeInsets.only(left: 32, right: 32),
+                  padding: EdgeInsets.only(left: ScreenUtil.instance.setWidth(32), right: ScreenUtil.instance.setWidth(32)),
                   child: ListView(children: <Widget>[
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         SizedBox(
-                          height: 40,
+                          height: ScreenUtil.instance.setHeight(30),
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             caption1(),
                             SizedBox(
-                              width: 25,
+                              width: ScreenUtil.instance.setWidth(25),
                             ),
                             Expanded(
                               child: TextFormField(
                                 controller: captionctrl1,
                                 maxLines: null,
                                 keyboardType: TextInputType.multiline,
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                                 decoration: InputDecoration(
                                     hintText: 'Write a Caption',
-                                    hintStyle: TextStyle(fontSize: 20)),
+                                    hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                               ),
                             )
                           ],
                         ),
                         SizedBox(
-                          height: 30,
+                          height: ScreenUtil.instance.setHeight(25),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -270,7 +281,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 }),
                             Text(
                               'Work     ',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                             ),
                             Radio(
                                 value: 1,
@@ -282,7 +293,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 }),
                             Text(
                               'People     ',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                             )
                           ],
                         ),
@@ -292,7 +303,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         SizedBox(
-                          height: 40,
+                          height: ScreenUtil.instance.setHeight(25),
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
@@ -306,16 +317,16 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 controller: captionctrl2,
                                 maxLines: null,
                                 keyboardType: TextInputType.multiline,
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                                 decoration: InputDecoration(
                                     hintText: 'Write a Caption',
-                                    hintStyle: TextStyle(fontSize: 20)),
+                                    hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                               ),
                             )
                           ],
                         ),
                         SizedBox(
-                          height: 30,
+                          height: ScreenUtil.instance.setHeight(25),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -330,7 +341,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 }),
                             Text(
                               'Work     ',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                             ),
                             Radio(
                                 value: 1,
@@ -342,7 +353,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 }),
                             Text(
                               'People     ',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                             )
                           ],
                         ),
@@ -352,7 +363,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                         paytext = Text(
                           'ค่าแรง',
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: ScreenUtil.instance.setSp(25),
                           ),
                         ),
                         SizedBox(
@@ -369,7 +380,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                           ),
                           Text(
                             '   ค่าแรงที่ 1',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                           )
                         ]),
                         Row(children: <Widget>[
@@ -383,7 +394,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                           ),
                           Text(
                             '   ค่าแรงที่ 2',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                           )
                         ]),
                         SizedBox(
@@ -391,16 +402,18 @@ class NewDCEntryState extends State<NewDCEntry> {
                         ),
                         TextFormField(
                           controller: locationctrl1,
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                           decoration: InputDecoration(
                               prefixIcon: Icon(
                                 Icons.location_on,
                                 color: Colors.red,
                               ),
                               hintText: 'Enter location',
-                              hintStyle: TextStyle(fontSize: 20)),
+                              hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                         ),
+                        SizedBox(height: ScreenUtil.instance.setHeight(30),)
                       ],
+                      
                     )
                   ]))))
     ]);

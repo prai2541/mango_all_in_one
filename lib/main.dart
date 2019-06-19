@@ -1,5 +1,6 @@
 //import 'dart:developer';
 import 'dart:ui';
+import 'dart:ui' as prefix0;
 
 import 'package:app_ui/projection.dart';
 import 'package:flutter/material.dart';
@@ -79,7 +80,7 @@ class MyApp extends StatelessWidget {
         '/home': (BuildContext context) => new MyApp(),
         '/signin': (BuildContext context) => new Signin(),
         '/dc-system/detail' : (BuildContext context) => new DCDetail(),
-        '/pr-main' : (BuildContext context) => new PRmainL(),
+        //'/pr-main' : (BuildContext context) => new PRmainL(),
         '/pr-main/con' : (BuildContext context) => new PRcontinueL(),
         '/pr-add' : (BuildContext context) => new PRAdd(),
         '/projection' : (BuildContext context) => new Projection(),
@@ -104,6 +105,26 @@ class MyApp extends StatelessWidget {
                                 Animation<double> animation,
                                 Animation<double> secondaryAnimation) {
                               return DCSys();
+                            },
+                            transitionsBuilder: (BuildContext context,
+                                Animation<double> animation,
+                                Animation<double> secondaryAnimation,
+                                Widget child) {
+                              return SlideTransition(
+                                position: Tween<Offset>(
+                                  begin: Offset(1.0, 0.0),
+                                  end: Offset(0.0, 0.0),
+                                ).animate(animation),
+                                child: child,
+                              );
+                            },
+                            transitionDuration: Duration(milliseconds: 300));
+          case '/pr-main' :
+          return PageRouteBuilder(
+                            pageBuilder: (BuildContext context,
+                                Animation<double> animation,
+                                Animation<double> secondaryAnimation) {
+                              return PRmainL();
                             },
                             transitionsBuilder: (BuildContext context,
                                 Animation<double> animation,
@@ -152,8 +173,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _current = 0;
 
   Widget getFullScreenCarousel(BuildContext mediaContext) {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -163,9 +184,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Column(children: [
       Container(
-          height: ScreenUtil.instance.setHeight(800),
-          width: 1000.0,
+          margin: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(10), top: ScreenUtil.instance.setHeight(10), left: ScreenUtil.instance.setWidth(30), right: ScreenUtil.instance.setWidth(30)),
+          height: ScreenUtil.instance.setHeight(250),
+          width: ScreenUtil.instance.setWidth(400),
+          // decoration: BoxDecoration(
+          //   border: Border.all(),
+          //   borderRadius: BorderRadius.all(Radius.circular(10))
+          // ),
           child: CarouselSlider(
+              pauseAutoPlayOnTouch: Duration(seconds: 3),
               autoPlay: true,
               onPageChanged: (index) {
                 setState(() {
@@ -178,12 +205,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 (name) {
                   return Container(
                     child: ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(0.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
                       child: Image.asset(
                         name,
-                        fit: BoxFit.cover,
-                        width: defaultScreenWidth,
-                        height: ScreenUtil.instance.setHeight(500),
+                        fit: BoxFit.fill,
+                        //width: ScreenUtil.instance.setWidth(800),
+                        //height: ScreenUtil.instance.setHeight(150),
                       ),
                     ),
                   );
@@ -211,8 +238,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget gridViewButton(String name, IconData icon, Function onPressed) {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -221,26 +248,26 @@ class _MyHomePageState extends State<MyHomePage> {
     )..init(context);
 
     return Badge(
-      position: BadgePosition.topRight(top: -5, right: -5),
+      position: BadgePosition.topRight(top: ScreenUtil.instance.setHeight(-10), right: ScreenUtil.instance.setWidth(-5)),
       animationDuration: Duration(milliseconds: 300),
       animationType: BadgeAnimationType.scale,
-      padding: EdgeInsets.all(ScreenUtil.instance.setWidth(22.5)),
+      padding: EdgeInsets.all(ScreenUtil.instance.setWidth(7.5)),
       badgeContent: Text(
         '$i',
-        style: TextStyle(color: Colors.white, fontSize: 17.5),
+        style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(17.5)),
       ),
       child: Container(
           height: 300.0,
           //color: Colors.transparent,
           child: InkWell(
-            borderRadius: new BorderRadius.all(const Radius.circular(30.0)),
+            borderRadius: new BorderRadius.all(Radius.circular(ScreenUtil.instance.setSp(20.0))),
             onTap: onPressed,
             child: new Container(
                 decoration: new BoxDecoration(
                     border: new Border.all(
                         color: Theme.of(context).primaryColor, width: 2.5),
                     borderRadius:
-                        new BorderRadius.all(const Radius.circular(30.0))),
+                        new BorderRadius.all(Radius.circular(ScreenUtil.instance.setSp(20.0)))),
                 child: new Center(
                   child: Container(
                       alignment: Alignment(0.0, 0.0),
@@ -248,14 +275,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(icon,
-                                size: ScreenUtil.instance.setWidth(175),
+                                size: ScreenUtil.instance.setSp(50),
                                 color: Theme.of(context).primaryColor),
                             Text(
                               '$name',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Theme.of(context).primaryColor,
-                                fontSize: ScreenUtil.instance.setSp(50),
+                                fontSize: ScreenUtil.instance.setSp(14),
                               ),
                             )
                           ])),
@@ -268,8 +295,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1440.0;
-    double defaultScreenHeight = 2960.0;
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -351,18 +378,21 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-          body: ListView(
+          body: Column(
             //crossAxisAlignment: CrossAxisAlignment.center,
             // physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
               getFullScreenCarousel(context),
-              GridView.count(
+              //SizedBox(height: ScreenUtil.instance.setHeight(40)),
+              Expanded(
+                child: Center(
+                  child: GridView.count(
                 shrinkWrap: true,
                 primary: false,
-                padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(64), right:ScreenUtil.instance.setWidth(64), top: ScreenUtil.instance.setHeight(30)),
-                crossAxisSpacing: ScreenUtil.instance.setWidth(40),
+                padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(32), right:ScreenUtil.instance.setWidth(32), top: ScreenUtil.instance.setHeight(15)),
+                crossAxisSpacing: ScreenUtil.instance.setWidth(15),
                 crossAxisCount: 3,
-                mainAxisSpacing: ScreenUtil.instance.setWidth(40),
+                mainAxisSpacing: ScreenUtil.instance.setWidth(15),
                 children: <Widget>[
                   gridViewButton("Approved", Icons.check, () {
                     setState(() {
@@ -402,7 +432,10 @@ class _MyHomePageState extends State<MyHomePage> {
                       this.i++;
                     });
                   }),
+                  //SizedBox(height: ScreenUtil.instance.setHeight(10),)
                 ],
+              )
+                )
               )
             ],
           ),)
