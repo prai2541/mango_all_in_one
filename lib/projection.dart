@@ -16,8 +16,8 @@ class Projection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1125.0;
-    double defaultScreenHeight = 2436.0;
+    double defaultScreenWidth = 375.0;
+    double defaultScreenHeight = 812.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -27,7 +27,7 @@ class Projection extends StatelessWidget {
 
     return Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(520)),
+            preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(170)),
             child: AppBar(
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
@@ -37,12 +37,12 @@ class Projection extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                       margin: EdgeInsets.only(
-                          top: ScreenUtil.instance.setHeight(300),
-                          left: ScreenUtil.instance.setWidth(40),
-                          right: ScreenUtil.instance.setWidth(40)),
+                          top: ScreenUtil.instance.setHeight(100),
+                          left: ScreenUtil.instance.setWidth(15),
+                          right: ScreenUtil.instance.setWidth(15)),
                       child: Container(
                         padding:
-                            EdgeInsets.all(ScreenUtil.instance.setHeight(40)),
+                            EdgeInsets.all(ScreenUtil.instance.setHeight(10)),
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: <Widget>[
@@ -54,18 +54,18 @@ class Projection extends StatelessWidget {
                                       child: Text(
                                     'Doc. No. : $docnumber',
                                     style: TextStyle(
-                                      fontSize: ScreenUtil.instance.setSp(50),
+                                      fontSize: ScreenUtil.instance.setSp(16),
                                     ),
                                   )),
                                   Container(
                                       margin: EdgeInsets.only(
                                           top: ScreenUtil.instance
-                                              .setHeight(10)),
+                                              .setHeight(3)),
                                       child: Text(
                                         'Remark : $remark',
                                         style: TextStyle(
                                           fontSize:
-                                              ScreenUtil.instance.setSp(50),
+                                              ScreenUtil.instance.setSp(16),
                                         ),
                                       )),
                                 ],
@@ -82,8 +82,8 @@ class Projection extends StatelessWidget {
                 IconButton(
                   icon: Icon(
                     Icons.home,
-                    color: Colors.white.withOpacity(0.75),
-                    size: 30.0,
+                    color: Colors.white,
+                    size: ScreenUtil.instance.setSp(30),
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -99,15 +99,15 @@ class Projection extends StatelessWidget {
                 itemBuilder: (context, i) {
                   return Card(
                       child: ListTile(
-                    contentPadding: EdgeInsets.only(right: 5),
+                    contentPadding: EdgeInsets.only(right: ScreenUtil.instance.setWidth(5)),
                     leading: Container(
-                      width: ScreenUtil.instance.setWidth(30),
+                      width: ScreenUtil.instance.setWidth(10),
                       color: Colors.blue,
                     ),
                     title: Text(projects[i],
                         style:
-                            TextStyle(fontSize: ScreenUtil.instance.setSp(50))),
-                    trailing: Icon(Icons.arrow_forward_ios),
+                            TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                    trailing: Icon(Icons.arrow_forward_ios, size: ScreenUtil.instance.setSp(18),),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => new ProjectionDetail(

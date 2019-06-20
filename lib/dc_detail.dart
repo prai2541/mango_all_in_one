@@ -5,6 +5,7 @@ import 'package:app_ui/newDCEntry.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 //import 'package:image_picker/image_picker.dart';
@@ -51,7 +52,7 @@ class DCDetail extends StatelessWidget {
                 indicatorColor: Color(0xFFB8001C),
                 indicatorWeight: 3.0,
                 labelColor: Color(0xFFB8001C),
-                labelStyle: TextStyle(fontSize: 18),
+                labelStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                 unselectedLabelColor: Colors.white,
                 tabs: [
                   Tab(child: Text(getDate().toUpperCase())),
@@ -78,28 +79,28 @@ class DCDetail extends StatelessWidget {
                         padding: EdgeInsets.only(left: 20, top: 10, bottom: 1),
                         child: Text(
                           'Project : 202019',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 20, bottom: 1),
                         child: Text(
                           'Project Name : สโตร์กลาง',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 20, bottom: 1),
                         child: Text(
                           'Job : CML',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 20, bottom: 10),
                         child: Text(
                           'ผู้ตรวจ : ผู้ตรวจการ ',
-                          style: TextStyle(fontSize: 16),
+                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                         ),
                       ),
                     ],
@@ -277,7 +278,7 @@ class _ListTabViewState extends State<ListTabView> {
               ),
               title: Text(
                 name[i],
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
               ),
               trailing: Text(
                 status[i],
@@ -324,7 +325,7 @@ class _DetailTabViewState extends State<DetailTabView> {
                     shape: BadgeShape.square,
                     badgeContent: Text(
                       '5',
-                      style: TextStyle(color: Colors.white, fontSize: 14),
+                      style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(14)),
                     ),
                   ),
                 ),

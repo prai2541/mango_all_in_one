@@ -29,7 +29,7 @@ class NormalAlertDetail extends StatelessWidget {
             IconButton(
                 icon: Icon(
                   Icons.home,
-                  size: ScreenUtil.instance.setSp(25),
+                  size: ScreenUtil.instance.setSp(30),
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
@@ -42,7 +42,7 @@ class NormalAlertDetail extends StatelessWidget {
           children: [
           Container(
             margin: EdgeInsets.all(10),
-            child: Text('$date')
+            child: Text('$date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)))
           ),
           Container(
             margin: EdgeInsets.only(left: 10, right: 10),
@@ -65,17 +65,17 @@ class NormalAlertDetail extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           'Owner Rec.Out (Banks)',
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(16)),
                         ),
-                        Text('Due Date : ${data[i].duedate}'),
-                        Text('Project : ${data[i].project}'),
-                        Text('Credit Type : ${data[i].creditType}'),
-                        Text('Document: ${data[i].document}'),
-                        Text('BG/CH No. : ${data[i].bgch}'),
-                        Text('Credit Line : ${data[i].creditLine}'),
+                        Text('Due Date : ${data[i].duedate}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
+                        Text('Project : ${data[i].project}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
+                        Text('Credit Type : ${data[i].creditType}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                        Text('Document: ${data[i].document}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                        Text('BG/CH No. : ${data[i].bgch}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                        Text('Credit Line : ${data[i].creditLine}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                         Text(
-                            'Bank / Branch: ${data[i].bank} / ${data[i].branch}'),
-                        Text('Amount: ${data[i].amount}'),
+                            'Bank / Branch: ${data[i].bank} / ${data[i].branch}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                        Text('Amount: ${data[i].amount}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                       ],
                     )),
               );

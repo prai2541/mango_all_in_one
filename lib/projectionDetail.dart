@@ -31,16 +31,16 @@ class ProjectionDetail extends StatelessWidget {
 
   Widget bodyData(context) => Card(
         elevation: 5,
-        margin: EdgeInsets.all(ScreenUtil.instance.setHeight(30)),
+        margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(10), bottom: ScreenUtil.instance.setHeight(10), left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(20) ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Column(children: <Widget>[
           Container(
               color: Colors.transparent,
               child: Container(
                   padding: EdgeInsets.only(
-                      left: ScreenUtil.instance.setWidth(85),
-                      top: ScreenUtil.instance.setHeight(35),
-                      bottom: ScreenUtil.instance.setHeight(20)),
+                      left: ScreenUtil.instance.setWidth(10),
+                      top: ScreenUtil.instance.setHeight(10),
+                      bottom: ScreenUtil.instance.setHeight(10)),
                   decoration: BoxDecoration(
                       color: Color(0xff38414f),
                       borderRadius: BorderRadius.only(
@@ -56,10 +56,10 @@ class ProjectionDetail extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: ScreenUtil.instance.setSp(42)),
+                                fontSize: ScreenUtil.instance.setSp(16)),
                           )),
                       Container(
-                          height: ScreenUtil.instance.setHeight(159),
+                          height: ScreenUtil.instance.setHeight(50),
                           child: VerticalDivider(color: Colors.white)),
                       Expanded(
                           flex: 2,
@@ -71,7 +71,7 @@ class ProjectionDetail extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: ScreenUtil.instance.setSp(42)),
+                                    fontSize: ScreenUtil.instance.setSp(16)),
                               )),
                               Divider(
                                 color: Colors.white,
@@ -86,10 +86,10 @@ class ProjectionDetail extends StatelessWidget {
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize:
-                                            ScreenUtil.instance.setSp(42)),
+                                            ScreenUtil.instance.setSp(16)),
                                   ),
                                   Container(
-                                      height: ScreenUtil.instance.setHeight(50),
+                                      height: ScreenUtil.instance.setHeight(20),
                                       child:
                                           VerticalDivider(color: Colors.white)),
                                   Text(
@@ -98,7 +98,7 @@ class ProjectionDetail extends StatelessWidget {
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize:
-                                            ScreenUtil.instance.setSp(42)),
+                                            ScreenUtil.instance.setSp(16)),
                                   )
                                 ],
                               )
@@ -124,7 +124,7 @@ class ProjectionDetail extends StatelessWidget {
                                 child: Text(
                               datas[index].monthYear,
                               style: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(42)),
+                                  fontSize: ScreenUtil.instance.setSp(16)),
                             ))),
                         Expanded(
                             flex: 3,
@@ -132,7 +132,7 @@ class ProjectionDetail extends StatelessWidget {
                                 child: Text(
                               datas[index].backLog.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},'),
                               style: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(42)),
+                                  fontSize: ScreenUtil.instance.setSp(16)),
                             ))),
                         Expanded(
                             flex: 3,
@@ -140,7 +140,7 @@ class ProjectionDetail extends StatelessWidget {
                                 child: Text(datas[index].costLog.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},'),
                                     style: TextStyle(
                                         fontSize:
-                                            ScreenUtil.instance.setSp(42))))),
+                                            ScreenUtil.instance.setSp(16))))),
                       ],
                     ),
                     Divider(),
@@ -152,8 +152,8 @@ class ProjectionDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1125.0;
-    double defaultScreenHeight = 2436.0;
+    double defaultScreenWidth = 375.0;
+    double defaultScreenHeight = 812.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -163,7 +163,7 @@ class ProjectionDetail extends StatelessWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(632)),
+          preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(210)),
           child: AppBar(
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
@@ -173,9 +173,9 @@ class ProjectionDetail extends StatelessWidget {
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     margin: EdgeInsets.only(
-                        top: ScreenUtil.instance.setHeight(300),
-                        left: ScreenUtil.instance.setWidth(40),
-                        right: ScreenUtil.instance.setWidth(40)),
+                        top: ScreenUtil.instance.setHeight(100),
+                        left: ScreenUtil.instance.setWidth(15),
+                        right: ScreenUtil.instance.setWidth(15)),
                     child: Container(
                       padding: EdgeInsets.all(10),
                       child: Row(
@@ -189,7 +189,7 @@ class ProjectionDetail extends StatelessWidget {
                                     child: Text(
                                   'Doc. No. : $docnumber',
                                   style: TextStyle(
-                                    fontSize: ScreenUtil.instance.setSp(50),
+                                    fontSize: ScreenUtil.instance.setSp(16),
                                   ),
                                 )),
                                 Container(
@@ -197,7 +197,7 @@ class ProjectionDetail extends StatelessWidget {
                                     child: Text(
                                       'Remark : $remark',
                                       style: TextStyle(
-                                        fontSize: ScreenUtil.instance.setSp(50),
+                                        fontSize: ScreenUtil.instance.setSp(16),
                                       ),
                                     )),
                                 Container(
@@ -205,7 +205,7 @@ class ProjectionDetail extends StatelessWidget {
                                     child: Text(
                                       'Project : $projectName',
                                       style: TextStyle(
-                                        fontSize: ScreenUtil.instance.setSp(50),
+                                        fontSize: ScreenUtil.instance.setSp(16),
                                       ),
                                     )),
                               ],
@@ -218,8 +218,8 @@ class ProjectionDetail extends StatelessWidget {
               IconButton(
                 icon: Icon(
                   Icons.home,
-                  color: Colors.white.withOpacity(0.75),
-                  size: 30.0,
+                  color: Colors.white,
+                  size: ScreenUtil.instance.setSp(30),
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
