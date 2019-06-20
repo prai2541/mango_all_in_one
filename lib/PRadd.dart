@@ -283,7 +283,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                     )
                   ],
                 ),
-                SizedBox(height: ScreenUtil.instance.setHeight(100)),
+                SizedBox(height: ScreenUtil.instance.setHeight(70)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [  

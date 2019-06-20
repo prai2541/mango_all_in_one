@@ -29,6 +29,7 @@ class Projection extends StatelessWidget {
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(170)),
             child: AppBar(
+              iconTheme: IconThemeData(color: Colors.white),
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
                 title: Center(

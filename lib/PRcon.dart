@@ -246,7 +246,7 @@ class PRcontinueState extends State<PRcontinue>{
             ],
           ),
       body:Container(
-        margin: EdgeInsets.all(ScreenUtil.instance.setWidth(30)),
+        margin: EdgeInsets.only(left:ScreenUtil.instance.setWidth(30), right: ScreenUtil.instance.setWidth(30), top: ScreenUtil.instance.setHeight(30)),
         child:ListView(
           physics: NeverScrollableScrollPhysics(),
           children: <Widget>[
