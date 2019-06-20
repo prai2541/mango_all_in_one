@@ -370,6 +370,7 @@ class NormalAlert extends StatelessWidget {
                               '${rawData.years[i].months[j].month} ${rawData.years[i].year}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                           children: <Widget>[
                             Container(
+                              margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(10), bottom: ScreenUtil.instance.setHeight(10)),
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount:
@@ -437,12 +438,13 @@ class CollateralAlert extends StatelessWidget {
                               '${rawData.years[i].months[j].month} ${rawData.years[i].year}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                           children: <Widget>[
                             Container(
+                              margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(10), bottom: ScreenUtil.instance.setHeight(10)),
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount:
                                     rawData.years[i].months[j].days.length,
                                 itemBuilder: (context, k) {
-                                  return ListTile(
+                                  return Container(child: ListTile(
                                     title: Text(
                                         '${rawData.years[i].months[j].days[k].day}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                                     trailing: Icon(
@@ -450,7 +452,7 @@ class CollateralAlert extends StatelessWidget {
                                       size: ScreenUtil.instance.setHeight(16),
                                     ),
                                     onTap: () {},
-                                  );
+                                  ));
                                 },
                               ),
                             )
