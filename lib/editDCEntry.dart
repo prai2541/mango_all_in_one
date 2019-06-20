@@ -4,8 +4,10 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class EditDCEntryL extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +17,7 @@ class EditDCEntryL extends StatelessWidget {
 }
 
 class EditDCEntry extends StatefulWidget {
+
   @override
   EditDCEntryState createState() => EditDCEntryState();
 }
@@ -37,6 +40,15 @@ class EditDCEntryState extends State<EditDCEntry> {
   File img2;
 
   Widget caption1() {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+    )..init(context);
+
     if (img1 == null) {
       return GestureDetector(
           onTap: getImage1,
@@ -48,6 +60,7 @@ class EditDCEntryState extends State<EditDCEntry> {
               badgeContent: Icon(
                 Icons.add_a_photo,
                 color: Colors.black,
+                size: ScreenUtil.instance.setWidth(24)
               ),
               child: Container(
                   padding:
@@ -60,13 +73,13 @@ class EditDCEntryState extends State<EditDCEntry> {
                       children: [
                         Icon(
                           Icons.insert_photo,
-                          size: 100,
+                          size: ScreenUtil.instance.setWidth(100),
                           color: Colors.grey,
                         ),
                         Text(
                           'Add a photo',
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: ScreenUtil.instance.setSp(18),
                               fontWeight: FontWeight.w800,
                               color: Colors.grey),
                         )
@@ -77,20 +90,32 @@ class EditDCEntryState extends State<EditDCEntry> {
           child: Badge(
               elevation: 5,
               badgeColor: Colors.white,
-              position: BadgePosition.bottomRight(bottom: -15, right: -10),
+              position: BadgePosition.bottomRight(bottom: -5, right: -10),
               padding: EdgeInsets.all(5),
               badgeContent: Icon(
                 Icons.edit,
                 color: Colors.black,
+                size: ScreenUtil.instance.setWidth(24)
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Image.file(img1, fit: BoxFit.contain, height: 150),
+                child: Image.file(img1,
+                    fit: BoxFit.contain,
+                    height: ScreenUtil.instance.setHeight(160)),
               )));
     }
   }
 
   Widget caption2() {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+    )..init(context);
+
     if (img2 == null) {
       return GestureDetector(
           onTap: getImage2,
@@ -102,6 +127,7 @@ class EditDCEntryState extends State<EditDCEntry> {
               badgeContent: Icon(
                 Icons.add_a_photo,
                 color: Colors.black,
+                size: ScreenUtil.instance.setWidth(24),
               ),
               child: Container(
                   padding:
@@ -114,13 +140,13 @@ class EditDCEntryState extends State<EditDCEntry> {
                       children: [
                         Icon(
                           Icons.insert_photo,
-                          size: 100,
+                          size: ScreenUtil.instance.setWidth(100),
                           color: Colors.grey,
                         ),
                         Text(
                           'Add a photo',
                           style: TextStyle(
-                              fontSize: 20,
+                              fontSize: ScreenUtil.instance.setSp(18),
                               fontWeight: FontWeight.w800,
                               color: Colors.grey),
                         )
@@ -129,17 +155,15 @@ class EditDCEntryState extends State<EditDCEntry> {
       return GestureDetector(
           onTap: getImage2,
           child: Badge(
-              elevation: 5,
               badgeColor: Colors.white,
-              position: BadgePosition.bottomRight(bottom: -15, right: -10),
+              elevation: 5,
+              position: BadgePosition.bottomRight(bottom: -5, right: -10),
               padding: EdgeInsets.all(5),
-              badgeContent: Icon(
-                Icons.edit,
-                color: Colors.black,
-              ),
+              badgeContent: Icon(Icons.edit,
+              size: ScreenUtil.instance.setWidth(24)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Image.file(img2, fit: BoxFit.contain, height: 140),
+                child: Image.file(img2, fit: BoxFit.contain, height: ScreenUtil.instance.setHeight(160)),
               )));
     }
   }
@@ -161,59 +185,79 @@ class EditDCEntryState extends State<EditDCEntry> {
   }
 
   Widget build(BuildContext context) {
+    double defaultScreenWidth = 412.0;
+    double defaultScreenHeight = 846.0;
+
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+    )..init(context);
+
     return Stack(children: [
       GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(new FocusNode());
+            //searchTextField.textField.controller.text = '';
+            //key.currentState.clear();
           },
           child: Scaffold(
+              // floatingActionButton: FloatingActionButton(
+              //   child: Icon(Icons.add_a_photo),
+              // ),
               appBar: AppBar(
+                // leading: IconButton(
+                //   icon: Icon(Icons.arrow_back_ios),
+                //   onPressed: () {
+                //     Navigator.of(context).pop();
+                //   },
+                // ),
                 actions: <Widget>[
-                  Container(
-                      padding: EdgeInsets.only(top: 15, right: 20),
-                      child: GestureDetector(
-                        child: Text(
-                          'Save',
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.w400),
-                        ),
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                      ))
+                  // IconButton(
+                  //     icon: Icon(Icons.save),
+                  //     onPressed: () {
+                  //       widget.callback(widget.index);
+                  //       Navigator.of(context).pop();
+                  //     }),
+                  FlatButton(
+                    child: Text('Save', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
+                    onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                  )
                 ],
               ),
               body: Container(
-                  padding: EdgeInsets.only(left: 32, right: 32),
+                  padding: EdgeInsets.only(left: ScreenUtil.instance.setWidth(32), right: ScreenUtil.instance.setWidth(32)),
                   child: ListView(children: <Widget>[
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         SizedBox(
-                          height: 20,
+                          height: ScreenUtil.instance.setHeight(30),
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             caption1(),
                             SizedBox(
-                              width: 15,
+                              width: ScreenUtil.instance.setWidth(25),
                             ),
                             Expanded(
                               child: TextFormField(
                                 controller: captionctrl1,
                                 maxLines: null,
                                 keyboardType: TextInputType.multiline,
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                                 decoration: InputDecoration(
                                     hintText: 'Write a Caption',
-                                    hintStyle: TextStyle(fontSize: 20)),
+                                    hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                               ),
                             )
                           ],
                         ),
                         SizedBox(
-                          height: 30,
+                          height: ScreenUtil.instance.setHeight(25),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -228,7 +272,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                                 }),
                             Text(
                               'Work     ',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                             ),
                             Radio(
                                 value: 1,
@@ -240,7 +284,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                                 }),
                             Text(
                               'People     ',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                             )
                           ],
                         ),
@@ -250,30 +294,30 @@ class EditDCEntryState extends State<EditDCEntry> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         SizedBox(
-                          height: 10,
+                          height: ScreenUtil.instance.setHeight(25),
                         ),
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
                             caption2(),
                             SizedBox(
-                              width: 15,
+                              width: 25,
                             ),
                             Expanded(
                               child: TextFormField(
                                 controller: captionctrl2,
                                 maxLines: null,
                                 keyboardType: TextInputType.multiline,
-                                style: TextStyle(fontSize: 20),
+                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                                 decoration: InputDecoration(
                                     hintText: 'Write a Caption',
-                                    hintStyle: TextStyle(fontSize: 20)),
+                                    hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                               ),
                             )
                           ],
                         ),
                         SizedBox(
-                          height: 30,
+                          height: ScreenUtil.instance.setHeight(25),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -288,7 +332,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                                 }),
                             Text(
                               'Work     ',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                             ),
                             Radio(
                                 value: 1,
@@ -300,7 +344,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                                 }),
                             Text(
                               'People     ',
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                             )
                           ],
                         ),
@@ -310,7 +354,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                         paytext = Text(
                           'ค่าแรง',
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: ScreenUtil.instance.setSp(25),
                           ),
                         ),
                         SizedBox(
@@ -327,7 +371,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                           ),
                           Text(
                             '   ค่าแรงที่ 1',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                           )
                         ]),
                         Row(children: <Widget>[
@@ -341,7 +385,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                           ),
                           Text(
                             '   ค่าแรงที่ 2',
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                           )
                         ]),
                         SizedBox(
@@ -349,19 +393,18 @@ class EditDCEntryState extends State<EditDCEntry> {
                         ),
                         TextFormField(
                           controller: locationctrl1,
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                           decoration: InputDecoration(
                               prefixIcon: Icon(
                                 Icons.location_on,
                                 color: Colors.red,
                               ),
                               hintText: 'Enter location',
-                              hintStyle: TextStyle(fontSize: 20)),
+                              hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
                         ),
-                        SizedBox(
-                          height: 40,
-                        )
+                        SizedBox(height: ScreenUtil.instance.setHeight(30),)
                       ],
+                      
                     )
                   ]))))
     ]);
