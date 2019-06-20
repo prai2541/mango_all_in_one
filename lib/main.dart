@@ -87,68 +87,15 @@ class MyApp extends StatelessWidget {
         '/home': (BuildContext context) => new MyApp(),
         '/signin': (BuildContext context) => new Signin(),
         '/dc-system/detail' : (BuildContext context) => new DCDetail(),
-        //'/pr-main' : (BuildContext context) => new PRmainL(),
+        '/pr-main' : (BuildContext context) => new PRmainL(),
         '/pr-main/con' : (BuildContext context) => new PRcontinueL(),
         '/pr-add' : (BuildContext context) => new PRAdd(),
         '/projection' : (BuildContext context) => new Projection(),
         '/notification' : (BuildContext context) => new NotificationPage(),
+        '/dc-system' : (BuildContext context) => new DCSys(),
+
       },
-      onGenerateRoute: (RouteSettings settings) {
-        switch (settings.name) {
-          case '/portal':
-            return PageRouteBuilder(
-                    transitionDuration: Duration(milliseconds: 150),
-                    opaque: false,
-                    pageBuilder: (BuildContext context, _, __) => PortalPopup(),
-                    transitionsBuilder: (_, Animation<double> animation, __, Widget child) {
-                      return new FadeTransition(
-                          opacity: animation, 
-                          child: child);
-                    });
-          
-          case '/dc-system' :
-          return PageRouteBuilder(
-                            pageBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation) {
-                              return DCSys();
-                            },
-                            transitionsBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation,
-                                Widget child) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: Offset(1.0, 0.0),
-                                  end: Offset(0.0, 0.0),
-                                ).animate(animation),
-                                child: child,
-                              );
-                            },
-                            transitionDuration: Duration(milliseconds: 300));
-          case '/pr-main' :
-          return PageRouteBuilder(
-                            pageBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation) {
-                              return PRmainL();
-                            },
-                            transitionsBuilder: (BuildContext context,
-                                Animation<double> animation,
-                                Animation<double> secondaryAnimation,
-                                Widget child) {
-                              return SlideTransition(
-                                position: Tween<Offset>(
-                                  begin: Offset(1.0, 0.0),
-                                  end: Offset(0.0, 0.0),
-                                ).animate(animation),
-                                child: child,
-                              );
-                            },
-                            transitionDuration: Duration(milliseconds: 300));
-                            
-        }
-      },
+      
       theme: ThemeData(
         primaryColor: Color(0xFF46B5A6),
       ),
