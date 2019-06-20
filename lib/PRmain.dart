@@ -122,7 +122,7 @@ class PRmainState extends State<PRmain>{
       allowFontScaling: true,
    )..init(context);
     return Center(child:Container(child:ListView(
-            physics: NeverScrollableScrollPhysics(),
+            //physics: NeverScrollableScrollPhysics(),
             padding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(20), left: ScreenUtil.instance.setWidth(32), right: ScreenUtil.instance.setWidth(32)),
             shrinkWrap: true,
               children: [

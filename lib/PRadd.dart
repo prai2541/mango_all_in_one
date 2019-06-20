@@ -214,7 +214,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
               //key.currentState.clear();
             },
             child: ListView(
-              physics: NeverScrollableScrollPhysics(),
+              //physics: NeverScrollableScrollPhysics(),
               padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(30), right: ScreenUtil.instance.setWidth(30), top:ScreenUtil.instance.setHeight(20),),
               children: <Widget>[
                 Row(

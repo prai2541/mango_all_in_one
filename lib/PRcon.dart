@@ -162,7 +162,7 @@ class PRcontinueState extends State<PRcontinue>{
    )..init(context);
     if(selectedDate == null) {
       return Container(
-                  padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(8), top: ScreenUtil.instance.setHeight(8), left: ScreenUtil.instance.setWidth(12), right: 0),
+                  padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(6), top: ScreenUtil.instance.setHeight(6), left: ScreenUtil.instance.setWidth(12), right: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [Text(

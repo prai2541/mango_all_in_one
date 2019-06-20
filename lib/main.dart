@@ -188,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Column(children: [
       Container(
           margin: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(10), top: ScreenUtil.instance.setHeight(10), left: ScreenUtil.instance.setWidth(30), right: ScreenUtil.instance.setWidth(30)),
-          height: ScreenUtil.instance.setHeight(250),
+          height: ScreenUtil.instance.setHeight(225),
           width: ScreenUtil.instance.setWidth(400),
           // decoration: BoxDecoration(
           //   border: Border.all(),
@@ -382,6 +382,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
           body: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             //crossAxisAlignment: CrossAxisAlignment.center,
             // physics: NeverScrollableScrollPhysics(),
             children: <Widget>[
