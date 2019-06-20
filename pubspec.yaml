@@ -38,6 +38,8 @@ dependencies:
 
   flutter_calendar_carousel:
 
+  table_calendar: ^1.2.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

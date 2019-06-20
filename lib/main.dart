@@ -9,6 +9,7 @@ import 'package:badges/badges.dart';
 import 'dc_detail.dart';
 import './notification.dart';
 //import 'editDCEntry.dart';
+import 'normalAlertDetail.dart';
 import 'signin.dart';
 import 'package:flutter/cupertino.dart';
 import 'dcsystem.dart';
@@ -67,7 +68,9 @@ List<T> map<T>(List list, Function handler) {
   return result;
 }
 
-void main() => runApp(SigninL());
+void main() { 
+  runApp(SigninL());
+  }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

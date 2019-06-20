@@ -16,8 +16,8 @@ class EmployeeDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1125.0;
-    double defaultScreenHeight = 2436.0;
+    double defaultScreenWidth = 375.0;
+    double defaultScreenHeight = 812.0;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -29,7 +29,7 @@ class EmployeeDetail extends StatelessWidget {
         home: Scaffold(
             appBar: PreferredSize(
               preferredSize:
-                  Size.fromHeight(ScreenUtil.instance.setHeight(795)),
+                  Size.fromHeight(ScreenUtil.instance.setHeight(260)),
               child: AppBar(
                 actions: <Widget>[
                   IconButton(
@@ -52,9 +52,9 @@ class EmployeeDetail extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                       margin: EdgeInsets.only(
-                          top: ScreenUtil.instance.setHeight(405),
-                          left: ScreenUtil.instance.setWidth(40),
-                          right: ScreenUtil.instance.setWidth(40)),
+                          top: ScreenUtil.instance.setHeight(100),
+                          left: ScreenUtil.instance.setWidth(10),
+                          right: ScreenUtil.instance.setWidth(10)),
                       child: Container(
                         // padding: EdgeInsets.all(10),
                         child: Row(
@@ -64,7 +64,7 @@ class EmployeeDetail extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   CircleAvatar(
-                                    radius: ScreenUtil.instance.setHeight(160),
+                                    radius: ScreenUtil.instance.setHeight(60),
                                     backgroundImage: NetworkImage(
                                         'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25e384a9-c599-45c5-bc56-929c3111276c/d6k8a2r-3391ff86-4af8-4695-bfad-14350ae04bfe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1ZTM4NGE5LWM1OTktNDVjNS1iYzU2LTkyOWMzMTExMjc2Y1wvZDZrOGEyci0zMzkxZmY4Ni00YWY4LTQ2OTUtYmZhZC0xNDM1MGFlMDRiZmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Bx0q3W1dS8p6f8DSiUCPrjHzt4LWxhJQw0d3k0Qz06Q'),
                                   )
@@ -77,17 +77,17 @@ class EmployeeDetail extends StatelessWidget {
                                   Text(
                                     '$name',
                                     style: TextStyle(
-                                        fontSize: ScreenUtil.instance.setSp(65),
+                                        fontSize: ScreenUtil.instance.setSp(20),
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text('Working Day : 5 Days',
                                       style: TextStyle(
                                           fontSize:
-                                              ScreenUtil.instance.setSp(40))),
+                                              ScreenUtil.instance.setSp(16))),
                                   Text('Tel. $telephone',
                                       style: TextStyle(
                                           fontSize:
-                                              ScreenUtil.instance.setSp(40)))
+                                              ScreenUtil.instance.setSp(16)))
                                 ],
                               )
                             ]),
@@ -105,26 +105,18 @@ class EmployeeDetail extends StatelessWidget {
                 ),
               ),
             ),
-            body: WorkingCalendar(name, telephone)));
+            body: WorkingCalendar1()));
   }
 }
 
-class WorkingCalendar extends StatefulWidget {
-  String name;
-  String telephone;
-  WorkingCalendar(this.name, this.telephone);
-
+class WorkingCalendar1 extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return WorkingCalendarState(name, telephone);
+    return WorkingCalendar1State();
   }
 }
 
-class WorkingCalendarState extends State<WorkingCalendar> {
-  String name;
-  String telephone;
-
-  WorkingCalendarState(this.name, this.telephone);
+class WorkingCalendar1State extends State<WorkingCalendar1> {
 
   DateTime _currentDate = DateTime.now();
   DateTime _currentDate2 = DateTime.now();
@@ -132,19 +124,19 @@ class WorkingCalendarState extends State<WorkingCalendar> {
 
   EventList<Event> _markedDateMap = new EventList<Event>(
     events: {
-      new DateTime(2019, 6, 15): [
+      new DateTime(2019, 6, 17): [
         new Event(
           date: new DateTime(2019, 2, 15),
           title: 'Event 1',
         )
       ],
-      new DateTime(2019, 6, 16): [
+      new DateTime(2019, 6, 18): [
         new Event(
           date: new DateTime(2019, 2, 16),
           title: 'Event 1',
         )
       ],
-      new DateTime(2019, 6, 17): [
+      new DateTime(2019, 6, 19): [
         new Event(
           date: new DateTime(2019, 2, 17),
           title: 'Event 1',
@@ -164,6 +156,7 @@ class WorkingCalendarState extends State<WorkingCalendar> {
         color: Colors.red,
       ),
       thisMonthDayBorderColor: Colors.grey,
+      markedDateShowIcon: true,
 
 //          weekDays: null, /// for pass null when you do not want to render weekDays
 //          headerText: Container( /// Example for rendering custom header
