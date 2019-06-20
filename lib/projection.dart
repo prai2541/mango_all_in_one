@@ -99,11 +99,16 @@ class Projection extends StatelessWidget {
                 itemCount: projects.length,
                 itemBuilder: (context, i) {
                   return Card(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                       child: ListTile(
-                    contentPadding: EdgeInsets.only(right: ScreenUtil.instance.setWidth(5)),
+                    contentPadding: EdgeInsets.only(right: ScreenUtil.instance.setWidth(10)),
                     leading: Container(
-                      width: ScreenUtil.instance.setWidth(10),
-                      color: Colors.blue,
+                      width: ScreenUtil.instance.setWidth(15),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+                        color: Colors.blue,
+                      ),
+                      
                     ),
                     title: Text(projects[i],
                         style:
