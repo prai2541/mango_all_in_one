@@ -6,6 +6,7 @@ import 'package:app_ui/projection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
+import 'package:flutter/services.dart';
 import 'dc_detail.dart';
 import './notification.dart';
 //import 'editDCEntry.dart';
@@ -68,9 +69,12 @@ List<T> map<T>(List list, Function handler) {
   return result;
 }
 
-void main() { 
-  runApp(SigninL());
-  }
+void main() {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+    .then((_) {
+      runApp(new SigninL());
+    });
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -316,6 +320,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // ),
       Scaffold(
         appBar: AppBar(
+          iconTheme: IconThemeData(color: Colors.white),
         ),
         drawer: Drawer(
           child: ListView(
