@@ -212,6 +212,7 @@ class _ListTabViewState extends State<ListTabView> {
         {
           return <Widget>[
             Container(
+              
               padding: EdgeInsets.only(top: 4.0, bottom: 4.0),
               child: IconSlideAction(
                   caption: 'Edit',
@@ -270,11 +271,16 @@ class _ListTabViewState extends State<ListTabView> {
             actionExtentRatio: 0.20,
             actionPane: SlidableScrollActionPane(),
             child: Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                 child: ListTile(
               contentPadding: EdgeInsets.only(right: 20),
               leading: Container(
-                width: 10,
-                color: colorStatus(status[i]),
+                width: 15,
+                decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
+                        color: colorStatus(status[i]),
+                      ),
+                
               ),
               title: Text(
                 name[i],

@@ -1,19 +1,15 @@
-// import 'package:app_ui/employeeDetail.dart';
-// import 'package:app_ui/newDCEntry.dart';
-// import 'package:badges/badges.dart';
+
+import 'dart:io';
+
+import 'package:app_ui/matadd.dart';
+import 'package:app_ui/materialList.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'material.dart';
-import 'players.dart';
-//import 'package:flutter_slidable/flutter_slidable.dart';
-//import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 
-//import 'package:image_picker/image_picker.dart';
-
-//import 'editDCEntry.dart';
 
 List<String> name = [
   "Suzanne	Steele",
@@ -157,7 +153,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
           '$matName',
           style: TextStyle(
           fontSize: ScreenUtil.instance.setSp(16),
-          color: Colors.grey
+          color: Colors.black
           ),
         ),
         decoration: new BoxDecoration(
@@ -242,9 +238,19 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                     ),
                     InkWell(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      onTap: () {
-                        if(customizable) {
+                      onTap: () async {
+                        if(!customizable) {
                           // only do shit if customizable is false
+                          // Navigator.of(context).pushNamed('/mat-add');
+                          MaterialList result = await Navigator.push(context, MaterialPageRoute(builder: (context) => MatAdd()));
+                          if(result != null) {  
+                            setState(() {
+                            mcCtrl.text = result.matcode; 
+                            matName = result.matname;
+                          });
+
+                          } 
+                         
                         }
                       },
                       child: Container(

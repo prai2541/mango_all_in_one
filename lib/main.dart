@@ -2,6 +2,7 @@
 import 'dart:ui';
 import 'dart:ui' as prefix0;
 
+import 'package:app_ui/matadd.dart';
 import 'package:app_ui/projection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -93,6 +94,7 @@ class MyApp extends StatelessWidget {
         '/projection' : (BuildContext context) => new Projection(),
         '/notification' : (BuildContext context) => new NotificationPage(),
         '/dc-system' : (BuildContext context) => new DCSys(),
+        '/mat-add' : (BuildContext context) => new MatAdd(),
 
       },
       
