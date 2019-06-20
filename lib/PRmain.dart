@@ -199,6 +199,7 @@ class PRmainState extends State<PRmain>{
           },
           child: Scaffold(
             appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.white),
               leading: IconButton(
                 icon: Icon(Icons.arrow_back_ios),
                 onPressed: () => Navigator.of(context).pop(),
@@ -206,14 +207,13 @@ class PRmainState extends State<PRmain>{
               actions: <Widget>[
                 IconButton(
                   icon: Icon(
-                    Icons.apps,
-                    color: Colors.white.withOpacity(0.75),
-                    size: 30.0,
+                    Icons.home,
+                    size: ScreenUtil.instance.setSp(30),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed('/portal');
-                  },
-                )
+                    Navigator.of(context).pushNamedAndRemoveUntil(
+                        '/home', (Route<dynamic> route) => false);
+                  })
               ],
               title: Text(
                 'PR',

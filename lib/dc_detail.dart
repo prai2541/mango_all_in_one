@@ -34,11 +34,11 @@ class DCDetail extends StatelessWidget {
         length: 2,
         child: Scaffold(
             appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.white),
               actions: <Widget>[
                 IconButton(
                   icon: Icon(
                     Icons.home,
-                    color: Colors.white.withOpacity(0.75),
                     size: 30.0,
                   ),
                   onPressed: () {
