@@ -313,32 +313,32 @@ class _DetailTabViewState extends State<DetailTabView> {
           return Card(
               child: ListTile(
             leading: CircleAvatar(
-              radius: 22,
+              radius: ScreenUtil.instance.setSp(30),
               backgroundImage: NetworkImage(
                   'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25e384a9-c599-45c5-bc56-929c3111276c/d6k8a2r-3391ff86-4af8-4695-bfad-14350ae04bfe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1ZTM4NGE5LWM1OTktNDVjNS1iYzU2LTkyOWMzMTExMjc2Y1wvZDZrOGEyci0zMzkxZmY4Ni00YWY4LTQ2OTUtYmZhZC0xNDM1MGFlMDRiZmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Bx0q3W1dS8p6f8DSiUCPrjHzt4LWxhJQw0d3k0Qz06Q'),
             ),
-            title: Text(name[i]),
+            title: Text(name[i], style: TextStyle(fontSize: ScreenUtil.instance.setSp(20))),
             subtitle: Row(
               children: <Widget>[
-                Text('Working Day :'),
+                Text('Working Day :', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
                 Padding(
-                  padding: const EdgeInsets.all(4),
+                  padding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(4), bottom: ScreenUtil.instance.setHeight(4), left: ScreenUtil.instance.setWidth(4), right: ScreenUtil.instance.setWidth(4)  ),
                   child: Badge(
                     badgeColor: Colors.red,
-                    borderRadius: 5,
+                    borderRadius: ScreenUtil.instance.setSp(20),
                     padding:
-                        EdgeInsets.only(top: 1, bottom: 1, left: 7, right: 7),
+                        EdgeInsets.only(top: ScreenUtil.instance.setHeight(3), bottom: ScreenUtil.instance.setHeight(3), left: ScreenUtil.instance.setWidth(8), right: ScreenUtil.instance.setWidth(8)),
                     shape: BadgeShape.square,
                     badgeContent: Text(
                       '5',
-                      style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(14)),
+                      style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(15)),
                     ),
                   ),
                 ),
-                Text('Days')
+                Text('Days', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)))
               ],
             ),
-            trailing: Icon(Icons.arrow_forward_ios),
+            trailing: Icon(Icons.arrow_forward_ios, size: ScreenUtil.instance.setSp(22),),
             onTap: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => new EmployeeDetail(name[i])));
             },
