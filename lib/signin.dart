@@ -12,6 +12,7 @@ class SigninL extends StatelessWidget {
       routes: {'/home': (BuildContext context) => new MyApp()},
       theme: ThemeData(
         primaryColor: Color(0xFF00b89c),
+        fontFamily: 'Prompt'
       ),
       home: Signin(),
     );

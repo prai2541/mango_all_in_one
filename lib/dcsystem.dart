@@ -92,6 +92,7 @@ class DCSysState extends State<DCSys> {
             child: Scaffold(
                 backgroundColor: Colors.white,
                 appBar: AppBar(
+                  title: Text('DC SYSTEM', style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
                   iconTheme: IconThemeData(color: Colors.white),
                   actions: <Widget>[
                     IconButton(

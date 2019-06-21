@@ -176,14 +176,8 @@ class MatAddsState extends State<MatAdds> with SingleTickerProviderStateMixin{
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          IconButton(
-                            icon: Icon(Icons.check),
-                            iconSize: ScreenUtil.instance.setSp(25),
-                            color: Color(0xFF00b89c),
-                            onPressed: () {
-                              
-                            }
-                          )
+                          Icon(Icons.check, size: ScreenUtil.instance.setSp(25),color: Color(0xFF00b89c)),
+                            
                         ]
                       )
                     ]
@@ -204,6 +198,7 @@ class MatAddsState extends State<MatAdds> with SingleTickerProviderStateMixin{
       backgroundColor: Colors.white,
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.white),
+          title: Text('MATERIAL LIST', style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
           actions: <Widget>[
             IconButton(
               icon: Icon(

@@ -232,6 +232,8 @@ class PRcontinueState extends State<PRcontinue>{
       },
       child: Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text('PR', style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
             actions: <Widget>[
               IconButton(
                   icon: Icon(

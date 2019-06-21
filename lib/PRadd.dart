@@ -153,7 +153,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
           '$matName',
           style: TextStyle(
           fontSize: ScreenUtil.instance.setSp(16),
-          color: Colors.black
+          color: Colors.grey
           ),
         ),
         decoration: new BoxDecoration(
@@ -536,6 +536,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
         length: 2,
         child: Scaffold(
             appBar: AppBar(
+              iconTheme: IconThemeData(color: Colors.white),
               actions: <Widget>[
                 IconButton(
                   icon: Icon(
@@ -556,12 +557,12 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                 unselectedLabelColor: Colors.white,
                 controller: tabctrl,
                 tabs: [
-                  Tab(child: Text('Add')),
+                  Tab(child: Text('Add', style: TextStyle(fontFamily: 'Prompt'))),
                   Tab(child: 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text('List'),
+                        Text('List', style: TextStyle(fontFamily: 'Prompt')),
                         SizedBox(width: ScreenUtil.instance.setWidth(10)),
                         Badge(
                           position: BadgePosition.topRight(top: -5, right: -5),

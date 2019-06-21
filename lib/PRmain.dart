@@ -200,10 +200,7 @@ class PRmainState extends State<PRmain>{
           child: Scaffold(
             appBar: AppBar(
               iconTheme: IconThemeData(color: Colors.white),
-              leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
+              
               actions: <Widget>[
                 IconButton(
                   icon: Icon(
@@ -244,8 +241,8 @@ class PRmainState extends State<PRmain>{
                         labelStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(18)),
                         unselectedLabelColor: Colors.black,
                         tabs: [
-                          Tab(child: Text('CREATE')),
-                          Tab(child: Text('STATUS')),
+                          Tab(child: Text('CREATE', style: TextStyle(fontFamily: 'Prompt'))),
+                          Tab(child: Text('STATUS', style: TextStyle(fontFamily: 'Prompt'))),
                         ],
                       ),
                 Expanded(

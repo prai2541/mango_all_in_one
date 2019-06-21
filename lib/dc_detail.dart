@@ -55,8 +55,8 @@ class DCDetail extends StatelessWidget {
                 labelStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                 unselectedLabelColor: Colors.white,
                 tabs: [
-                  Tab(child: Text(getDate().toUpperCase())),
-                  Tab(child: Text('DETAIL')),
+                  Tab(child: Text(getDate().toUpperCase(), style: TextStyle(fontFamily: 'Prompt'))),
+                  Tab(child: Text('DETAIL', style: TextStyle(fontFamily: 'Prompt'))),
                 ],
               ),
               title: Text(
