@@ -61,7 +61,7 @@ class DCDetail extends StatelessWidget {
               ),
               title: Text(
                 'DC SYSTEM',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white, fontFamily: 'Prompt'),
               ),
             ),
             body: Column(
