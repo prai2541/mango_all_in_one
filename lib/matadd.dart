@@ -1,6 +1,6 @@
 
 import 'package:app_ui/materialList.dart';
-import 'package:badges/badges.dart';
+//import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -127,9 +127,10 @@ class MatAddsState extends State<MatAdds> with SingleTickerProviderStateMixin{
                   Navigator.pop(context, mat);
                 },
                 child: Card(
+                
                 margin: EdgeInsets.all(5),
                 child: Container(
-                  padding: EdgeInsets.only(top: 10, bottom: 10, left: 20),
+                  padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
                   child: Stack(
                     children: [
                       Row(
@@ -152,7 +153,7 @@ class MatAddsState extends State<MatAdds> with SingleTickerProviderStateMixin{
                           ),
                           SizedBox(width: 20),
                           Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                                   Text(': ${matlist[index].matcode}', 
                                     style: TextStyle(
@@ -167,19 +168,23 @@ class MatAddsState extends State<MatAdds> with SingleTickerProviderStateMixin{
                                   ),
                                 ],
                           ),
+                          Spacer(),
+                          Icon(Icons.check, size: ScreenUtil.instance.setSp(25),color: Color(0xFF00b89c)),
 
 
                         ]
                       ),
-                        
                       
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Icon(Icons.check, size: ScreenUtil.instance.setSp(25),color: Color(0xFF00b89c)),
+                      
+                        
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.end,
+                      //   crossAxisAlignment: CrossAxisAlignment.center,
+                      //   children: [
+                         
                             
-                        ]
-                      )
+                      //   ]
+                      // )
                     ]
                   )
                 )
