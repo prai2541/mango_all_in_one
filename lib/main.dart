@@ -100,7 +100,8 @@ class MyApp extends StatelessWidget {
       
       theme: ThemeData(
         primaryColor: Color(0xFF46B5A6),
-        fontFamily: 'Prompt'
+        fontFamily: 'Prompt',
+        textTheme: TextTheme(title: TextStyle(fontSize: 10))
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );

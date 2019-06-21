@@ -144,7 +144,16 @@ class PRcontinueState extends State<PRcontinue>{
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
+        lastDate: DateTime(2101),
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              primaryColor: Color(0xFF46B5A6),
+              primaryTextTheme: TextTheme(display1: TextStyle(color: Colors.white)),),
+            child: child,);
+        }
+
+        );
     if (picked != null && picked != selectedDate)
       setState(() {
         selectedDate = picked;
@@ -207,7 +216,7 @@ class PRcontinueState extends State<PRcontinue>{
                   decoration: new BoxDecoration(
                     border: Border.all(color: Colors.black),
                     borderRadius: new BorderRadius.all(
-                      const Radius.circular(40.0)
+                      const Radius.circular(5.0)
                     )
                   ),
                 );
