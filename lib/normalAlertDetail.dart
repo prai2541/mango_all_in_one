@@ -23,8 +23,7 @@ class NormalAlertDetail extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.white),
-          title: Text('Normal Alert Detail',
-              style: TextStyle(color: Colors.white)),
+          title: Text('Normal Alert Detail', style: TextStyle(color: Colors.white),),
           actions: <Widget>[
             IconButton(
                 icon: Icon(
@@ -51,7 +50,7 @@ class NormalAlertDetail extends StatelessWidget {
               color: Colors.black,
             ),
           ),
-          ListView.builder(
+          Expanded(child: ListView.builder(
             physics: BouncingScrollPhysics(),
             shrinkWrap: true,
             itemCount: data.length,
@@ -66,30 +65,30 @@ class NormalAlertDetail extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           'Owner Rec.Out (Banks)',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(16)),
+                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(15)),
                         ),
-                        SizedBox(height: ScreenUtil.instance.setHeight(2.5),),
-                        Text('Due Date : ${data[i].duedate}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
-                        SizedBox(height: ScreenUtil.instance.setHeight(2.5),),
-                        Text('Project : ${data[i].project}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
-                        SizedBox(height: ScreenUtil.instance.setHeight(2.5),),
-                        Text('Credit Type : ${data[i].creditType}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
-                        SizedBox(height: ScreenUtil.instance.setHeight(2.5),),
-                        Text('Document: ${data[i].document}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
-                        SizedBox(height: ScreenUtil.instance.setHeight(2.5),),
-                        Text('BG/CH No. : ${data[i].bgch}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
-                        SizedBox(height: ScreenUtil.instance.setHeight(2.5),),
-                        Text('Credit Line : ${data[i].creditLine}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
-                        SizedBox(height: ScreenUtil.instance.setHeight(2.5),),
+                        SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
+                        Text('Due Date : ${data[i].duedate}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15)),),
+                        SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
+                        Text('Project : ${data[i].project}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15)),),
+                        SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
+                        Text('Credit Type : ${data[i].creditType}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
+                        SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
+                        Text('Document: ${data[i].document}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
+                        SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
+                        Text('BG/CH No. : ${data[i].bgch}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
+                        SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
+                        Text('Credit Line : ${data[i].creditLine}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
+                        SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
                         Text(
-                            'Bank / Branch: ${data[i].bank} / ${data[i].branch}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
-                        SizedBox(height: ScreenUtil.instance.setHeight(2.5),),
-                        Text('Amount: ${data[i].amount}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                            'Bank / Branch: ${data[i].bank} / ${data[i].branch}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
+                        SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
+                        Text('Amount: ${data[i].amount}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
                       ],
                     )),
               );
             },
-          )
+          ))
         ]));
   }
 }

@@ -319,21 +319,23 @@ class NotificationPage extends StatelessWidget {
                 ),
                 Tab(
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                  Text(
-                    "Collateral Amount",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: ScreenUtil.instance.setSp(16)),
-                  ),
-                  Text(
-                    "Alert",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: ScreenUtil.instance.setSp(16)),
-                  )
-                ]))
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                      Expanded(
+                          child: Text(
+                        "Collateral Amount",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: ScreenUtil.instance.setSp(16)),
+                      )),
+                      Expanded(
+                          child: Text(
+                        "Alert",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: ScreenUtil.instance.setSp(16)),
+                      ))
+                    ]))
               ],
             ),
             title: Text('Notification', style: TextStyle(color: Colors.white)),
@@ -355,7 +357,8 @@ class NormalAlert extends StatelessWidget {
       itemBuilder: (context, i) {
         return ExpansionTile(
           leading: Icon(Icons.list),
-          title: Text('Normal Amount Alert ${rawData.years[i].year}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+          title: Text('Normal Amount Alert ${rawData.years[i].year}',
+              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
           children: [
             Container(
                 margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
@@ -365,12 +368,24 @@ class NormalAlert extends StatelessWidget {
                     itemBuilder: (context, j) {
                       if (rawData.years[i].months[j].days != null) {
                         return ExpansionTile(
-                          leading: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.calendar_today, size: ScreenUtil.instance.setSp(22.5),)]),
+                          leading: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.calendar_today,
+                                  size: ScreenUtil.instance.setSp(22.5),
+                                )
+                              ]),
                           title: Text(
-                              '${rawData.years[i].months[j].month} ${rawData.years[i].year}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                              '${rawData.years[i].months[j].month} ${rawData.years[i].year}',
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16))),
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(10), bottom: ScreenUtil.instance.setHeight(10)),
+                              margin: EdgeInsets.only(
+                                  left: ScreenUtil.instance.setWidth(20),
+                                  right: ScreenUtil.instance.setWidth(10),
+                                  bottom: ScreenUtil.instance.setHeight(10)),
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount:
@@ -378,7 +393,10 @@ class NormalAlert extends StatelessWidget {
                                 itemBuilder: (context, k) {
                                   return ListTile(
                                     title: Text(
-                                        '${rawData.years[i].months[j].days[k].day}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                                        '${rawData.years[i].months[j].days[k].day}',
+                                        style: TextStyle(
+                                            fontSize:
+                                                ScreenUtil.instance.setSp(16))),
                                     trailing: Icon(
                                       Icons.arrow_forward_ios,
                                       size: ScreenUtil.instance.setHeight(16),
@@ -401,9 +419,18 @@ class NormalAlert extends StatelessWidget {
                         );
                       } else {
                         return ListTile(
-                          leading: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.calendar_today, size: ScreenUtil.instance.setSp(22.5),)]),
+                          leading: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.calendar_today,
+                                  size: ScreenUtil.instance.setSp(22.5),
+                                )
+                              ]),
                           title: Text(
-                              '${rawData.years[i].months[j].month} ${rawData.years[i].year}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                              '${rawData.years[i].months[j].month} ${rawData.years[i].year}',
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16))),
                         );
                       }
                     }))
@@ -422,7 +449,8 @@ class CollateralAlert extends StatelessWidget {
       itemBuilder: (context, i) {
         return ExpansionTile(
           leading: Icon(Icons.list),
-          title: Text('Collateral Amount Alert ${rawData.years[i].year}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+          title: Text('Collateral Amount Alert ${rawData.years[i].year}',
+              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
           children: [
             Container(
                 margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
@@ -433,20 +461,36 @@ class CollateralAlert extends StatelessWidget {
                       if (rawData.years[i].months[j].days != null) {
                         return Card(
                             child: ExpansionTile(
-                          leading: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.calendar_today, size: ScreenUtil.instance.setSp(22.5),)]),
+                          leading: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.calendar_today,
+                                  size: ScreenUtil.instance.setSp(22.5),
+                                )
+                              ]),
                           title: Text(
-                              '${rawData.years[i].months[j].month} ${rawData.years[i].year}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                              '${rawData.years[i].months[j].month} ${rawData.years[i].year}',
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16))),
                           children: <Widget>[
                             Container(
-                              margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(10), bottom: ScreenUtil.instance.setHeight(10)),
+                              margin: EdgeInsets.only(
+                                  left: ScreenUtil.instance.setWidth(20),
+                                  right: ScreenUtil.instance.setWidth(10),
+                                  bottom: ScreenUtil.instance.setHeight(10)),
                               child: ListView.builder(
                                 shrinkWrap: true,
                                 itemCount:
                                     rawData.years[i].months[j].days.length,
                                 itemBuilder: (context, k) {
-                                  return Container(child: ListTile(
+                                  return Container(
+                                      child: ListTile(
                                     title: Text(
-                                        '${rawData.years[i].months[j].days[k].day}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                                        '${rawData.years[i].months[j].days[k].day}',
+                                        style: TextStyle(
+                                            fontSize:
+                                                ScreenUtil.instance.setSp(16))),
                                     trailing: Icon(
                                       Icons.arrow_forward_ios,
                                       size: ScreenUtil.instance.setHeight(16),
@@ -461,9 +505,18 @@ class CollateralAlert extends StatelessWidget {
                       } else {
                         return Card(
                           child: ListTile(
-                            leading: Column(mainAxisAlignment: MainAxisAlignment.center, children: [Icon(Icons.calendar_today, size: ScreenUtil.instance.setSp(22.5),)]),
+                            leading: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.calendar_today,
+                                    size: ScreenUtil.instance.setSp(22.5),
+                                  )
+                                ]),
                             title: Text(
-                                '${rawData.years[i].months[j].month} ${rawData.years[i].year}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                                '${rawData.years[i].months[j].month} ${rawData.years[i].year}',
+                                style: TextStyle(
+                                    fontSize: ScreenUtil.instance.setSp(16))),
                           ),
                         );
                       }
