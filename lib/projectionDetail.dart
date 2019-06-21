@@ -163,7 +163,7 @@ class ProjectionDetail extends StatelessWidget {
 
     return Scaffold(
       appBar: PreferredSize(
-          preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(210)),
+          preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(215)),
           child: AppBar(
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
@@ -178,12 +178,10 @@ class ProjectionDetail extends StatelessWidget {
                         right: ScreenUtil.instance.setWidth(15)),
                     child: Container(
                       padding: EdgeInsets.all(10),
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
+                      child: 
                             Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: <Widget>[
                                 Container(
                                     child: Text(
@@ -193,7 +191,6 @@ class ProjectionDetail extends StatelessWidget {
                                   ),
                                 )),
                                 Container(
-                                    margin: EdgeInsets.only(top: 5),
                                     child: Text(
                                       'Remark : $remark',
                                       style: TextStyle(
@@ -201,7 +198,6 @@ class ProjectionDetail extends StatelessWidget {
                                       ),
                                     )),
                                 Container(
-                                    margin: EdgeInsets.only(top: 5),
                                     child: Text(
                                       'Project : $projectName',
                                       style: TextStyle(
@@ -210,7 +206,7 @@ class ProjectionDetail extends StatelessWidget {
                                     )),
                               ],
                             )
-                          ]),
+                          
                     )),
               ),
             ),
