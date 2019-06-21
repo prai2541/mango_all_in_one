@@ -91,7 +91,9 @@ class Projection extends StatelessWidget {
             child: ListView.builder(
                 itemCount: projects.length,
                 itemBuilder: (context, i) {
-                  return Card(
+                  return Container(
+                    margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(5)),
+                    child: Card(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
                       child: ListTile(
@@ -121,7 +123,7 @@ class Projection extends StatelessWidget {
                                     projects[i],
                                   )));
                         },
-                      ));
+                      )));
                 }),
           )
         ]));
