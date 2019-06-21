@@ -290,12 +290,6 @@ class NotificationPage extends StatelessWidget {
           appBar: AppBar(
             backgroundColor: Color(0xff46B5A6),
             iconTheme: IconThemeData(color: Colors.white),
-            leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
             actions: <Widget>[
               IconButton(
                   icon: Icon(

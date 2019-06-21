@@ -255,13 +255,14 @@ class DCSysState extends State<DCSys> {
                               style: TextStyle(
                                   fontSize: ScreenUtil.instance.setSp(16),
                                   fontWeight: FontWeight.w300,
+                                  fontFamily: 'Prompt',
                                   color: Colors.black),
                             ),
 
                             items: joblist
                                 .map<DropdownMenuItem<String>>((String value) {
                               return DropdownMenuItem<String>(
-                                  value: value, child: Text('$value'));
+                                  value: value, child: Text('$value', style: TextStyle(fontFamily: 'Prompt')));
                             }).toList(),
                             onChanged: (String newValue) {
                               setState(() {

@@ -206,6 +206,8 @@ class EditDCEntryState extends State<EditDCEntry> {
               //   child: Icon(Icons.add_a_photo),
               // ),
               appBar: AppBar(
+                iconTheme: IconThemeData(color: Colors.white),
+                title: Text('DC SYSTEM', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16), color: Colors.white)),
                 // leading: IconButton(
                 //   icon: Icon(Icons.arrow_back_ios),
                 //   onPressed: () {
@@ -220,7 +222,7 @@ class EditDCEntryState extends State<EditDCEntry> {
                   //       Navigator.of(context).pop();
                   //     }),
                   FlatButton(
-                    child: Text('Save', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
+                    child: Text('Save', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16), color: Colors.white)),
                     onPressed: () {
                         Navigator.of(context).pop();
                       },

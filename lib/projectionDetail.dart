@@ -108,6 +108,7 @@ class ProjectionDetail extends StatelessWidget {
                   ))),
           Flexible(
               child: ListView.builder(
+                physics: BouncingScrollPhysics(),
             itemCount: datas.length,
             itemBuilder: (context, index) {
               return Container(
@@ -165,6 +166,8 @@ class ProjectionDetail extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(215)),
           child: AppBar(
+            title: Text('Projection', style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
+            iconTheme: IconThemeData(color: Colors.white),
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
               title: Center(

@@ -214,6 +214,8 @@ class NewDCEntryState extends State<NewDCEntry> {
               //   child: Icon(Icons.add_a_photo),
               // ),
               appBar: AppBar(
+                iconTheme: IconThemeData(color: Colors.white),
+                title: Text('DC SYSTEM', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16), color: Colors.white)),
                 // leading: IconButton(
                 //   icon: Icon(Icons.arrow_back_ios),
                 //   onPressed: () {
@@ -228,7 +230,7 @@ class NewDCEntryState extends State<NewDCEntry> {
                   //       Navigator.of(context).pop();
                   //     }),
                   FlatButton(
-                    child: Text('Save', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
+                    child: Text('Save', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16), color: Colors.white)),
                     onPressed: () {
                         widget.callback(widget.index);
                         Navigator.of(context).pop();
