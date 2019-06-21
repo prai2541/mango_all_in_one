@@ -355,7 +355,7 @@ class NormalAlert extends StatelessWidget {
               style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
           children: [
             Container(
-                margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(15), right: ScreenUtil.instance.setWidth(15), bottom: 10),
                 child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: rawData.years[i].months.length,
@@ -377,7 +377,7 @@ class NormalAlert extends StatelessWidget {
                           children: <Widget>[
                             Container(
                               margin: EdgeInsets.only(
-                                  left: ScreenUtil.instance.setWidth(20),
+                                  left: ScreenUtil.instance.setWidth(30),
                                   right: ScreenUtil.instance.setWidth(10),
                                   bottom: ScreenUtil.instance.setHeight(10)),
                               child: ListView.builder(
