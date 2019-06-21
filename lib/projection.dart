@@ -27,51 +27,44 @@ class Projection extends StatelessWidget {
 
     return Scaffold(
         appBar: PreferredSize(
-            preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(170)),
+            preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(180)),
             child: AppBar(
               iconTheme: IconThemeData(color: Colors.white),
               flexibleSpace: FlexibleSpaceBar(
                 centerTitle: true,
-                title: Center(
-                  child: Card(
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      margin: EdgeInsets.only(
-                          top: ScreenUtil.instance.setHeight(100),
-                          left: ScreenUtil.instance.setWidth(15),
-                          right: ScreenUtil.instance.setWidth(15)),
-                      child: Container(
-                        padding:
-                            EdgeInsets.all(ScreenUtil.instance.setHeight(10)),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  Container(
-                                      child: Text(
-                                    'Doc. No. : $docnumber',
-                                    style: TextStyle(
-                                      fontSize: ScreenUtil.instance.setSp(16),
-                                    ),
-                                  )),
-                                  Container(
-                                      margin: EdgeInsets.only(
-                                          top: ScreenUtil.instance
-                                              .setHeight(3)),
-                                      child: Text(
-                                        'Remark : $remark',
-                                        style: TextStyle(
-                                          fontSize:
-                                              ScreenUtil.instance.setSp(16),
-                                        ),
-                                      )),
-                                ],
-                              )
-                            ]),
+                title: Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10)),
+                  margin: EdgeInsets.only(
+                      top: ScreenUtil.instance.setHeight(100),
+                      left: ScreenUtil.instance.setWidth(15),
+                      right: ScreenUtil.instance.setWidth(15)),
+                  child: Container(
+                      padding:
+                          EdgeInsets.all(ScreenUtil.instance.setHeight(10)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Container(
+                              child: Text(
+                            'Doc. No. : $docnumber',
+                            style: TextStyle(
+                              fontSize: ScreenUtil.instance.setSp(16),
+                            ),
+                          )),
+                          Container(
+                              // margin: EdgeInsets.only(
+                              //     top: ScreenUtil.instance
+                              //         .setHeight(1)),
+                              child: Text(
+                            'Remark : $remark',
+                            style: TextStyle(
+                              fontSize: ScreenUtil.instance.setSp(16),
+                            ),
+                          )),
+                        ],
                       )),
                 ),
               ),
@@ -99,30 +92,36 @@ class Projection extends StatelessWidget {
                 itemCount: projects.length,
                 itemBuilder: (context, i) {
                   return Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
                       child: ListTile(
-                    contentPadding: EdgeInsets.only(right: ScreenUtil.instance.setWidth(10)),
-                    leading: Container(
-                      width: ScreenUtil.instance.setWidth(15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
-                        color: Colors.blue,
-                      ),
-                      
-                    ),
-                    title: Text(projects[i],
-                        style:
-                            TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
-                    trailing: Icon(Icons.arrow_forward_ios, size: ScreenUtil.instance.setSp(18),),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => new ProjectionDetail(
-                                docnumber,
-                                remark,
-                                projects[i],
-                              )));
-                    },
-                  ));
+                        contentPadding: EdgeInsets.only(
+                            right: ScreenUtil.instance.setWidth(10)),
+                        leading: Container(
+                          width: ScreenUtil.instance.setWidth(15),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(10),
+                                bottomLeft: Radius.circular(10)),
+                            color: Colors.blue,
+                          ),
+                        ),
+                        title: Text(projects[i],
+                            style: TextStyle(
+                                fontSize: ScreenUtil.instance.setSp(16))),
+                        trailing: Icon(
+                          Icons.arrow_forward_ios,
+                          size: ScreenUtil.instance.setSp(18),
+                        ),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => new ProjectionDetail(
+                                    docnumber,
+                                    remark,
+                                    projects[i],
+                                  )));
+                        },
+                      ));
                 }),
           )
         ]));
