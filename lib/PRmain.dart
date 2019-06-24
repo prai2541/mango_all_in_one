@@ -227,9 +227,9 @@ class PRmainState extends State<PRmain>{
                   child: ListBody(
                     
                     children: <Widget>[
-                      SizedBox(height: ScreenUtil.instance.setWidth(30),),
+                      SizedBox(height: ScreenUtil.instance.setHeight(30),),
                       Column(mainAxisAlignment: MainAxisAlignment.center, children: [Text('Purchase', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(40), color: Color(0xFF00b89c))), Text('Requisition', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(40), color: Color(0xFF00b89c)))]),
-                      SizedBox(height: ScreenUtil.instance.setWidth(30),),
+                      SizedBox(height: ScreenUtil.instance.setHeight(30),),
                       
                     ],
                   ),
