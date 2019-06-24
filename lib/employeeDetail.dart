@@ -36,12 +36,13 @@ class EmployeeDetail extends StatelessWidget {
       allowFontScaling: true,
     )..init(context);
 
-    return MaterialApp(
-        home: Scaffold(
+    return Scaffold(
             appBar: PreferredSize(
+              
               preferredSize:
                   Size.fromHeight(ScreenUtil.instance.setHeight(260)),
               child: AppBar(
+                 iconTheme: IconThemeData(color: Colors.white),
                 actions: <Widget>[
                   IconButton(
                     icon: Icon(
@@ -55,7 +56,7 @@ class EmployeeDetail extends StatelessWidget {
                     },
                   )
                 ],
-                title: Text('Working History'),
+                title: Text('Working History', style: TextStyle(color: Colors.white),),
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
                   title: Card(
@@ -105,18 +106,10 @@ class EmployeeDetail extends StatelessWidget {
                       )),
                 ),
                 backgroundColor: Color(0xFF46B5A6),
-                leading: IconButton(
-                  icon: Icon(
-                    Icons.arrow_back_ios,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+                
               ),
             ),
-            body: WorkingCalendar1()));
+            body: WorkingCalendar1());
   }
 }
 

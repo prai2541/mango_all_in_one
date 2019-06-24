@@ -1,5 +1,5 @@
 
-import 'dart:io';
+//import 'dart:io';
 
 import 'package:app_ui/matadd.dart';
 import 'package:app_ui/materialList.dart';
@@ -153,7 +153,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
           '$matName',
           style: TextStyle(
           fontSize: ScreenUtil.instance.setSp(16),
-          color: Colors.grey
+          color: Colors.black
           ),
         ),
         decoration: new BoxDecoration(
