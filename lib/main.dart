@@ -199,7 +199,8 @@ class _MyHomePageState extends State<MyHomePage> {
       allowFontScaling: true,
     )..init(context);
 
-    return Badge(
+     if (i !=0) {
+       return Badge(
       position: BadgePosition.topRight(top: ScreenUtil.instance.setHeight(-10), right: ScreenUtil.instance.setWidth(-5)),
       animationDuration: Duration(milliseconds: 300),
       animationType: BadgeAnimationType.scale,
@@ -207,7 +208,7 @@ class _MyHomePageState extends State<MyHomePage> {
       badgeContent: Container(
         width: ScreenUtil.instance.setWidth(26),
               child: Center(
-                              child: AutoSizeText(
+                child: AutoSizeText(
           '$i',
           maxLines: 1,
           style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(14)),
@@ -233,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(icon,
-                                size: ScreenUtil.instance.setSp(50),
+                                size: ScreenUtil.instance.setSp(45),
                                 color: Theme.of(context).primaryColor),
                             Text(
                               '$name',
@@ -247,9 +248,43 @@ class _MyHomePageState extends State<MyHomePage> {
                 )),
           )),
     );
+    } else {
+      return Container(
+          height: 300.0,
+          //color: Colors.transparent,
+          child: InkWell(
+            borderRadius: new BorderRadius.all(Radius.circular(ScreenUtil.instance.setSp(20.0))),
+            onTap: onPressed,
+            child: new Container(
+                decoration: new BoxDecoration(
+                    border: new Border.all(
+                        color: Theme.of(context).primaryColor, width: 2.5),
+                    borderRadius:
+                        new BorderRadius.all(Radius.circular(ScreenUtil.instance.setSp(20.0)))),
+                child: new Center(
+                  child: Container(
+                      alignment: Alignment(0.0, 0.0),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(icon,
+                                size: ScreenUtil.instance.setSp(45),
+                                color: Theme.of(context).primaryColor),
+                            Text(
+                              '$name',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: ScreenUtil.instance.setSp(14),
+                              ),
+                            )
+                          ])),
+                )),
+          ));
+    }
   }
 
-  int i = 1;
+  int i = 0;
 
   @override
   Widget build(BuildContext context) {
