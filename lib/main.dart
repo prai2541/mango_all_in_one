@@ -125,8 +125,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _current = 0;
 
   Widget getFullScreenCarousel(BuildContext mediaContext) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -190,8 +190,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget gridViewButton(String name, IconData icon, Function onPressed) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -288,8 +288,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,

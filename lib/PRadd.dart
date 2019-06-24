@@ -82,12 +82,12 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
 
  
   List<MaterialObj> data = [
-    MaterialObj(matcode: '1', matname: '1', qty: 1, unit: 1, ppn: 1),
+    //MaterialObj(matcode: '1', matname: '1', qty: 1, unit: 1, ppn: 1),
   ];
 
   Widget matCodeField(ctrl) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -120,8 +120,8 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
   }
 
   Widget matNameField(ctrl) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -129,7 +129,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
       allowFontScaling: true,
    )..init(context);
     
-    if (customizable) {
+    if (customizable || matName == 'Material Name'){
       return Container(
         padding: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(25), top: ScreenUtil.instance.setHeight(25), left: ScreenUtil.instance.setWidth(12), right: ScreenUtil.instance.setWidth(10)),
         child: Text(
@@ -167,8 +167,8 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
   }
 
   Widget textField(text, ctrl) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -193,9 +193,59 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
     );
   }
 
+  Widget addButton() {
+    if (!customizable) {
+      return InkWell(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        onTap: () async {
+          if(!customizable) {
+            // only do shit if customizable is false
+            // Navigator.of(context).pushNamed('/mat-add');
+            MaterialList result = await Navigator.push(context, MaterialPageRoute(builder: (context) => MatAdd()));
+            if(result != null) {  
+              setState(() {
+              mcCtrl.text = result.matcode; 
+              matName = result.matname;
+              });
+            } 
+          }
+        },
+        child: Container(
+          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Color(0xFF00b89c))
+            ),
+          child: Row(
+            children: <Widget>[
+              Text('เพิ่ม ', style: TextStyle(color: Color(0xFF00b89c),fontSize: ScreenUtil.instance.setSp(16))),
+              Icon(Icons.playlist_add, color: Color(0xFF00b89c),),
+              SizedBox(width: 10,)
+            ],
+          ),
+        )
+      );
+    } else {
+      return Container(
+          padding: EdgeInsets.only(top: 5, bottom: 5, left: 10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Color(0xFF00b89c).withOpacity(0.5))
+            ),
+          child: Row(
+            children: <Widget>[
+              Text('เพิ่ม ', style: TextStyle(color: Color(0xFF00b89c).withOpacity(0.5),fontSize: ScreenUtil.instance.setSp(16))),
+              Icon(Icons.playlist_add, color: Color(0xFF00b89c).withOpacity(0.5)),
+              SizedBox(width: 10)
+            ],
+          ),
+        );
+    }
+  }
+
   Widget addPage() {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -225,7 +275,8 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                               setState(() {
                               customizable = value;
                               mcCtrl.text = '';
-                              mnCtrl.text = '';  
+                              mnCtrl.text = '';
+                              matName = 'Material Name';  
                               });
                             },
                             activeColor: Color(0xFF00b89c),
@@ -236,38 +287,8 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                         ],
                       ),
                     ),
-                    InkWell(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      onTap: () async {
-                        if(!customizable) {
-                          // only do shit if customizable is false
-                          // Navigator.of(context).pushNamed('/mat-add');
-                          MaterialList result = await Navigator.push(context, MaterialPageRoute(builder: (context) => MatAdd()));
-                          if(result != null) {  
-                            setState(() {
-                            mcCtrl.text = result.matcode; 
-                            matName = result.matname;
-                          });
-
-                          } 
-                         
-                        }
-                      },
-                      child: Container(
-                        padding: EdgeInsets.only(top: 5, bottom: 5, left: 10),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: Color(0xFF00b89c))
-                        ),
-                        child: Row(
-                          children: <Widget>[
-                            Text('เพิ่ม ', style: TextStyle(color: Color(0xFF00b89c),fontSize: ScreenUtil.instance.setSp(16))),
-                            Icon(Icons.playlist_add, color: Color(0xFF00b89c),),
-                            SizedBox(width: 10,)
-                          ],
-                        ),
-                      )
-                    )
+                    addButton()
+                    
                   ]
                 ),
                 SizedBox(height: ScreenUtil.instance.setHeight(30)),
@@ -347,8 +368,8 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
 
   Widget listPage() {
 
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -529,6 +550,33 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
     );
   }
   
+  Widget listBadge() {
+    if (data.length == 0) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('List', style: TextStyle(fontFamily: 'Prompt')),
+          //SizedBox(width: ScreenUtil.instance.setWidth(10)),
+          
+        ]);
+    } else {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('List', style: TextStyle(fontFamily: 'Prompt')),
+          SizedBox(width: ScreenUtil.instance.setWidth(10)),
+          Badge(
+            position: BadgePosition.topRight(top: -5, right: -5),
+            animationDuration: Duration(milliseconds: 300),
+            animationType: BadgeAnimationType.scale,
+            padding: EdgeInsets.all(7.5),
+            badgeContent: Text(
+              '${data.length}',
+              style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(12)),
+            ))
+          ]);
+    }
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -558,22 +606,8 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                 controller: tabctrl,
                 tabs: [
                   Tab(child: Text('Add', style: TextStyle(fontFamily: 'Prompt'))),
-                  Tab(child: 
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text('List', style: TextStyle(fontFamily: 'Prompt')),
-                        SizedBox(width: ScreenUtil.instance.setWidth(10)),
-                        Badge(
-                          position: BadgePosition.topRight(top: -5, right: -5),
-                          animationDuration: Duration(milliseconds: 300),
-                          animationType: BadgeAnimationType.scale,
-                          padding: EdgeInsets.all(7.5),
-                          badgeContent: Text(
-                            '${data.length}',
-                            style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(12)),
-                          ),)
-                    ])
+                  Tab(child: listBadge()
+                    
                   ),
                 ],
               ),

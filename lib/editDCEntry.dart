@@ -40,8 +40,8 @@ class EditDCEntryState extends State<EditDCEntry> {
   File img2;
 
   Widget caption1() {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -107,8 +107,8 @@ class EditDCEntryState extends State<EditDCEntry> {
   }
 
   Widget caption2() {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -185,8 +185,8 @@ class EditDCEntryState extends State<EditDCEntry> {
   }
 
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,

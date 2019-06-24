@@ -122,7 +122,7 @@ class WorkingCalendar1 extends StatefulWidget {
 
 class WorkingCalendar1State extends State<WorkingCalendar1> {
 
-  DateTime _currentDate = DateTime.now();
+  //DateTime _currentDate = DateTime.now();
   DateTime _currentDate2 = DateTime.now();
   String _currentMonth = '';
 

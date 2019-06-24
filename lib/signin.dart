@@ -30,8 +30,8 @@ class SigninState extends State<Signin> {
   bool textobs = true;
 
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,

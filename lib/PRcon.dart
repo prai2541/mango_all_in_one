@@ -45,8 +45,8 @@ class PRcontinueState extends State<PRcontinue>{
 
 
   Widget createAutoComField(textctrl, hint, key) {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -154,15 +154,15 @@ class PRcontinueState extends State<PRcontinue>{
         }
 
         );
-    if (picked != null && picked != selectedDate)
+    if (picked != null )
       setState(() {
         selectedDate = picked;
       });
   }
 
   Widget datepicker() {
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -214,7 +214,7 @@ class PRcontinueState extends State<PRcontinue>{
                     )
                   ]),
                   decoration: new BoxDecoration(
-                    border: Border.all(color: Colors.black),
+                    border: Border.all(color: Colors.grey[600]),
                     borderRadius: new BorderRadius.all(
                       const Radius.circular(5.0)
                     )
@@ -226,8 +226,8 @@ class PRcontinueState extends State<PRcontinue>{
 
   Widget build(BuildContext context) {
 
-    double defaultScreenWidth = 412.0;
-    double defaultScreenHeight = 846.0;
+    double defaultScreenWidth = 1440/3.5;
+    double defaultScreenHeight = 2960/3.5;
     
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
