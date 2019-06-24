@@ -40,23 +40,21 @@ class NormalAlertDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
           Container(
-            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(30), top: ScreenUtil.instance.setHeight(20), bottom: ScreenUtil.instance.setHeight(10)),
-            child: Text('$date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)))
+            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(10), top: ScreenUtil.instance.setHeight(20), bottom: ScreenUtil.instance.setHeight(10)),
+            child: ListTile(
+              leading: Icon(Icons.calendar_today, color: Colors.red,),
+              title:Text('$date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
+              )
           ),
-          Container(
-            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(10), right: ScreenUtil.instance.setWidth(10)),
-            child: Divider(
-              height: 16,
-              color: Colors.black,
-            ),
-          ),
+         
           Expanded(child: ListView.builder(
             physics: BouncingScrollPhysics(),
             shrinkWrap: true,
             itemCount: data.length,
             itemBuilder: (context, i) {
               return Card(
-                elevation: 2,
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                elevation: 3,
                 margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(20), top: ScreenUtil.instance.setHeight(10), bottom: ScreenUtil.instance.setHeight(10)),
                 child: Container(
                     padding: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(20), top: ScreenUtil.instance.setHeight(20), bottom: ScreenUtil.instance.setHeight(20)),
@@ -83,7 +81,7 @@ class NormalAlertDetail extends StatelessWidget {
                         Text(
                             'Bank / Branch: ${data[i].bank} / ${data[i].branch}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
                         SizedBox(height: ScreenUtil.instance.setHeight(1.5),),
-                        Text('Amount: ${data[i].amount}', style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
+                        Text('Amount: '+ data[i].amount.replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},'), style: TextStyle(fontSize: ScreenUtil.instance.setSp(15))),
                       ],
                     )),
               );

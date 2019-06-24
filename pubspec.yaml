@@ -40,6 +40,8 @@ dependencies:
 
   table_calendar: ^1.2.3
 
+  auto_size_text: ^2.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

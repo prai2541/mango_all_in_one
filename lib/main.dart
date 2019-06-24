@@ -1,6 +1,4 @@
-//import 'dart:developer';
 import 'dart:ui';
-import 'dart:ui' as prefix0;
 
 import 'package:app_ui/matadd.dart';
 import 'package:app_ui/projection.dart';
@@ -10,17 +8,14 @@ import 'package:badges/badges.dart';
 import 'package:flutter/services.dart';
 import 'dc_detail.dart';
 import './notification.dart';
-//import 'editDCEntry.dart';
-import 'normalAlertDetail.dart';
 import 'signin.dart';
 import 'package:flutter/cupertino.dart';
 import 'dcsystem.dart';
-import 'portalPopup.dart';
-//import 'newDCEntry.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'PRmain.dart';
 import 'PRcon.dart';
 import 'PRadd.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 final List<String> imgList = [
   'assets/AR-Account-Receivable-System.JPG',
@@ -209,10 +204,16 @@ class _MyHomePageState extends State<MyHomePage> {
       position: BadgePosition.topRight(top: ScreenUtil.instance.setHeight(-10), right: ScreenUtil.instance.setWidth(-5)),
       animationDuration: Duration(milliseconds: 300),
       animationType: BadgeAnimationType.scale,
-      padding: EdgeInsets.all(ScreenUtil.instance.setWidth(7.5)),
-      badgeContent: Text(
-        '$i',
-        style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(17.5)),
+      padding: EdgeInsets.all(ScreenUtil.instance.setWidth(5)),
+      badgeContent: Container(
+        width: ScreenUtil.instance.setWidth(26),
+              child: Center(
+                              child: AutoSizeText(
+          '$i',
+          maxLines: 1,
+          style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(14)),
+        ),
+              ),
       ),
       child: Container(
           height: 300.0,

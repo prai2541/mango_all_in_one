@@ -56,7 +56,7 @@ class ProjectionDetail extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
-                                fontSize: ScreenUtil.instance.setSp(16)),
+                                fontSize: ScreenUtil.instance.setSp(14)),
                           )),
                       Container(
                           height: ScreenUtil.instance.setHeight(50),
@@ -71,7 +71,7 @@ class ProjectionDetail extends StatelessWidget {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: ScreenUtil.instance.setSp(16)),
+                                    fontSize: ScreenUtil.instance.setSp(14)),
                               )),
                               Divider(
                                 color: Colors.white,
@@ -86,7 +86,7 @@ class ProjectionDetail extends StatelessWidget {
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize:
-                                            ScreenUtil.instance.setSp(16)),
+                                            ScreenUtil.instance.setSp(14)),
                                   ),
                                   Container(
                                       height: ScreenUtil.instance.setHeight(20),
@@ -98,7 +98,7 @@ class ProjectionDetail extends StatelessWidget {
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
                                         fontSize:
-                                            ScreenUtil.instance.setSp(16)),
+                                            ScreenUtil.instance.setSp(14)),
                                   )
                                 ],
                               )
@@ -125,7 +125,7 @@ class ProjectionDetail extends StatelessWidget {
                                 child: Text(
                               datas[index].monthYear,
                               style: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(16)),
+                                  fontSize: ScreenUtil.instance.setSp(14)),
                             ))),
                         Expanded(
                             flex: 3,
@@ -133,7 +133,7 @@ class ProjectionDetail extends StatelessWidget {
                                 child: Text(
                               datas[index].backLog.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},'),
                               style: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(16)),
+                                  fontSize: ScreenUtil.instance.setSp(14)),
                             ))),
                         Expanded(
                             flex: 3,
@@ -141,7 +141,7 @@ class ProjectionDetail extends StatelessWidget {
                                 child: Text(datas[index].costLog.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},'),
                                     style: TextStyle(
                                         fontSize:
-                                            ScreenUtil.instance.setSp(16))))),
+                                            ScreenUtil.instance.setSp(14))))),
                       ],
                     ),
                     Divider(),

@@ -1,93 +1,22 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
 import 'package:flutter_calendar_carousel/classes/event.dart';
-import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
-var events = {
-      new DateTime(2019, 6, 4): [
-        new Event(
-          date: new DateTime(2019, 6, 4),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 5): [
-        new Event(
-          date: new DateTime(2019, 6, 5),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 6): [
-        new Event(
-          date: new DateTime(2019, 6, 6),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 7): [
-        new Event(
-          date: new DateTime(2019, 6, 7),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 10): [
-        new Event(
-          date: new DateTime(2019, 6, 10),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 11): [
-        new Event(
-          date: new DateTime(2019, 6, 11),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 12): [
-        new Event(
-          date: new DateTime(2019, 6, 12),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 13): [
-        new Event(
-          date: new DateTime(2019, 6, 13),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 14): [
-        new Event(
-          date: new DateTime(2019, 6, 14),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 17): [
-        new Event(
-          date: new DateTime(2019, 6, 17),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 18): [
-        new Event(
-          date: new DateTime(2019, 6, 18),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 19): [
-        new Event(
-          date: new DateTime(2019, 6, 19),
-          title: 'Event 1',
-        )
-      ],
-      new DateTime(2019, 6, 20): [
-        new Event(
-          date: new DateTime(2019, 6, 20),
-          title: 'Event 1',
-        )
-      ],
-    };
+var _markedDate =  [DateTime(2019,6,4),
+      DateTime(2019,6,5),
+      DateTime(2019,6,6),
+      DateTime(2019,6,7),
+      DateTime(2019,6,10),
+      DateTime(2019,6,11),
+      DateTime(2019,6,12),
+      DateTime(2019,6,13),
+      DateTime(2019,6,14),
+      DateTime(2019,6,17),
+  ];
 
 class EmployeeDetail extends StatelessWidget {
   String name;
@@ -117,7 +46,7 @@ class EmployeeDetail extends StatelessWidget {
                   IconButton(
                     icon: Icon(
                       Icons.home,
-                      color: Colors.white.withOpacity(0.75),
+                      color: Colors.white,
                       size: 30.0,
                     ),
                     onPressed: () {
@@ -162,7 +91,7 @@ class EmployeeDetail extends StatelessWidget {
                                         fontSize: ScreenUtil.instance.setSp(20),
                                         fontWeight: FontWeight.bold),
                                   ),
-                                  Text('Working Day : ${events.length} Days',
+                                  Text('Working Day : ${_markedDate.length} Days',
                                       style: TextStyle(
                                           fontSize:
                                               ScreenUtil.instance.setSp(16))),
@@ -204,9 +133,7 @@ class WorkingCalendar1State extends State<WorkingCalendar1> {
   DateTime _currentDate2 = DateTime.now();
   String _currentMonth = '';
 
-  EventList<Event> _markedDateMap = new EventList<Event>(
-    events: events
-  );
+  
 
   CalendarCarousel _calendarCarousel;
 
@@ -220,18 +147,25 @@ class WorkingCalendar1State extends State<WorkingCalendar1> {
       ),
       thisMonthDayBorderColor: Colors.grey,
       markedDateShowIcon: true,
-      markedDateIconBuilder: ((event) => CircleAvatar(
-        backgroundColor: Colors.green,
-        child: Text('${event.date.day}', style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(16))),
+      // markedDateIconBuilder: ((event) => CircleAvatar(
+      //   backgroundColor: Colors.green,
+      //   child: Text('${}', style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(14))),
         
-      )),
+      // )),
 
 //          weekDays: null, /// for pass null when you do not want to render weekDays
 //          headerText: Container( /// Example for rendering custom header
 //            child: Text('Custom Header'),
 //          ),
 //          markedDates: _markedDate,
-      markedDatesMap: _markedDateMap,
+      markedDates: _markedDate,
+
+      markedDateWidget: CircleAvatar(
+        backgroundColor: Colors.green,
+        child: Text('✓', style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(12)),),
+        radius: ScreenUtil.instance.setSp(8),
+      ),
+      // markedDatesMap: _markedDateMap,
       selectedDateTime: _currentDate2,
 //          daysHaveCircularBorder: false, /// null for not rendering any border, true for circular border, false for rectangular border
       customGridViewPhysics: NeverScrollableScrollPhysics(),
@@ -240,8 +174,6 @@ class WorkingCalendar1State extends State<WorkingCalendar1> {
       onCalendarChanged: (DateTime date) {
         this.setState(() => _currentMonth = DateFormat.yMMM().format(date));
       },
-//          markedDateIconMargin: 9,
-//          markedDateIconOffset: 3,
     );
 
     return Container(
