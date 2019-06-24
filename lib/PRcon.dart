@@ -143,7 +143,7 @@ class PRcontinueState extends State<PRcontinue>{
     final DateTime picked = await showDatePicker(
         context: context,
         initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
+        firstDate: DateTime(selectedDate.year, selectedDate.month, selectedDate.day),
         lastDate: DateTime(2101),
         builder: (context, child) {
           return Theme(
