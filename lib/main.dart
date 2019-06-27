@@ -120,8 +120,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _current = 0;
 
   Widget getFullScreenCarousel(BuildContext mediaContext) {
-    double defaultScreenWidth = 1440/3.5;
-    double defaultScreenHeight = 2960/3.5;
+    double defaultScreenWidth = 1440 / 3.5;
+    double defaultScreenHeight = 2960 / 3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -189,13 +189,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Widget gridViewButton(String name, IconData icon, [Function onPressed]) {
+    double defaultScreenWidth = 1440 / 3.5;
+    double defaultScreenHeight = 2960 / 3.5;
+
     Color color = Theme.of(context).primaryColor;
+
     if (onPressed == null) {
       color = Colors.grey;
     }
-  Widget gridViewButton(String name, IconData icon, Function onPressed) {
-    double defaultScreenWidth = 1440/3.5;
-    double defaultScreenHeight = 2960/3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -203,22 +204,60 @@ class _MyHomePageState extends State<MyHomePage> {
       allowFontScaling: true,
     )..init(context);
 
-     if (i !=0) {
-       return Badge(
-      position: BadgePosition.topRight(top: ScreenUtil.instance.setHeight(-10), right: ScreenUtil.instance.setWidth(-5)),
-      animationDuration: Duration(milliseconds: 300),
-      animationType: BadgeAnimationType.scale,
-      padding: EdgeInsets.all(ScreenUtil.instance.setWidth(5)),
-      badgeContent: Container(
-        width: ScreenUtil.instance.setWidth(26),
-              child: Center(
-                child: AutoSizeText(
-          '$i',
-          maxLines: 1,
-          style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(14)),
-        ),
-      ),
-      child: Container(
+    if (i != 0) {
+      return Badge(
+        position: BadgePosition.topRight(
+            top: ScreenUtil.instance.setHeight(-10),
+            right: ScreenUtil.instance.setWidth(-5)),
+        animationDuration: Duration(milliseconds: 300),
+        animationType: BadgeAnimationType.scale,
+        padding: EdgeInsets.all(ScreenUtil.instance.setWidth(5)),
+        badgeContent: Container(
+            width: ScreenUtil.instance.setWidth(26),
+            child: Center(
+              child: AutoSizeText(
+                '$i',
+                maxLines: 1,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: ScreenUtil.instance.setSp(14)),
+              ),
+            )),
+        child: Container(
+            height: 300.0,
+            //color: Colors.transparent,
+            child: InkWell(
+              borderRadius: new BorderRadius.all(
+                  Radius.circular(ScreenUtil.instance.setSp(20.0))),
+              onTap: onPressed,
+              child: new Container(
+                  decoration: new BoxDecoration(
+                      border: new Border.all(color: color, width: 2.5),
+                      borderRadius: new BorderRadius.all(
+                          Radius.circular(ScreenUtil.instance.setSp(20.0)))),
+                  child: new Center(
+                    child: Container(
+                        alignment: Alignment(0.0, 0.0),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(icon,
+                                  size: ScreenUtil.instance.setSp(45),
+                                  color: color),
+                              Text(
+                                '$name',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: color,
+                                  fontSize: ScreenUtil.instance.setSp(14),
+                                ),
+                              )
+                            ])),
+                  )),
+            )),
+      );
+    } else {
+      return Container(
           height: 300.0,
           //color: Colors.transparent,
           child: InkWell(
@@ -238,46 +277,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             Icon(icon,
                                 size: ScreenUtil.instance.setSp(45),
-                                color: Theme.of(context).primaryColor),
+                                color: color),
                             Text(
                               '$name',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: color,
-                                fontSize: ScreenUtil.instance.setSp(14),
-                              ),
-                            )
-                          ])),
-                )),
-          )),
-    );
-    } else {
-      return Container(
-          height: 300.0,
-          //color: Colors.transparent,
-          child: InkWell(
-            borderRadius: new BorderRadius.all(Radius.circular(ScreenUtil.instance.setSp(20.0))),
-            onTap: onPressed,
-            child: new Container(
-                decoration: new BoxDecoration(
-                    border: new Border.all(
-                        color: Theme.of(context).primaryColor, width: 2.5),
-                    borderRadius:
-                        new BorderRadius.all(Radius.circular(ScreenUtil.instance.setSp(20.0)))),
-                child: new Center(
-                  child: Container(
-                      alignment: Alignment(0.0, 0.0),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(icon,
-                                size: ScreenUtil.instance.setSp(45),
-                                color: Theme.of(context).primaryColor),
-                            Text(
-                              '$name',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
                                 fontSize: ScreenUtil.instance.setSp(14),
                               ),
                             )
@@ -291,8 +296,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1440/3.5;
-    double defaultScreenHeight = 2960/3.5;
+    double defaultScreenWidth = 1440 / 3.5;
+    double defaultScreenHeight = 2960 / 3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
