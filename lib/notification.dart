@@ -302,6 +302,9 @@ class NotificationPage extends StatelessWidget {
                   })
             ],
             bottom: TabBar(
+              indicatorColor: Color(0xFFB8001C),
+                indicatorWeight: 3.0,
+                labelColor: Color(0xFFB8001C),
               tabs: <Widget>[
                 Tab(
                   child: Text(
@@ -335,7 +338,10 @@ class NotificationPage extends StatelessWidget {
             title: Text('Notification', style: TextStyle(color: Colors.white)),
           ),
           body: TabBarView(
-            children: <Widget>[NormalAlert(), CollateralAlert()],
+            children: <Widget>[
+              NormalAlert(), 
+              CollateralAlert()
+            ],
           ),
         ),
       ),

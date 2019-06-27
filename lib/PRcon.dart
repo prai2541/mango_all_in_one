@@ -6,29 +6,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PRcontinueL extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PRcontinue(title: 'Flutter Demo Home Page'),
+      body: PRcontinue(),
     );
   }
 }
 
 class PRcontinue extends StatefulWidget {
-  PRcontinue({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
   @override
   PRcontinueState createState() => PRcontinueState();
 }
@@ -64,17 +50,6 @@ class PRcontinueState extends State<PRcontinue>{
                     suffixIcon: IconButton(
                       icon: Icon(Icons.search),
                       onPressed: () {
-                        // if(prjnum != null) {
-                        //   setState(() {
-                        //    textctrl.text = field; 
-                        //   });
-                        //   gkey.currentState.clear();
-                        //   //textctrl.text = prjid;
-                        // } else{
-                        //   //prjid = searchTextField.textField.controller.text;
-                          
-                        // }
-                        
                       },
                     ),
                     //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
@@ -345,10 +320,6 @@ class PRcontinueState extends State<PRcontinue>{
 
               ],
             )
-            
-            
-
-
           ],
         )
       )

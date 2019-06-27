@@ -40,12 +40,16 @@ class NormalAlertDetail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
           Container(
-            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(10), top: ScreenUtil.instance.setHeight(20), bottom: ScreenUtil.instance.setHeight(10)),
+            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(10), top: ScreenUtil.instance.setHeight(10), bottom: ScreenUtil.instance.setHeight(0)),
             child: ListTile(
               leading: Icon(Icons.calendar_today, color: Colors.red,),
               title:Text('$date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
               )
           ),
+          Container(
+            margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(20)),
+            child: Divider()
+            ),
          
           Expanded(child: ListView.builder(
             physics: BouncingScrollPhysics(),

@@ -65,11 +65,8 @@ class NewDCEntryState extends State<NewDCEntry> {
               badgeColor: Colors.white,
               position: BadgePosition.bottomRight(bottom: -15, right: -10),
               padding: EdgeInsets.all(5),
-              badgeContent: Icon(
-                Icons.add_a_photo,
-                color: Colors.black,
-                size: ScreenUtil.instance.setWidth(24)
-              ),
+              badgeContent: Icon(Icons.add_a_photo,
+                  color: Colors.black, size: ScreenUtil.instance.setWidth(24)),
               child: Container(
                   padding:
                       EdgeInsets.only(top: 5, bottom: 20, left: 5, right: 5),
@@ -100,11 +97,8 @@ class NewDCEntryState extends State<NewDCEntry> {
               badgeColor: Colors.white,
               position: BadgePosition.bottomRight(bottom: -5, right: -10),
               padding: EdgeInsets.all(5),
-              badgeContent: Icon(
-                Icons.edit,
-                color: Colors.black,
-                size: ScreenUtil.instance.setWidth(24)
-              ),
+              badgeContent: Icon(Icons.edit,
+                  color: Colors.black, size: ScreenUtil.instance.setWidth(24)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
                 child: Image.file(img1,
@@ -167,13 +161,39 @@ class NewDCEntryState extends State<NewDCEntry> {
               elevation: 5,
               position: BadgePosition.bottomRight(bottom: -5, right: -10),
               padding: EdgeInsets.all(5),
-              badgeContent: Icon(Icons.edit,
-              size: ScreenUtil.instance.setWidth(24)),
+              badgeContent:
+                  Icon(Icons.edit, size: ScreenUtil.instance.setWidth(24)),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
-                child: Image.file(img2, fit: BoxFit.contain, height: ScreenUtil.instance.setHeight(160)),
+                child: Image.file(img2,
+                    fit: BoxFit.contain,
+                    height: ScreenUtil.instance.setHeight(160)),
               )));
     }
+  }
+
+  Future<void> _missingInfo() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          elevation: 5,
+          title: Text('Missing Information'),
+          content: Text('Please make sure to fill in every field.'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text("OK"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future getImage1() async {
@@ -232,14 +252,20 @@ class NewDCEntryState extends State<NewDCEntry> {
                   FlatButton(
                     child: Text('Save', style: TextStyle(color: Colors.white)),
                     onPressed: () {
+                      if (img1 != null && img2 != null) {
                         widget.callback(widget.index);
                         Navigator.of(context).pop();
-                      },
+                      } else {
+                        _missingInfo();
+                      }
+                    },
                   )
                 ],
               ),
               body: Container(
-                  padding: EdgeInsets.only(left: ScreenUtil.instance.setWidth(32), right: ScreenUtil.instance.setWidth(32)),
+                  padding: EdgeInsets.only(
+                      left: ScreenUtil.instance.setWidth(32),
+                      right: ScreenUtil.instance.setWidth(32)),
                   child: ListView(children: <Widget>[
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -259,10 +285,13 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 controller: captionctrl1,
                                 maxLines: null,
                                 keyboardType: TextInputType.multiline,
-                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                                style: TextStyle(
+                                    fontSize: ScreenUtil.instance.setSp(16)),
                                 decoration: InputDecoration(
                                     hintText: 'Write a Caption',
-                                    hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                                    hintStyle: TextStyle(
+                                        fontSize:
+                                            ScreenUtil.instance.setSp(16))),
                               ),
                             )
                           ],
@@ -283,7 +312,8 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 }),
                             Text(
                               'Work     ',
-                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16)),
                             ),
                             Radio(
                                 value: 1,
@@ -295,7 +325,8 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 }),
                             Text(
                               'People     ',
-                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16)),
                             )
                           ],
                         ),
@@ -319,10 +350,13 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 controller: captionctrl2,
                                 maxLines: null,
                                 keyboardType: TextInputType.multiline,
-                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                                style: TextStyle(
+                                    fontSize: ScreenUtil.instance.setSp(16)),
                                 decoration: InputDecoration(
                                     hintText: 'Write a Caption',
-                                    hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                                    hintStyle: TextStyle(
+                                        fontSize:
+                                            ScreenUtil.instance.setSp(16))),
                               ),
                             )
                           ],
@@ -343,7 +377,8 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 }),
                             Text(
                               'Work     ',
-                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16)),
                             ),
                             Radio(
                                 value: 1,
@@ -355,7 +390,8 @@ class NewDCEntryState extends State<NewDCEntry> {
                                 }),
                             Text(
                               'People     ',
-                              style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16)),
                             )
                           ],
                         ),
@@ -382,7 +418,8 @@ class NewDCEntryState extends State<NewDCEntry> {
                           ),
                           Text(
                             '   ค่าแรงที่ 1',
-                            style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                            style: TextStyle(
+                                fontSize: ScreenUtil.instance.setSp(16)),
                           )
                         ]),
                         Row(children: <Widget>[
@@ -396,7 +433,8 @@ class NewDCEntryState extends State<NewDCEntry> {
                           ),
                           Text(
                             '   ค่าแรงที่ 2',
-                            style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                            style: TextStyle(
+                                fontSize: ScreenUtil.instance.setSp(16)),
                           )
                         ]),
                         SizedBox(
@@ -404,18 +442,21 @@ class NewDCEntryState extends State<NewDCEntry> {
                         ),
                         TextFormField(
                           controller: locationctrl1,
-                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                          style: TextStyle(
+                              fontSize: ScreenUtil.instance.setSp(16)),
                           decoration: InputDecoration(
                               prefixIcon: Icon(
                                 Icons.location_on,
                                 color: Colors.red,
                               ),
                               hintText: 'Enter location',
-                              hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
+                              hintStyle: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16))),
                         ),
-                        SizedBox(height: ScreenUtil.instance.setHeight(30),)
+                        SizedBox(
+                          height: ScreenUtil.instance.setHeight(30),
+                        )
                       ],
-                      
                     )
                   ]))))
     ]);

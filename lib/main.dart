@@ -67,9 +67,9 @@ List<T> map<T>(List list, Function handler) {
 
 void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-    .then((_) {
-      runApp(new SigninL());
-    });
+      .then((_) {
+    runApp(new SigninL());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -82,21 +82,16 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (BuildContext context) => new MyApp(),
         '/signin': (BuildContext context) => new Signin(),
-        '/dc-system/detail' : (BuildContext context) => new DCDetail(),
-        '/pr-main' : (BuildContext context) => new PRmainL(),
-        '/pr-main/con' : (BuildContext context) => new PRcontinueL(),
-        '/pr-add' : (BuildContext context) => new PRAdd(),
-        '/projection' : (BuildContext context) => new Projection(),
-        '/notification' : (BuildContext context) => new NotificationPage(),
-        '/dc-system' : (BuildContext context) => new DCSys(),
-        '/mat-add' : (BuildContext context) => new MatAdd(),
-
+        '/dc-system/detail': (BuildContext context) => new DCDetail(),
+        '/pr-main': (BuildContext context) => new PRmainL(),
+        '/pr-main/con': (BuildContext context) => new PRcontinueL(),
+        '/pr-add': (BuildContext context) => new PRAdd(),
+        '/projection': (BuildContext context) => new Projection(),
+        '/notification': (BuildContext context) => new NotificationPage(),
+        '/dc-system': (BuildContext context) => new DCSys(),
+        '/mat-add': (BuildContext context) => new MatAdd(),
       },
-      
-      theme: ThemeData(
-        primaryColor: Color(0xFF46B5A6),
-        fontFamily: 'Prompt'
-      ),
+      theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -136,7 +131,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Column(children: [
       Container(
-          margin: EdgeInsets.only(bottom: ScreenUtil.instance.setHeight(10), top: ScreenUtil.instance.setHeight(10), left: ScreenUtil.instance.setWidth(30), right: ScreenUtil.instance.setWidth(30)),
+          margin: EdgeInsets.only(
+              bottom: ScreenUtil.instance.setHeight(10),
+              top: ScreenUtil.instance.setHeight(10),
+              left: ScreenUtil.instance.setWidth(30),
+              right: ScreenUtil.instance.setWidth(30)),
           height: ScreenUtil.instance.setHeight(225),
           width: ScreenUtil.instance.setWidth(400),
           // decoration: BoxDecoration(
@@ -189,6 +188,11 @@ class _MyHomePageState extends State<MyHomePage> {
     ]);
   }
 
+  Widget gridViewButton(String name, IconData icon, [Function onPressed]) {
+    Color color = Theme.of(context).primaryColor;
+    if (onPressed == null) {
+      color = Colors.grey;
+    }
   Widget gridViewButton(String name, IconData icon, Function onPressed) {
     double defaultScreenWidth = 1440/3.5;
     double defaultScreenHeight = 2960/3.5;
@@ -213,20 +217,19 @@ class _MyHomePageState extends State<MyHomePage> {
           maxLines: 1,
           style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(14)),
         ),
-              ),
       ),
       child: Container(
           height: 300.0,
           //color: Colors.transparent,
           child: InkWell(
-            borderRadius: new BorderRadius.all(Radius.circular(ScreenUtil.instance.setSp(20.0))),
+            borderRadius: new BorderRadius.all(
+                Radius.circular(ScreenUtil.instance.setSp(20.0))),
             onTap: onPressed,
             child: new Container(
                 decoration: new BoxDecoration(
-                    border: new Border.all(
-                        color: Theme.of(context).primaryColor, width: 2.5),
-                    borderRadius:
-                        new BorderRadius.all(Radius.circular(ScreenUtil.instance.setSp(20.0)))),
+                    border: new Border.all(color: color, width: 2.5),
+                    borderRadius: new BorderRadius.all(
+                        Radius.circular(ScreenUtil.instance.setSp(20.0)))),
                 child: new Center(
                   child: Container(
                       alignment: Alignment(0.0, 0.0),
@@ -240,7 +243,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               '$name',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                color: Theme.of(context).primaryColor,
+                                color: color,
                                 fontSize: ScreenUtil.instance.setSp(14),
                               ),
                             )
@@ -372,68 +375,49 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
           ),
         ),
-          body: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            //crossAxisAlignment: CrossAxisAlignment.center,
-            // physics: NeverScrollableScrollPhysics(),
-            children: <Widget>[
-              getFullScreenCarousel(context),
-              //SizedBox(height: ScreenUtil.instance.setHeight(40)),
-              Expanded(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          //crossAxisAlignment: CrossAxisAlignment.center,
+          // physics: NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            getFullScreenCarousel(context),
+            //SizedBox(height: ScreenUtil.instance.setHeight(40)),
+            Expanded(
                 child: Center(
-                  child: GridView.count(
-                shrinkWrap: true,
-                primary: false,
-                padding: EdgeInsets.only(left:ScreenUtil.instance.setWidth(32), right:ScreenUtil.instance.setWidth(32), top: ScreenUtil.instance.setHeight(15)),
-                crossAxisSpacing: ScreenUtil.instance.setWidth(15),
-                crossAxisCount: 3,
-                mainAxisSpacing: ScreenUtil.instance.setWidth(15),
-                children: <Widget>[
-                  gridViewButton("Approved", Icons.check, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("Notifications", Icons.notifications, () {
-                    Navigator.of(context).pushNamed('/notification');
-                  }),
-                  gridViewButton("Projection", Icons.lightbulb_outline, () {
-                    Navigator.of(context).pushNamed('/projection');
-                  }),
-                  gridViewButton("Count Asset", Icons.monetization_on, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("PO Receive", Icons.library_books, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("DC System", Icons.local_atm, () {
-                    Navigator.of(context).pushNamed('/dc-system');
-                  }),
-                  gridViewButton("Management System", Icons.build, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  gridViewButton("Purchase Requisition", Icons.shopping_cart,
-                      () {
-                    Navigator.of(context).pushNamed('/pr-main');
-                  }),
-                  gridViewButton("Application", Icons.apps, () {
-                    setState(() {
-                      this.i++;
-                    });
-                  }),
-                  //SizedBox(height: ScreenUtil.instance.setHeight(10),)
-                ],
-              )
-                )
-              )
-            ],
-          ),)
+                    child: GridView.count(
+              shrinkWrap: true,
+              primary: false,
+              padding: EdgeInsets.only(
+                  left: ScreenUtil.instance.setWidth(32),
+                  right: ScreenUtil.instance.setWidth(32),
+                  top: ScreenUtil.instance.setHeight(15)),
+              crossAxisSpacing: ScreenUtil.instance.setWidth(15),
+              crossAxisCount: 3,
+              mainAxisSpacing: ScreenUtil.instance.setWidth(15),
+              children: <Widget>[
+                gridViewButton("Approved", Icons.check),
+                gridViewButton("Notifications", Icons.notifications, () {
+                  Navigator.of(context).pushNamed('/notification');
+                }),
+                gridViewButton("Projection", Icons.lightbulb_outline, () {
+                  Navigator.of(context).pushNamed('/projection');
+                }),
+                gridViewButton("Count Asset", Icons.monetization_on),
+                gridViewButton("PO Receive", Icons.library_books),
+                gridViewButton("DC System", Icons.local_atm, () {
+                  Navigator.of(context).pushNamed('/dc-system');
+                }),
+                gridViewButton("Management System", Icons.build),
+                gridViewButton("Purchase Requisition", Icons.shopping_cart, () {
+                  Navigator.of(context).pushNamed('/pr-main');
+                }),
+                gridViewButton("Application", Icons.apps),
+                //SizedBox(height: ScreenUtil.instance.setHeight(10),)
+              ],
+            )))
+          ],
+        ),
+      )
     ]);
   }
 }

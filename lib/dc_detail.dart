@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-//import 'package:image_picker/image_picker.dart';
 
 import 'editDCEntry.dart';
 
@@ -55,8 +54,12 @@ class DCDetail extends StatelessWidget {
                 labelStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                 unselectedLabelColor: Colors.white,
                 tabs: [
-                  Tab(child: Text(getDate().toUpperCase(), style: TextStyle(fontFamily: 'Prompt'))),
-                  Tab(child: Text('DETAIL', style: TextStyle(fontFamily: 'Prompt'))),
+                  Tab(
+                      child: Text(getDate().toUpperCase(),
+                          style: TextStyle(fontFamily: 'Prompt'))),
+                  Tab(
+                      child: Text('DETAIL',
+                          style: TextStyle(fontFamily: 'Prompt'))),
                 ],
               ),
               title: Text(
@@ -79,28 +82,32 @@ class DCDetail extends StatelessWidget {
                         padding: EdgeInsets.only(left: 20, top: 10, bottom: 1),
                         child: Text(
                           'Project : 202019',
-                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                          style: TextStyle(
+                              fontSize: ScreenUtil.instance.setSp(16)),
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 20, bottom: 1),
                         child: Text(
                           'Project Name : สโตร์กลาง',
-                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                          style: TextStyle(
+                              fontSize: ScreenUtil.instance.setSp(16)),
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 20, bottom: 1),
                         child: Text(
                           'Job : CML',
-                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                          style: TextStyle(
+                              fontSize: ScreenUtil.instance.setSp(16)),
                         ),
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 20, bottom: 10),
                         child: Text(
                           'ผู้ตรวจ : ผู้ตรวจการ ',
-                          style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                          style: TextStyle(
+                              fontSize: ScreenUtil.instance.setSp(16)),
                         ),
                       ),
                     ],
@@ -175,29 +182,28 @@ class _ListTabViewState extends State<ListTabView> {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
-          title: Text('Would you like to delete this data?'),
+          title: Text('Are you sure?'),
           actions: <Widget>[
             FlatButton(
               child: Text(
-                'YES',
+                'Cancel',
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
               ),
               onPressed: () {
-                setState(() {
-                  name.removeAt(index);
-                  status.removeAt(index);
-                });
                 Navigator.of(context).pop();
               },
             ),
             FlatButton(
                 child: Text(
-                  'NO',
-                  style:
-                      TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+                  'Delete',
+                  style: TextStyle(color: Colors.red),
                 ),
                 onPressed: () {
+                  setState(() {
+                    name.removeAt(index);
+                    status.removeAt(index);
+                  });
                   Navigator.of(context).pop();
                 })
           ],
@@ -212,7 +218,6 @@ class _ListTabViewState extends State<ListTabView> {
         {
           return <Widget>[
             Container(
-              
               padding: EdgeInsets.only(top: 4.0, bottom: 4.0),
               child: IconSlideAction(
                   caption: 'Edit',
@@ -271,26 +276,28 @@ class _ListTabViewState extends State<ListTabView> {
             actionExtentRatio: 0.20,
             actionPane: SlidableScrollActionPane(),
             child: Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
                 child: ListTile(
-              contentPadding: EdgeInsets.only(right: 20),
-              leading: Container(
-                width: 15,
-                decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)),
-                        color: colorStatus(status[i]),
-                      ),
-                
-              ),
-              title: Text(
-                name[i],
-                style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
-              ),
-              trailing: Text(
-                status[i],
-                style: TextStyle(color: textColor(status[i])),
-              ),
-            )),
+                  contentPadding: EdgeInsets.only(right: 20),
+                  leading: Container(
+                    width: 15,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomLeft: Radius.circular(10)),
+                      color: colorStatus(status[i]),
+                    ),
+                  ),
+                  title: Text(
+                    name[i],
+                    style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                  ),
+                  trailing: Text(
+                    status[i],
+                    style: TextStyle(color: textColor(status[i])),
+                  ),
+                )),
             secondaryActions: getActionButton(status[i], i),
           );
         });
@@ -317,30 +324,48 @@ class _DetailTabViewState extends State<DetailTabView> {
               backgroundImage: NetworkImage(
                   'https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/25e384a9-c599-45c5-bc56-929c3111276c/d6k8a2r-3391ff86-4af8-4695-bfad-14350ae04bfe.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzI1ZTM4NGE5LWM1OTktNDVjNS1iYzU2LTkyOWMzMTExMjc2Y1wvZDZrOGEyci0zMzkxZmY4Ni00YWY4LTQ2OTUtYmZhZC0xNDM1MGFlMDRiZmUuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Bx0q3W1dS8p6f8DSiUCPrjHzt4LWxhJQw0d3k0Qz06Q'),
             ),
-            title: Text(name[i], style: TextStyle(fontSize: ScreenUtil.instance.setSp(20))),
+            title: Text(name[i],
+                style: TextStyle(fontSize: ScreenUtil.instance.setSp(20))),
             subtitle: Row(
               children: <Widget>[
-                Text('Working Day :', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),),
+                Text(
+                  'Working Day :',
+                  style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                ),
                 Padding(
-                  padding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(4), bottom: ScreenUtil.instance.setHeight(4), left: ScreenUtil.instance.setWidth(4), right: ScreenUtil.instance.setWidth(4)  ),
+                  padding: EdgeInsets.only(
+                      top: ScreenUtil.instance.setHeight(4),
+                      bottom: ScreenUtil.instance.setHeight(4),
+                      left: ScreenUtil.instance.setWidth(4),
+                      right: ScreenUtil.instance.setWidth(4)),
                   child: Badge(
                     badgeColor: Colors.red,
                     borderRadius: ScreenUtil.instance.setSp(20),
-                    padding:
-                        EdgeInsets.only(top: ScreenUtil.instance.setHeight(3), bottom: ScreenUtil.instance.setHeight(3), left: ScreenUtil.instance.setWidth(8), right: ScreenUtil.instance.setWidth(8)),
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil.instance.setHeight(3),
+                        bottom: ScreenUtil.instance.setHeight(3),
+                        left: ScreenUtil.instance.setWidth(8),
+                        right: ScreenUtil.instance.setWidth(8)),
                     shape: BadgeShape.square,
                     badgeContent: Text(
                       '5',
-                      style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(15)),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: ScreenUtil.instance.setSp(15)),
                     ),
                   ),
                 ),
-                Text('Days', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)))
+                Text('Days',
+                    style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)))
               ],
             ),
-            trailing: Icon(Icons.arrow_forward_ios, size: ScreenUtil.instance.setSp(22),),
+            trailing: Icon(
+              Icons.arrow_forward_ios,
+              size: ScreenUtil.instance.setSp(22),
+            ),
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => new EmployeeDetail(name[i])));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => new EmployeeDetail(name[i])));
             },
           ));
         });

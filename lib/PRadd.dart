@@ -1,6 +1,3 @@
-
-//import 'dart:io';
-
 import 'package:app_ui/matadd.dart';
 import 'package:app_ui/materialList.dart';
 import 'package:badges/badges.dart';
@@ -26,11 +23,7 @@ class PRAdd extends StatelessWidget {
     var formatter = new DateFormat('d MMMM y');
     return formatter.format(now);
   }
-  //TabController tab;
-  //GlobalKey tabkey = GlobalKey<PRAddsState>();
   
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,12 +52,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
   void loadData() async {
     await MatViewModel.loadMat();
   }
-  // @override
-  // void dispose() {
-  //   tabctrl.dispose();
-  //   super.dispose();
-  // }
-
+  
   MaterialObj obj; 
   String matcode;
   String matname = 'xddd';

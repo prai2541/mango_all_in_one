@@ -106,6 +106,7 @@ class ProjectionDetail extends StatelessWidget {
                           ))
                     ],
                   ))),
+          SizedBox(height: ScreenUtil.instance.setHeight(5),),
           Flexible(
               child: ListView.builder(
                 physics: BouncingScrollPhysics(),

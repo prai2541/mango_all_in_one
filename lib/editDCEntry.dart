@@ -17,7 +17,6 @@ class EditDCEntryL extends StatelessWidget {
 }
 
 class EditDCEntry extends StatefulWidget {
-
   @override
   EditDCEntryState createState() => EditDCEntryState();
 }
