@@ -311,6 +311,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
                           qtyCtrl.text = '';
                           unitCtrl.text = '';
                           ppnCtrl.text = '';
+                          matName = 'Material Name';
                         });
                         tabctrl.animateTo((tabctrl.index +1) %2);
                                       
@@ -610,6 +611,7 @@ class PRAddsState extends State<PRAdds> with SingleTickerProviderStateMixin{
               children: <Widget>[
                 Expanded(
                   child: TabBarView(
+                    physics: BouncingScrollPhysics(),
                     controller: tabctrl,
                     children: <Widget>[addPage(), listPage()],
                   ),
