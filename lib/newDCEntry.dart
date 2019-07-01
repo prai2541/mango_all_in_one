@@ -266,72 +266,73 @@ class NewDCEntryState extends State<NewDCEntry> {
                   padding: EdgeInsets.only(
                       left: ScreenUtil.instance.setWidth(32),
                       right: ScreenUtil.instance.setWidth(32)),
-                  child: ListView(children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(
-                          height: ScreenUtil.instance.setHeight(30),
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            caption1(),
-                            SizedBox(
-                              width: ScreenUtil.instance.setWidth(25),
-                            ),
-                            Expanded(
-                              child: TextFormField(
-                                controller: captionctrl1,
-                                maxLines: null,
-                                keyboardType: TextInputType.multiline,
+                  child: ListView(
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          SizedBox(
+                            height: ScreenUtil.instance.setHeight(30),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              caption1(),
+                              SizedBox(
+                                width: ScreenUtil.instance.setWidth(25),
+                              ),
+                              Expanded(
+                                child: TextFormField(
+                                  controller: captionctrl1,
+                                  maxLines: null,
+                                  keyboardType: TextInputType.multiline,
+                                  style: TextStyle(
+                                      fontSize: ScreenUtil.instance.setSp(16)),
+                                  decoration: InputDecoration(
+                                      hintText: 'Write a Caption',
+                                      hintStyle: TextStyle(
+                                          fontSize:
+                                              ScreenUtil.instance.setSp(16))),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: ScreenUtil.instance.setHeight(25),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Radio(
+                                  value: 0,
+                                  groupValue: radioval2,
+                                  onChanged: (value) {
+                                    // setState(() {
+                                    //   radioval1 = value;
+                                    // });
+                                  }),
+                              Text(
+                                'Work     ',
                                 style: TextStyle(
                                     fontSize: ScreenUtil.instance.setSp(16)),
-                                decoration: InputDecoration(
-                                    hintText: 'Write a Caption',
-                                    hintStyle: TextStyle(
-                                        fontSize:
-                                            ScreenUtil.instance.setSp(16))),
                               ),
-                            )
-                          ],
-                        ),
-                        SizedBox(
-                          height: ScreenUtil.instance.setHeight(25),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Radio(
-                                value: 0,
-                                groupValue: radioval2,
-                                onChanged: (value) {
-                                  // setState(() {
-                                  //   radioval1 = value;
-                                  // });
-                                }),
-                            Text(
-                              'Work     ',
-                              style: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(16)),
-                            ),
-                            Radio(
-                                value: 1,
-                                groupValue: radioval2,
-                                onChanged: (value) {
-                                  // setState(() {
-                                  //   radioval1 = value;
-                                  // });
-                                }),
-                            Text(
-                              'People     ',
-                              style: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(16)),
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
+                              Radio(
+                                  value: 1,
+                                  groupValue: radioval2,
+                                  onChanged: (value) {
+                                    // setState(() {
+                                    //   radioval1 = value;
+                                    // });
+                                  }),
+                              Text(
+                                'People     ',
+                                style: TextStyle(
+                                    fontSize: ScreenUtil.instance.setSp(16)),
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -407,20 +408,21 @@ class NewDCEntryState extends State<NewDCEntry> {
                         SizedBox(
                           height: 20,
                         ),
-                        Row(children: <Widget>[
-                          Checkbox(
-                            value: price1,
-                            onChanged: (value) {
-                              setState(() {
-                                price1 = value;
-                              });
-                            },
-                          ),
-                          Text(
-                            '   ค่าแรงที่ 1',
-                            style: TextStyle(
-                                fontSize: ScreenUtil.instance.setSp(16)),
-                          )
+                        Row(
+                          children: <Widget>[
+                            Checkbox(
+                              value: price1,
+                              onChanged: (value) {
+                                setState(() {
+                                  price1 = value;
+                                });
+                              },
+                            ),
+                            Text(
+                              '   ค่าแรงที่ 1',
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16)),
+                            )
                         ]),
                         Row(children: <Widget>[
                           Checkbox(
@@ -458,7 +460,11 @@ class NewDCEntryState extends State<NewDCEntry> {
                         )
                       ],
                     )
-                  ]))))
+                  ]
+                )
+              )
+            )
+          )
     ]);
   }
 }

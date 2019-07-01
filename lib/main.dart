@@ -388,36 +388,36 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
                 child: Center(
                     child: GridView.count(
-              shrinkWrap: true,
-              primary: false,
-              padding: EdgeInsets.only(
-                  left: ScreenUtil.instance.setWidth(32),
-                  right: ScreenUtil.instance.setWidth(32),
-                  top: ScreenUtil.instance.setHeight(15)),
-              crossAxisSpacing: ScreenUtil.instance.setWidth(15),
-              crossAxisCount: 3,
-              mainAxisSpacing: ScreenUtil.instance.setWidth(15),
-              children: <Widget>[
-                gridViewButton("Approved", Icons.check),
-                gridViewButton("Notifications", Icons.notifications, () {
-                  Navigator.of(context).pushNamed('/notification');
-                }),
-                gridViewButton("Projection", Icons.lightbulb_outline, () {
-                  Navigator.of(context).pushNamed('/projection');
-                }),
-                gridViewButton("Count Asset", Icons.monetization_on),
-                gridViewButton("PO Receive", Icons.library_books),
-                gridViewButton("DC System", Icons.local_atm, () {
-                  Navigator.of(context).pushNamed('/dc-system');
-                }),
-                gridViewButton("Management System", Icons.build),
-                gridViewButton("Purchase Requisition", Icons.shopping_cart, () {
-                  Navigator.of(context).pushNamed('/pr-main');
-                }),
-                gridViewButton("Application", Icons.apps),
-                //SizedBox(height: ScreenUtil.instance.setHeight(10),)
-              ],
-            )))
+                      shrinkWrap: true,
+                      primary: false,
+                      padding: EdgeInsets.only(
+                          left: ScreenUtil.instance.setWidth(32),
+                          right: ScreenUtil.instance.setWidth(32),
+                          top: ScreenUtil.instance.setHeight(15)),
+                      crossAxisSpacing: ScreenUtil.instance.setWidth(15),
+                      crossAxisCount: 3,
+                      mainAxisSpacing: ScreenUtil.instance.setWidth(15),
+                      children: <Widget>[
+                        gridViewButton("Approved", Icons.check),
+                        gridViewButton("Notifications", Icons.notifications, () {
+                          Navigator.of(context).pushNamed('/notification');
+                        }),
+                        gridViewButton("Projection", Icons.lightbulb_outline, () {
+                          Navigator.of(context).pushNamed('/projection');
+                        }),
+                        gridViewButton("Count Asset", Icons.monetization_on),
+                        gridViewButton("PO Receive", Icons.library_books),
+                        gridViewButton("DC System", Icons.local_atm, () {
+                          Navigator.of(context).pushNamed('/dc-system');
+                        }),
+                        gridViewButton("Management System", Icons.build),
+                        gridViewButton("Purchase Requisition", Icons.shopping_cart, () {
+                          Navigator.of(context).pushNamed('/pr-main');
+                        }),
+                        gridViewButton("Application", Icons.apps),
+                        //SizedBox(height: ScreenUtil.instance.setHeight(10),)
+                      ],
+                    )))
           ],
         ),
       )
