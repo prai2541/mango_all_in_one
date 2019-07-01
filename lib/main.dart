@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:app_ui/matadd.dart';
 import 'package:app_ui/projection.dart';
 import 'package:flutter/material.dart';
@@ -73,8 +72,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -306,6 +303,7 @@ class _MyHomePageState extends State<MyHomePage> {
     )..init(context);
 
     return Stack(children: <Widget>[
+      // Wallpaper
       // Image.asset(
       //   "assets/bg_0004.jpg",
       //   height: MediaQuery.of(context).size.height,
