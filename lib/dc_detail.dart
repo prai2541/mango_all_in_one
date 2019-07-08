@@ -26,8 +26,46 @@ class DCDetail extends StatelessWidget {
     return formatter.format(now);
   }
 
+  Widget infoCard() {
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+      margin: EdgeInsets.all(10),
+      elevation: 5,
+      child: Container(
+        padding: EdgeInsets.all(10),
+        child: ListBody(
+          children: <Widget>[
+            _cardDetail('Project : 202019'),
+            _cardDetail('Project Name : สโตร์กลาง'),
+            _cardDetail('Job : CML'),
+            _cardDetail('ผู้ตรวจ : ผู้ตรวจการ'),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _cardDetail(String title) {
+    return Container(
+      padding: EdgeInsets.only(left: 20),
+      child: Text(
+        title,
+        style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    double defaultScreenWidth = 375.0;
+    double defaultScreenHeight = 812.0;
+
+    ScreenUtil.instance = ScreenUtil(
+      width: defaultScreenWidth,
+      height: defaultScreenHeight,
+      allowFontScaling: true,
+    )..init(context);
+
     return Scaffold(
       body: DefaultTabController(
         length: 2,
@@ -70,48 +108,7 @@ class DCDetail extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Card(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)),
-                  margin: EdgeInsets.all(10),
-                  elevation: 5,
-                  child: ListBody(
-                    children: <Widget>[
-                      Container(
-                        padding: EdgeInsets.only(left: 20, top: 10, bottom: 1),
-                        child: Text(
-                          'Project : 202019',
-                          style: TextStyle(
-                              fontSize: ScreenUtil.instance.setSp(16)),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 20, bottom: 1),
-                        child: Text(
-                          'Project Name : สโตร์กลาง',
-                          style: TextStyle(
-                              fontSize: ScreenUtil.instance.setSp(16)),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 20, bottom: 1),
-                        child: Text(
-                          'Job : CML',
-                          style: TextStyle(
-                              fontSize: ScreenUtil.instance.setSp(16)),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 20, bottom: 10),
-                        child: Text(
-                          'ผู้ตรวจ : ผู้ตรวจการ ',
-                          style: TextStyle(
-                              fontSize: ScreenUtil.instance.setSp(16)),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
+                infoCard(),
                 Expanded(
                   child: TabBarView(
                     children: <Widget>[ListTabView(), DetailTabView()],

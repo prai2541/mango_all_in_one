@@ -55,9 +55,6 @@ class Projection extends StatelessWidget {
                             ),
                           )),
                           Container(
-                              // margin: EdgeInsets.only(
-                              //     top: ScreenUtil.instance
-                              //         .setHeight(1)),
                               child: Text(
                             'Remark : $remark',
                             style: TextStyle(
@@ -92,38 +89,39 @@ class Projection extends StatelessWidget {
                 itemCount: projects.length,
                 itemBuilder: (context, i) {
                   return Container(
-                    margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(5)),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      child: ListTile(
-                        contentPadding: EdgeInsets.only(
-                            right: ScreenUtil.instance.setWidth(10)),
-                        leading: Container(
-                          width: ScreenUtil.instance.setWidth(15),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                bottomLeft: Radius.circular(10)),
-                            color: Colors.blue,
-                          ),
-                        ),
-                        title: Text(projects[i],
-                            style: TextStyle(
-                                fontSize: ScreenUtil.instance.setSp(16))),
-                        trailing: Icon(
-                          Icons.arrow_forward_ios,
-                          size: ScreenUtil.instance.setSp(18),
-                        ),
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => new ProjectionDetail(
-                                    docnumber,
-                                    remark,
-                                    projects[i],
-                                  )));
-                        },
-                      )));
+                      margin: EdgeInsets.only(
+                          top: ScreenUtil.instance.setHeight(5)),
+                      child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          child: ListTile(
+                            contentPadding: EdgeInsets.only(
+                                right: ScreenUtil.instance.setWidth(10)),
+                            leading: Container(
+                              width: ScreenUtil.instance.setWidth(15),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(10),
+                                    bottomLeft: Radius.circular(10)),
+                                color: Colors.blue,
+                              ),
+                            ),
+                            title: Text(projects[i],
+                                style: TextStyle(
+                                    fontSize: ScreenUtil.instance.setSp(16))),
+                            trailing: Icon(
+                              Icons.arrow_forward_ios,
+                              size: ScreenUtil.instance.setSp(18),
+                            ),
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => new ProjectionDetail(
+                                        docnumber,
+                                        remark,
+                                        projects[i],
+                                      )));
+                            },
+                          )));
                 }),
           )
         ]));

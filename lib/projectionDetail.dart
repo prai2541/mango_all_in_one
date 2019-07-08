@@ -31,7 +31,11 @@ class ProjectionDetail extends StatelessWidget {
 
   Widget bodyData(context) => Card(
         elevation: 5,
-        margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(10), bottom: ScreenUtil.instance.setHeight(10), left: ScreenUtil.instance.setWidth(20), right: ScreenUtil.instance.setWidth(20) ),
+        margin: EdgeInsets.only(
+            top: ScreenUtil.instance.setHeight(10),
+            bottom: ScreenUtil.instance.setHeight(10),
+            left: ScreenUtil.instance.setWidth(20),
+            right: ScreenUtil.instance.setWidth(20)),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Column(children: <Widget>[
           Container(
@@ -106,10 +110,12 @@ class ProjectionDetail extends StatelessWidget {
                           ))
                     ],
                   ))),
-          SizedBox(height: ScreenUtil.instance.setHeight(5),),
+          SizedBox(
+            height: ScreenUtil.instance.setHeight(5),
+          ),
           Flexible(
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             itemCount: datas.length,
             itemBuilder: (context, index) {
               return Container(
@@ -132,14 +138,23 @@ class ProjectionDetail extends StatelessWidget {
                             flex: 3,
                             child: Center(
                                 child: Text(
-                              datas[index].backLog.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},'),
+                              datas[index].backLog.toString().replaceAllMapped(
+                                  new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                  (Match m) => '${m[1]},'),
                               style: TextStyle(
                                   fontSize: ScreenUtil.instance.setSp(14)),
                             ))),
                         Expanded(
                             flex: 3,
                             child: Center(
-                                child: Text(datas[index].costLog.toString().replaceAllMapped(new RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]},'),
+                                child: Text(
+                                    datas[index]
+                                        .costLog
+                                        .toString()
+                                        .replaceAllMapped(
+                                            new RegExp(
+                                                r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+                                            (Match m) => '${m[1]},'),
                                     style: TextStyle(
                                         fontSize:
                                             ScreenUtil.instance.setSp(14))))),
@@ -167,7 +182,8 @@ class ProjectionDetail extends StatelessWidget {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(ScreenUtil.instance.setHeight(215)),
           child: AppBar(
-            title: Text('Projection', style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
+            title: Text('Projection',
+                style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
             iconTheme: IconThemeData(color: Colors.white),
             flexibleSpace: FlexibleSpaceBar(
               centerTitle: true,
@@ -181,37 +197,16 @@ class ProjectionDetail extends StatelessWidget {
                         left: ScreenUtil.instance.setWidth(15),
                         right: ScreenUtil.instance.setWidth(15)),
                     child: Container(
-                      padding: EdgeInsets.all(10),
-                      child: 
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: <Widget>[
-                                Container(
-                                    child: Text(
-                                  'Doc. No. : $docnumber',
-                                  style: TextStyle(
-                                    fontSize: ScreenUtil.instance.setSp(16),
-                                  ),
-                                )),
-                                Container(
-                                    child: Text(
-                                      'Remark : $remark',
-                                      style: TextStyle(
-                                        fontSize: ScreenUtil.instance.setSp(16),
-                                      ),
-                                    )),
-                                Container(
-                                    child: Text(
-                                      'Project : $projectName',
-                                      style: TextStyle(
-                                        fontSize: ScreenUtil.instance.setSp(16),
-                                      ),
-                                    )),
-                              ],
-                            )
-                          
-                    )),
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            _cardDetail('Doc. No. : $docnumber'),
+                            _cardDetail('Remark : $remark'),
+                            _cardDetail('Project : $projectName')
+                          ],
+                        ))),
               ),
             ),
             actions: <Widget>[
@@ -232,5 +227,15 @@ class ProjectionDetail extends StatelessWidget {
         child: bodyData(context),
       ),
     );
+  }
+
+  Widget _cardDetail(String title) {
+    return Container(
+        child: Text(
+      title,
+      style: TextStyle(
+        fontSize: ScreenUtil.instance.setSp(16),
+      ),
+    ));
   }
 }

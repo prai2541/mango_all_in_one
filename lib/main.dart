@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/services.dart';
+import 'approve.dart';
 import 'dc_detail.dart';
 import './notification.dart';
 import 'signin.dart';
@@ -87,6 +88,7 @@ class MyApp extends StatelessWidget {
         '/notification': (BuildContext context) => new NotificationPage(),
         '/dc-system': (BuildContext context) => new DCSys(),
         '/mat-add': (BuildContext context) => new MatAdd(),
+        '/approve': (context) => new Approve()
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -388,36 +390,38 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
                 child: Center(
                     child: GridView.count(
-                      shrinkWrap: true,
-                      primary: false,
-                      padding: EdgeInsets.only(
-                          left: ScreenUtil.instance.setWidth(32),
-                          right: ScreenUtil.instance.setWidth(32),
-                          top: ScreenUtil.instance.setHeight(15)),
-                      crossAxisSpacing: ScreenUtil.instance.setWidth(15),
-                      crossAxisCount: 3,
-                      mainAxisSpacing: ScreenUtil.instance.setWidth(15),
-                      children: <Widget>[
-                        gridViewButton("Approved", Icons.check),
-                        gridViewButton("Notifications", Icons.notifications, () {
-                          Navigator.of(context).pushNamed('/notification');
-                        }),
-                        gridViewButton("Projection", Icons.lightbulb_outline, () {
-                          Navigator.of(context).pushNamed('/projection');
-                        }),
-                        gridViewButton("Count Asset", Icons.monetization_on),
-                        gridViewButton("PO Receive", Icons.library_books),
-                        gridViewButton("DC System", Icons.local_atm, () {
-                          Navigator.of(context).pushNamed('/dc-system');
-                        }),
-                        gridViewButton("Management System", Icons.build),
-                        gridViewButton("Purchase Requisition", Icons.shopping_cart, () {
-                          Navigator.of(context).pushNamed('/pr-main');
-                        }),
-                        gridViewButton("Application", Icons.apps),
-                        //SizedBox(height: ScreenUtil.instance.setHeight(10),)
-                      ],
-                    )))
+              shrinkWrap: true,
+              primary: false,
+              padding: EdgeInsets.only(
+                  left: ScreenUtil.instance.setWidth(32),
+                  right: ScreenUtil.instance.setWidth(32),
+                  top: ScreenUtil.instance.setHeight(15)),
+              crossAxisSpacing: ScreenUtil.instance.setWidth(15),
+              crossAxisCount: 3,
+              mainAxisSpacing: ScreenUtil.instance.setWidth(15),
+              children: <Widget>[
+                gridViewButton("Approved", Icons.check, () {
+                  Navigator.of(context).pushNamed('/approve');
+                }),
+                gridViewButton("Notifications", Icons.notifications, () {
+                  Navigator.of(context).pushNamed('/notification');
+                }),
+                gridViewButton("Projection", Icons.lightbulb_outline, () {
+                  Navigator.of(context).pushNamed('/projection');
+                }),
+                gridViewButton("Count Asset", Icons.monetization_on),
+                gridViewButton("PO Receive", Icons.library_books),
+                gridViewButton("DC System", Icons.local_atm, () {
+                  Navigator.of(context).pushNamed('/dc-system');
+                }),
+                gridViewButton("Management System", Icons.build),
+                gridViewButton("Purchase Requisition", Icons.shopping_cart, () {
+                  Navigator.of(context).pushNamed('/pr-main');
+                }),
+                gridViewButton("Application", Icons.apps),
+                //SizedBox(height: ScreenUtil.instance.setHeight(10),)
+              ],
+            )))
           ],
         ),
       )
