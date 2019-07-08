@@ -16,7 +16,6 @@ class ApproveDocument extends StatelessWidget {
       height: defaultScreenHeight,
       allowFontScaling: true,
     )..init(context);
-    // TODO: implement build
     return Column(
       children: <Widget>[
         Expanded(
@@ -34,24 +33,7 @@ class ApproveDocument extends StatelessWidget {
             ),
           ),
         ),
-        InkWell(
-          onTap: () {
-            debugPrint('SAVE Pressed');
-          },
-          child: Container(
-            height: ScreenUtil.instance.setHeight(55),
-            width: ScreenUtil.instance.width,
-            color: Colors.blue,
-            child: Center(
-              child: Text(
-                'SAVE',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: ScreenUtil.instance.setSp(18)),
-              ),
-            ),
-          ),
-        )
+        //
       ],
     );
   }
