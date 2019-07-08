@@ -29,15 +29,9 @@ class ProjectionDetail extends StatelessWidget {
 
   ProjectionDetail(this.docnumber, this.remark, this.projectName);
 
-  Widget bodyData(context) => Card(
-        elevation: 5,
-        margin: EdgeInsets.only(
-            top: ScreenUtil.instance.setHeight(10),
-            bottom: ScreenUtil.instance.setHeight(10),
-            left: ScreenUtil.instance.setWidth(20),
-            right: ScreenUtil.instance.setWidth(20)),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Column(children: <Widget>[
+  Widget bodyData(context) => Container(
+          child: Column(
+        children: <Widget>[
           Container(
               color: Colors.transparent,
               child: Container(
@@ -46,22 +40,21 @@ class ProjectionDetail extends StatelessWidget {
                       top: ScreenUtil.instance.setHeight(10),
                       bottom: ScreenUtil.instance.setHeight(10)),
                   decoration: BoxDecoration(
-                      color: Color(0xff38414f),
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20))),
+                    color: Color(0xff38414f),
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Expanded(
                           flex: 1,
-                          child: Text(
+                          child: Center(
+                              child: Text(
                             'Month - Year',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,
                                 fontSize: ScreenUtil.instance.setSp(14)),
-                          )),
+                          ))),
                       Container(
                           height: ScreenUtil.instance.setHeight(50),
                           child: VerticalDivider(color: Colors.white)),
@@ -164,8 +157,8 @@ class ProjectionDetail extends StatelessWidget {
                   ]));
             },
           ))
-        ]),
-      );
+        ],
+      ));
 
   @override
   Widget build(BuildContext context) {
