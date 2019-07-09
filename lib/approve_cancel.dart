@@ -15,7 +15,7 @@ class ApproveCancel extends StatelessWidget {
       height: defaultScreenHeight,
       allowFontScaling: true,
     )..init(context);
-    // TODO: implement build
+
     return Container(
       margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(10)),
       child: ListView(
