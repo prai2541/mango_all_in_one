@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:app_ui/approvedetail.dart';
+import 'package:app_ui/approve_detail.dart';
 import 'package:app_ui/matadd.dart';
 import 'package:app_ui/projection.dart';
 import 'package:flutter/material.dart';
@@ -89,7 +89,7 @@ class MyApp extends StatelessWidget {
         '/notification': (BuildContext context) => new NotificationPage(),
         '/dc-system': (BuildContext context) => new DCSys(),
         '/mat-add': (BuildContext context) => new MatAdd(),
-        '/approve-detail' : (BuildContext context) => new ApproveDetail(),
+        '/approve-detail': (BuildContext context) => new ApproveDetail(),
         '/approve': (context) => new Approve()
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
