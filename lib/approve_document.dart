@@ -24,11 +24,11 @@ class ApproveDocument extends StatelessWidget {
             margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(10)),
             child: ListView(
               children: <Widget>[
-                slidableList('PRM20190708', '157,875', '', 'none'),
+                slidableList('PRM20190708', '157,875', '', 'none', context),
                 Divider(height: 0),
-                slidableList('PRM20190708', '157,875', '', 'none'),
+                slidableList('PRM20190708', '157,875', '', 'none', context),
                 Divider(height: 0),
-                slidableList('PRM20190708', '157,875', '', 'none'),
+                slidableList('PRM20190708', '157,875', '', 'none', context),
                 Divider(height: 0),
               ],
             ),
@@ -39,14 +39,14 @@ class ApproveDocument extends StatelessWidget {
     );
   }
 
-  Widget slidableList(
-      String title, String amount, String remark, String status) {
+  Widget slidableList(String title, String amount, String remark, String status,
+      BuildContext context) {
     return Slidable(
       controller: slidableController,
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.175,
       child: ListTile(
-        onTap: () => debugPrint('ListTile tapped'),
+        onTap: () => Navigator.of(context).pushNamed('/approve-detail'),
         title: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
