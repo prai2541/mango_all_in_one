@@ -16,6 +16,7 @@ class ApproveDocument extends StatelessWidget {
       height: defaultScreenHeight,
       allowFontScaling: true,
     )..init(context);
+
     return Column(
       children: <Widget>[
         Expanded(
@@ -45,6 +46,7 @@ class ApproveDocument extends StatelessWidget {
       actionPane: SlidableDrawerActionPane(),
       actionExtentRatio: 0.175,
       child: ListTile(
+        onTap: () => debugPrint('ListTile tapped'),
         title: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -94,36 +96,41 @@ class ApproveDocument extends StatelessWidget {
               style: TextStyle(fontSize: ScreenUtil.instance.setSp(12)),
             ),
             Expanded(
-              child: Container(
-                width: 80,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue),
-                    borderRadius: BorderRadius.circular(5)),
-                padding: EdgeInsets.only(
-                    left: ScreenUtil.instance.setWidth(5),
-                    right: ScreenUtil.instance.setWidth(5)),
-                margin: EdgeInsets.only(top: ScreenUtil.instance.setHeight(5)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'File',
-                      style: TextStyle(fontSize: ScreenUtil.instance.setSp(12)),
-                    ),
-                    CircleAvatar(
-                      backgroundColor: Colors.blue,
-                      child: Text('1',
-                          style: TextStyle(
-                              fontSize: ScreenUtil.instance.setSp(10),
-                              color: Colors.white)),
-                      radius: ScreenUtil.instance.setSp(8),
-                    ),
-                    Icon(
-                      Icons.folder,
-                      size: ScreenUtil.instance.setSp(15),
-                    ),
-                  ],
+              child: InkWell(
+                onTap: () => debugPrint('Button tapped'),
+                child: Container(
+                  width: 80,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue),
+                      borderRadius: BorderRadius.circular(5)),
+                  padding: EdgeInsets.only(
+                      left: ScreenUtil.instance.setWidth(5),
+                      right: ScreenUtil.instance.setWidth(5)),
+                  margin:
+                      EdgeInsets.only(top: ScreenUtil.instance.setHeight(5)),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'File',
+                        style:
+                            TextStyle(fontSize: ScreenUtil.instance.setSp(12)),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.blue,
+                        child: Text('1',
+                            style: TextStyle(
+                                fontSize: ScreenUtil.instance.setSp(10),
+                                color: Colors.white)),
+                        radius: ScreenUtil.instance.setSp(8),
+                      ),
+                      Icon(
+                        Icons.folder,
+                        size: ScreenUtil.instance.setSp(15),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -172,7 +179,7 @@ class ApproveDocument extends StatelessWidget {
   IconSlideAction rejectAction() {
     return IconSlideAction(
       icon: Icons.clear,
-      caption: 'Cost',
+      caption: 'Reject',
       color: Colors.red,
       onTap: () {},
     );
@@ -181,7 +188,7 @@ class ApproveDocument extends StatelessWidget {
   IconSlideAction remarkAction() {
     return IconSlideAction(
       icon: Icons.edit,
-      caption: 'Cost',
+      caption: 'Remark',
       color: Colors.grey,
       onTap: () {},
     );

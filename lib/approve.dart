@@ -45,63 +45,60 @@ class ApproveState extends State<Approve> with SingleTickerProviderStateMixin {
       allowFontScaling: true,
     )..init(context);
 
-    return DefaultTabController(
-      length: 5,
-      child: Scaffold(
-        appBar: AppBar(
-          iconTheme: IconThemeData(color: Colors.white),
-          title: Text(
-            'APPROVE',
-            style: TextStyle(color: Colors.white),
-          ),
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.home),
-              onPressed: () => Navigator.of(context).pushNamed('/home'),
-              iconSize: 30,
-            )
-          ],
-          bottom: TabBar(
-            controller: _tabController,
-            labelColor: Colors.white,
-            isScrollable: true,
-            unselectedLabelColor: Colors.white.withOpacity(0.3),
-            indicatorColor: Colors.white,
-            tabs: <Widget>[
-              Tab(child: Text('Document')),
-              Tab(child: Text('Waitng')),
-              Tab(child: Text('Upper')),
-              Tab(child: Text('Cancel')),
-              Tab(child: Text('Manual')),
-            ],
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        title: Text(
+          'APPROVE',
+          style: TextStyle(color: Colors.white),
         ),
-        body: TabBarView(
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () => Navigator.of(context).pushNamed('/home'),
+            iconSize: 30,
+          )
+        ],
+        bottom: TabBar(
           controller: _tabController,
-          children: <Widget>[
-            ApproveDocument(),
-            ApproveWaiting(),
-            ApproveUpper(),
-            ApproveCancel(),
-            ApproveManual()
+          labelColor: Colors.white,
+          isScrollable: true,
+          unselectedLabelColor: Colors.white.withOpacity(0.3),
+          indicatorColor: Colors.white,
+          tabs: <Widget>[
+            Tab(child: Text('Document')),
+            Tab(child: Text('Waiting')),
+            Tab(child: Text('Upper')),
+            Tab(child: Text('Cancel')),
+            Tab(child: Text('Manual')),
           ],
         ),
-        floatingActionButton: _tabController.index == 0
-            ? FloatingActionButton.extended(
-                elevation: 4.0,
-                label: Container(
-                  child: Center(
-                      child: Text(
-                    'SAVE',
-                    style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
-                  )),
-                  width: ScreenUtil.instance.setWidth(80),
-                ),
-                onPressed: () {},
-              )
-            : null,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
+      body: TabBarView(
+        controller: _tabController,
+        children: <Widget>[
+          ApproveDocument(),
+          ApproveWaiting(),
+          ApproveUpper(),
+          ApproveCancel(),
+          ApproveManual()
+        ],
+      ),
+      floatingActionButton: _tabController.index == 0
+          ? FloatingActionButton.extended(
+              elevation: 4.0,
+              label: Container(
+                child: Center(
+                    child: Text(
+                  'SAVE',
+                  style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
+                )),
+                width: ScreenUtil.instance.setWidth(80),
+              ),
+              onPressed: () {},
+            )
+          : null,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
