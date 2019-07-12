@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:app_ui/approve_detail.dart';
 import 'package:app_ui/matadd.dart';
+import 'package:app_ui/po_tabs.dart';
 import 'package:app_ui/projection.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -90,7 +91,8 @@ class MyApp extends StatelessWidget {
         '/dc-system': (BuildContext context) => new DCSys(),
         '/mat-add': (BuildContext context) => new MatAdd(),
         '/approve-detail': (BuildContext context) => new ApproveDetail(),
-        '/approve': (context) => new Approve()
+        '/approve': (context) => new Approve(),
+        '/po': (context) => new POTabs()
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -412,7 +414,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.of(context).pushNamed('/projection');
                 }),
                 gridViewButton("Count Asset", Icons.monetization_on),
-                gridViewButton("PO Receive", Icons.library_books),
+                gridViewButton("PO Receive", Icons.library_books, () {
+                  Navigator.of(context).pushNamed('/po');
+                }),
                 gridViewButton("DC System", Icons.local_atm, () {
                   Navigator.of(context).pushNamed('/dc-system');
                 }),
