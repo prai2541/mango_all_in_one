@@ -124,7 +124,7 @@ class PRcontinueState extends State<PRcontinue>{
           return Theme(
             data: Theme.of(context).copyWith(
               primaryColor: Color(0xFF46B5A6),
-              primaryTextTheme: TextTheme(display1: TextStyle(color: Colors.white)),),
+              primaryTextTheme: TextTheme(display1: TextStyle(color: Colors.white))),
             child: child,);
         }
 
