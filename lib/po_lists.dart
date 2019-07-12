@@ -92,7 +92,7 @@ class POListsState extends State<POLists> {
                       right: ScreenUtil.instance.setWidth(10),
                       top: ScreenUtil.instance.setHeight(5)),
                   child: InkWell(
-                    onTap: () {},
+                    onTap: () => Navigator.of(context).pushNamed('/po-hist'),
                     child: Row(
                       children: <Widget>[
                         Container(

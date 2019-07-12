@@ -93,12 +93,12 @@ class MyApp extends StatelessWidget {
         '/notification': (BuildContext context) => new NotificationPage(),
         '/dc-system': (BuildContext context) => new DCSys(),
         '/mat-add': (BuildContext context) => new MatAdd(),
-        '/po': (context) => new POTabs()
-        '/approve-detail' : (BuildContext context) => new ApproveDetail(),
+        '/po': (context) => new POTabs(),
+        '/approve-detail': (BuildContext context) => new ApproveDetail(),
         '/approve': (context) => new Approve(),
-        '/po-hist' : (context) => new PoHist(),
-        '/po-list-info' : (context) => new PoListInfo(),
-        '/po-new-entry' : (context) => new NewPoEntry()
+        '/po-hist': (context) => new PoHist(),
+        '/po-list-info': (context) => new PoListInfo(),
+        '/po-new-entry': (context) => new NewPoEntry()
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
