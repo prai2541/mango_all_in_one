@@ -34,6 +34,7 @@ class POMain extends StatelessWidget {
           // width: ScreenUtil.instance.setWidth(60),
           child: FittedBox(
             child: FloatingActionButton(
+              backgroundColor: Color(0xFF46B5A6),
               onPressed: () => scan(context),
               child: Container(
                 child: Image.asset(
@@ -173,7 +174,7 @@ class POListsState extends State<POLists> {
                         Container(
                           margin: EdgeInsets.only(
                               left: ScreenUtil.instance.setWidth(15)),
-                          color: Colors.red[900],
+                          color: Color(0xFFB54655),
                           height: ScreenUtil.instance.setHeight(80),
                           width: ScreenUtil.instance.setWidth(4),
                         ),
@@ -188,7 +189,7 @@ class POListsState extends State<POLists> {
                                   'PO2019070003',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.red[900],
+                                      color: Color(0xFFB54655),
                                       fontSize: ScreenUtil.instance.setSp(16)),
                                 ),
                                 _subtiltle('Project : Mango1'),

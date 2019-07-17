@@ -103,7 +103,7 @@ class Projection extends StatelessWidget {
                                 borderRadius: BorderRadius.only(
                                     topLeft: Radius.circular(10),
                                     bottomLeft: Radius.circular(10)),
-                                color: Colors.blue,
+                                color: Color(0xFFB54655),
                               ),
                             ),
                             title: Text(projects[i],

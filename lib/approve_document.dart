@@ -65,7 +65,7 @@ class ApproveDocument extends StatelessWidget {
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: ScreenUtil.instance.setSp(12))),
-              badgeColor: Colors.blue,
+              badgeColor: Color(0xFF46B5A6),
             )
           ],
         ),
@@ -101,7 +101,7 @@ class ApproveDocument extends StatelessWidget {
                 child: Container(
                   width: 80,
                   decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue),
+                      border: Border.all(color: Color(0xFF46B5A6)),
                       borderRadius: BorderRadius.circular(5)),
                   padding: EdgeInsets.only(
                       left: ScreenUtil.instance.setWidth(5),
@@ -118,7 +118,7 @@ class ApproveDocument extends StatelessWidget {
                             TextStyle(fontSize: ScreenUtil.instance.setSp(12)),
                       ),
                       CircleAvatar(
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color(0xFF46B5A6),
                         child: Text('1',
                             style: TextStyle(
                                 fontSize: ScreenUtil.instance.setSp(10),
@@ -162,7 +162,7 @@ class ApproveDocument extends StatelessWidget {
     return IconSlideAction(
       icon: Icons.refresh,
       caption: 'Loop',
-      color: Colors.blue,
+      color: Color(0xFF46B5A6),
       onTap: () {},
     );
   }

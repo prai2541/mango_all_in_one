@@ -20,7 +20,7 @@ class CADepartment extends StatelessWidget {
           color: i % 2 == 0 ? Colors.white : Colors.grey[200],
           child: ListTile(
             leading: Chip(
-              backgroundColor: Colors.blue,
+              backgroundColor: Color(0xFF46B5A6),
               label: Text('AC'),
               labelStyle: TextStyle(color: Colors.white),
             ),

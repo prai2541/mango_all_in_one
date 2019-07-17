@@ -86,6 +86,7 @@ class ApproveState extends State<Approve> with SingleTickerProviderStateMixin {
       ),
       floatingActionButton: _tabController.index == 0
           ? FloatingActionButton.extended(
+              backgroundColor: Color(0xFF46B5A6),
               elevation: 4.0,
               label: Container(
                 child: Center(

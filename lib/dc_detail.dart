@@ -183,8 +183,8 @@ class _ListTabViewState extends State<ListTabView> {
             FlatButton(
               child: Text(
                 'Cancel',
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.blue),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Color(0xFF46B5A6)),
               ),
               onPressed: () {
                 Navigator.of(context).pop();

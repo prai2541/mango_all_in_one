@@ -64,7 +64,7 @@ class ApproveUpper extends StatelessWidget {
             child: Container(
               width: 80,
               decoration: BoxDecoration(
-                  border: Border.all(color: Colors.blue),
+                  border: Border.all(color: Color(0xFF46B5A6)),
                   borderRadius: BorderRadius.circular(5)),
               padding: EdgeInsets.only(
                   left: ScreenUtil.instance.setWidth(5),
@@ -79,7 +79,7 @@ class ApproveUpper extends StatelessWidget {
                     style: TextStyle(fontSize: ScreenUtil.instance.setSp(12)),
                   ),
                   CircleAvatar(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: Color(0xFF46B5A6),
                     child: Text('1',
                         style: TextStyle(
                             fontSize: ScreenUtil.instance.setSp(10),

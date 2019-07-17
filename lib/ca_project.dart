@@ -101,7 +101,7 @@ class CAProjectState extends State<CAProject> {
                 leading: Chip(
                   label: Text(data.projects[i].id),
                   labelStyle: TextStyle(color: Colors.white),
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Color(0xFF46B5A6),
                 ),
                 title: Text(data.projects[i].name),
                 trailing: IconButton(
