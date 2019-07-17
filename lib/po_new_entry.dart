@@ -430,16 +430,19 @@ class NewPoEntryState extends State<NewPoEntrys> {
                       ))
                 ]),
                 GridView.builder(
+                  
                   padding: EdgeInsets.all(10),
                   shrinkWrap: true,
                   gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
                                    crossAxisCount: 4),
                   itemCount: imglist.length,
                   itemBuilder: (context, index) {
-                    return Badge(
+                    return Container(
+                      width: ScreenUtil.instance.setWidth(200),
+                      child:Badge(
                       elevation: 2,
                       badgeColor: Colors.white,
-                      position: BadgePosition.topRight(top: -5, right: -10),
+                      position: BadgePosition.topRight(top: 5, right: 5),
                       padding: EdgeInsets.all(0),
                       badgeContent: InkWell(
                         //padding: EdgeInsets.all(1),
@@ -460,7 +463,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                           child:Image.file(imglist[index],
                             fit: BoxFit.fill,
                             height: ScreenUtil.instance.setHeight(150)),
-                      )));
+                      ))));
                   },
                 )
 

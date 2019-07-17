@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:app_ui/approve_detail.dart';
-import 'package:app_ui/count_assets_main.dart';
+import 'package:app_ui/ca_menu.dart';
+import 'package:app_ui/ca_new_entry.dart';
 import 'package:app_ui/matadd.dart';
 import 'package:app_ui/po_main.dart';
 import 'package:app_ui/po_history.dart';
@@ -99,8 +100,10 @@ class MyApp extends StatelessWidget {
         '/approve': (context) => new Approve(),
         '/po-hist': (context) => new PoHist(),
         '/po-list-info': (context) => new PoListInfo(),
-        '/po-new-entry': (context) => new NewPoEntry(),
         '/count-assets': (context) => new CountAssetsMain(),
+        '/po-new-entry': (context) => new NewPoEntry(),
+        '/ca-menu' : (context) => new CAMenu(),
+        '/ca-new-entry' : (context) => new NewCAEntry()
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
