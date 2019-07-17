@@ -13,6 +13,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/services.dart';
 import 'approve.dart';
+import 'ca_main.dart';
 import 'dc_detail.dart';
 import './notification.dart';
 import 'signin.dart';
@@ -100,10 +101,10 @@ class MyApp extends StatelessWidget {
         '/approve': (context) => new Approve(),
         '/po-hist': (context) => new PoHist(),
         '/po-list-info': (context) => new PoListInfo(),
-        '/count-assets': (context) => new CountAssetsMain(),
+        '/ca-main': (context) => new CountAssetsMain(),
         '/po-new-entry': (context) => new NewPoEntry(),
-        '/ca-menu' : (context) => new CAMenu(),
-        '/ca-new-entry' : (context) => new NewCAEntry()
+        '/ca-menu': (context) => new CAMenu(),
+        '/ca-new-entry': (context) => new NewCAEntry()
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -425,7 +426,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.of(context).pushNamed('/projection');
                 }),
                 gridViewButton("Count Asset", Icons.monetization_on, () {
-                  Navigator.of(context).pushNamed('/count-assets');
+                  Navigator.of(context).pushNamed('/ca-main');
                 }),
                 gridViewButton("PO Receive", Icons.library_books, () {
                   Navigator.of(context).pushNamed('/po');

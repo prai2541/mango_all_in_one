@@ -1,5 +1,5 @@
-import 'package:app_ui/count_assets_dapartment.dart';
-import 'package:app_ui/count_assets_project.dart';
+import 'package:app_ui/ca_dapartment.dart';
+import 'package:app_ui/ca_project.dart';
 import 'package:flutter/material.dart';
 
 class CountAssetsMain extends StatelessWidget {

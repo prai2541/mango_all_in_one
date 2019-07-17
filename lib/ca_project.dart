@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -111,14 +110,7 @@ class CAProjectState extends State<CAProject> {
                       size: ScreenUtil.instance.setSp(16),
                     ),
                     onPressed: () =>
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => new Scaffold(
-                            appBar: AppBar(
-                              title: Text(data.projects[i].name),
-                            ),
-                            body: Container(color: Colors.red),
-                          ),
-                        ))),
+                        Navigator.of(context).pushNamed('/ca-menu')),
                 children: <Widget>[
                   Container(
                     child: Column(
