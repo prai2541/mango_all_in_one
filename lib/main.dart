@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:app_ui/approve_detail.dart';
 import 'package:app_ui/matadd.dart';
-import 'package:app_ui/po_tabs.dart';
+import 'package:app_ui/po_main.dart';
 import 'package:app_ui/po_history.dart';
 import 'package:app_ui/po_list_info.dart';
 import 'package:app_ui/po_new_entry.dart';
@@ -93,7 +93,7 @@ class MyApp extends StatelessWidget {
         '/notification': (BuildContext context) => new NotificationPage(),
         '/dc-system': (BuildContext context) => new DCSys(),
         '/mat-add': (BuildContext context) => new MatAdd(),
-        '/po': (context) => new POTabs(),
+        '/po': (context) => new POMain(),
         '/approve-detail': (BuildContext context) => new ApproveDetail(),
         '/approve': (context) => new Approve(),
         '/po-hist': (context) => new PoHist(),
