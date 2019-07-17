@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:app_ui/approve_detail.dart';
+import 'package:app_ui/count_assets_main.dart';
 import 'package:app_ui/matadd.dart';
 import 'package:app_ui/po_main.dart';
 import 'package:app_ui/po_history.dart';
@@ -98,7 +99,8 @@ class MyApp extends StatelessWidget {
         '/approve': (context) => new Approve(),
         '/po-hist': (context) => new PoHist(),
         '/po-list-info': (context) => new PoListInfo(),
-        '/po-new-entry': (context) => new NewPoEntry()
+        '/po-new-entry': (context) => new NewPoEntry(),
+        '/count-assets': (context) => new CountAssetsMain(),
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -419,7 +421,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 gridViewButton("Projection", Icons.lightbulb_outline, () {
                   Navigator.of(context).pushNamed('/projection');
                 }),
-                gridViewButton("Count Asset", Icons.monetization_on),
+                gridViewButton("Count Asset", Icons.monetization_on, () {
+                  Navigator.of(context).pushNamed('/count-assets');
+                }),
                 gridViewButton("PO Receive", Icons.library_books, () {
                   Navigator.of(context).pushNamed('/po');
                 }),
