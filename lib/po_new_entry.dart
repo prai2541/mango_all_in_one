@@ -1,6 +1,10 @@
+import 'dart:io';
+
 import 'package:app_ui/po_list_info.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_picker/image_picker.dart';
 
 class NewPoEntry extends StatelessWidget{
   @override
@@ -23,6 +27,16 @@ class NewPoEntry extends StatelessWidget{
         ],
       ),
       body: NewPoEntrys(),
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.only(left:ScreenUtil.instance.setWidth(20), right:ScreenUtil.instance.setWidth(20), top:ScreenUtil.instance.setHeight(10), bottom: ScreenUtil.instance.setHeight(10)),
+        child:RaisedButton(
+          color: Color(0xFF00b89c),
+          child: Text('Save', style: TextStyle(fontSize: ScreenUtil.instance.setSp(16), color: Colors.white),),
+          onPressed: () {
+             //Navigator.of(context).pushNamed('/po-new-entry', arguments: ScreenArguments('P01234567890'));
+          },
+        ),
+    )
     );
   }
 
@@ -53,16 +67,29 @@ class NewPoEntryState extends State<NewPoEntrys> {
   TextEditingController tnctrl =  TextEditingController();
   TextEditingController dnctrl =  TextEditingController();
   TextEditingController rectrl =  TextEditingController();
+  List<File> imglist = [];
+  bool ic = false;
+  bool all = false;
+
+
+  Future getImage1() async {
+    var img = await ImagePicker.pickImage(source: ImageSource.camera);
+    if (img == null) return;
+    setState(() {
+      this.imglist.add(img);
+    });
+  }
     
 
   Widget textfield(String title, controller) {
     return Row(
       children: <Widget>[
-        Expanded(flex: 3, child: Text('$title', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18)))),
+        Expanded(flex: 3, child: Text('$title', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14)))),
         Expanded(flex: 5, child: Container(height: ScreenUtil.instance.setHeight(60), child: TextFormField(
+          autocorrect: false,
           controller: controller,
           style: TextStyle(
-            fontSize: ScreenUtil.instance.setSp(18)
+            fontSize: ScreenUtil.instance.setSp(14)
           ),
           decoration: InputDecoration(
             contentPadding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(12), bottom: ScreenUtil.instance.setHeight(12), left: ScreenUtil.instance.setWidth(10), right: ScreenUtil.instance.setWidth(10)),
@@ -160,7 +187,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('$time1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
+              Text('$time1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14))),
               IconButton(
                 padding: EdgeInsets.all(0),
                 icon: Icon(Icons.calendar_today),
@@ -185,7 +212,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('$date1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
+              Text('$date1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14))),
               IconButton(
                 padding: EdgeInsets.all(0),
                 icon: Icon(Icons.calendar_today),
@@ -217,7 +244,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('$time1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
+              Text('$time1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14))),
               IconButton(
                 padding: EdgeInsets.all(0),
                 icon: Icon(Icons.calendar_today),
@@ -242,7 +269,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('$date1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
+              Text('$date1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14))),
               IconButton(
                 padding: EdgeInsets.all(0),
                 icon: Icon(Icons.calendar_today),
@@ -274,7 +301,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('$time1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
+              Text('$time1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14))),
               IconButton(
                 padding: EdgeInsets.all(0),
                 icon: Icon(Icons.calendar_today),
@@ -299,7 +326,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('$date1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
+              Text('$date1', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14))),
               IconButton(
                 padding: EdgeInsets.all(0),
                 icon: Icon(Icons.calendar_today),
@@ -311,6 +338,139 @@ class NewPoEntryState extends State<NewPoEntrys> {
       );
     }
     
+  }
+
+  Widget photoSection() {
+    if(imglist.length == 0) {
+      return Card(
+          margin: EdgeInsets.all(5),
+          child: Container(
+            //padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                padding: EdgeInsets.only(left: 20),
+                height: 50,
+                width: 500,
+                color: Color(0xFF00b89c),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'ส่วนที่ 4 : ข้อมูลการประเมิน',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                ),
+                SizedBox(height: ScreenUtil.instance.setHeight(10)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color(0xFF00b89c))
+                      ),
+                      
+                      child: FlatButton(
+                        child: Row(
+                          children: [
+                            Icon(Icons.add_a_photo),
+                            SizedBox(width: 10,),
+                            Text('Add a Photo')
+                          ]
+                          ),
+                        onPressed: getImage1,
+                      ))
+                  ]
+                ),
+                SizedBox(height: ScreenUtil.instance.setHeight(10)),
+              ])));
+                
+    } else {
+      return Card(
+          margin: EdgeInsets.all(5),
+          child: Container(
+            //padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                padding: EdgeInsets.only(left: 20),
+                height: 50,
+                width: 500,
+                color: Color(0xFF00b89c),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'ส่วนที่ 4 : ข้อมูลการประเมิน',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                ),
+                SizedBox(height: ScreenUtil.instance.setHeight(10)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Color(0xFF00b89c))
+                      ),
+                      
+                      child: FlatButton(
+                        child: Row(
+                          children: [
+                            Icon(Icons.add_a_photo),
+                            SizedBox(width: 10,),
+                            Text('Add a Photo')
+                          ]
+                          ),
+                        onPressed: getImage1,
+                      ))
+                ]),
+                GridView.builder(
+                  padding: EdgeInsets.all(10),
+                  shrinkWrap: true,
+                  gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                                   crossAxisCount: 4),
+                  itemCount: imglist.length,
+                  itemBuilder: (context, index) {
+                    return Badge(
+                      elevation: 2,
+                      badgeColor: Colors.white,
+                      position: BadgePosition.topRight(top: -5, right: -10),
+                      padding: EdgeInsets.all(0),
+                      badgeContent: InkWell(
+                        //padding: EdgeInsets.all(1),
+                        child: Icon(Icons.clear,color: Colors.black,
+                        size: ScreenUtil.instance.setWidth(20)),
+                        onTap: () {
+                          setState(() {
+                           imglist.removeAt(index); 
+                          });
+                        },
+                        
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Container(
+                          height: ScreenUtil.instance.setHeight(150),
+                          width: ScreenUtil.instance.setWidth(100),
+                          child:Image.file(imglist[index],
+                            fit: BoxFit.fill,
+                            height: ScreenUtil.instance.setHeight(150)),
+                      )));
+                  },
+                )
+
+                
+                
+              ],
+            )
+          )
+        );
+    }
   }
   
   @override
@@ -328,30 +488,43 @@ class NewPoEntryState extends State<NewPoEntrys> {
         Card(
           margin: EdgeInsets.all(5),
           child: Container(
-            padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+            //padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('Part 1 : General Information', style: TextStyle(fontSize: ScreenUtil.instance.setSp(20))),
+                Container(
+                padding: EdgeInsets.only(left: 20),
+                height: 50,
+                width: 500,
+                color: Color(0xFF00b89c),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'ส่วนที่ 1 : ข้อมูลทั่วไป',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                ),
                 Container(
                   padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                      Text('Kaiba Corperation', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))),
+                      Text('Company Name', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14))),
                       SizedBox(height: ScreenUtil.instance.setHeight(30)),
                       Row(
                         children: <Widget>[
-                          Expanded(flex: 3, child: Text('Date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18)))),
-                          Expanded(flex: 5, child: Text('$time', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18))))
+                          Expanded(flex: 3, child: Text('Date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14)))),
+                          Expanded(flex: 5, child: Text('$time', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14))))
                         ],
                       ),
-                      SizedBox(height: ScreenUtil.instance.setHeight(10)),
+                      SizedBox(height: ScreenUtil.instance.setHeight(20)),
                       textfield('Term', termctrl),
+                      SizedBox(height: ScreenUtil.instance.setHeight(10)),
                       Row(
                         children: [
-                          Expanded(flex: 3, child: Text('Due Date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18)))),
+                          Expanded(flex: 3, child: Text('Due Date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14)))),
                           datepicker1(duedate)
                         ]
                       ),
@@ -369,30 +542,43 @@ class NewPoEntryState extends State<NewPoEntrys> {
         Card(
           margin: EdgeInsets.all(5),
           child: Container(
-            padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+            //padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('Part 2 : Tax, Invoices', style: TextStyle(fontSize: ScreenUtil.instance.setSp(20))),
+                Container(
+                padding: EdgeInsets.only(left: 20),
+                height: 50,
+                width: 500,
+                color: Color(0xFF00b89c),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'ส่วนที่ 2 : การบันทึกข้อมูล Tax, Invoices',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
                 Container(
                   padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(height: ScreenUtil.instance.setHeight(30)),
+                      //SizedBox(height: ScreenUtil.instance.setHeight(30)),
                       textfield('Tax No', tnctrl),
+                      SizedBox(height: ScreenUtil.instance.setHeight(10)),
                       Row(
                         children: [
-                          Expanded(flex: 3, child: Text('Tax Date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18)))),
+                          Expanded(flex: 3, child: Text('Tax Date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14)))),
                           datepicker2(taxdate)
                         ]
                       ),
                       SizedBox(height: ScreenUtil.instance.setHeight(10)),
                       textfield('Do No', dnctrl),
-                      //SizedBox(height: ScreenUtil.instance.setHeight(10)),
+                      SizedBox(height: ScreenUtil.instance.setHeight(10)),
                       Row(
                         children: [
-                          Expanded(flex: 3, child: Text('Do Date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(18)))),
+                          Expanded(flex: 3, child: Text('Do Date', style: TextStyle(fontSize: ScreenUtil.instance.setSp(14)))),
                           datepicker3(dodate)
                         ]
                       ),
@@ -417,7 +603,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                 padding: EdgeInsets.only(left: 20),
                 height: 50,
                 width: 500,
-                color: Colors.blue,
+                color: Color(0xFF00b89c),
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
@@ -437,6 +623,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                       child: Column(
                         children: <Widget>[
                           RadioListTile(
+                            activeColor: Color(0xFF00b89c),
                             value: 1,
                             title: Text(
                               'Comply',
@@ -450,6 +637,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                             },
                           ),
                           RadioListTile(
+                            activeColor: Color(0xFF00b89c),
                             value: 0,
                             title: Text('Not Comply',
                                 style: TextStyle(fontSize: 12)),
@@ -472,6 +660,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                       child: Column(
                         children: <Widget>[
                           RadioListTile(
+                            activeColor: Color(0xFF00b89c),
                             value: 1,
                             title: Text('Complete',
                                 style: TextStyle(fontSize: 12)),
@@ -483,6 +672,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                             },
                           ),
                           RadioListTile(
+                            activeColor: Color(0xFF00b89c),
                             value: 0,
                             title: Text('Not Complete',
                                 style: TextStyle(fontSize: 12)),
@@ -511,6 +701,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                         children: <Widget>[
                           RadioListTile(
                             value: 1,
+                            activeColor: Color(0xFF00b89c),
                             title: Text(
                               'On time',
                               style: TextStyle(fontSize: 12),
@@ -523,6 +714,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                             },
                           ),
                           RadioListTile(
+                            activeColor: Color(0xFF00b89c),
                             value: 0,
                             title: Text('Late', style: TextStyle(fontSize: 12)),
                             groupValue: onTime,
@@ -544,6 +736,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                       child: Column(
                         children: <Widget>[
                           RadioListTile(
+                            activeColor: Color(0xFF00b89c),
                             value: 1,
                             title: Text('Excellent',
                                 style: TextStyle(fontSize: 12)),
@@ -555,6 +748,7 @@ class NewPoEntryState extends State<NewPoEntrys> {
                             },
                           ),
                           RadioListTile(
+                            activeColor: Color(0xFF00b89c),
                             value: 0,
                             title: Text('Poor', style: TextStyle(fontSize: 12)),
                             groupValue: excellent,
@@ -572,6 +766,63 @@ class NewPoEntryState extends State<NewPoEntrys> {
               )
             ]),
           ),
+        ),
+        photoSection(),
+        Card(
+          margin: EdgeInsets.all(5),
+          child: Container(
+            //padding: EdgeInsets.only(top: 10, bottom: 10, left: 20, right: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Container(
+                padding: EdgeInsets.only(left: 20),
+                height: 50,
+                width: 500,
+                color: Color(0xFF00b89c),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'ส่วนที่ 5 : เลือกรายการที่ต้องการรับของ',
+                    style: TextStyle(color: Colors.white)
+                  ),
+                ),
+                ),
+                SizedBox(height: ScreenUtil.instance.setHeight(10)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Checkbox(
+                      value: ic,
+                      activeColor: Color(0xFF00b89c),
+                      onChanged: (v) {
+                        setState(() {
+                         ic = v; 
+                        });
+                      },
+                    ),
+                    SizedBox(width: ScreenUtil.instance.setWidth(10)),
+                    Text('IC Recieve'),
+                    SizedBox(width: ScreenUtil.instance.setWidth(10)),
+                    Checkbox(
+                      value: all,
+                      activeColor: Color(0xFF00b89c),
+                      onChanged: (v) {
+                        setState(() {
+                         all = v; 
+                        });
+                      },
+                    ),
+                    SizedBox(width: ScreenUtil.instance.setWidth(10)),
+                    Text('Recieve All')
+                  ],)
+                
+
+                
+                
+              ],
+            )
+          )
         ),
       ],
     ));
