@@ -31,7 +31,9 @@ class CAMenu extends StatelessWidget {
         Row(
           children: <Widget>[
             Expanded(
-                flex: 1, child: menu('Count Assets', Icons.monetization_on)),
+                flex: 1, child: menu('Count Assets', Icons.monetization_on, () {
+                  Navigator.of(context).pushNamed('/ca-asset-detail');
+                })),
             Container(
                 height: ScreenUtil.instance.setHeight(50),
                 child: VerticalDivider(
@@ -49,7 +51,11 @@ class CAMenu extends StatelessWidget {
         ),
         Row(
           children: <Widget>[
-            Expanded(flex: 1, child: menu('Assets Report', Icons.insert_chart)),
+            Expanded(
+                flex: 1,
+                child: menu('Assets Report', Icons.insert_chart, () {
+                  Navigator.of(context).pushNamed('/ca-menu/report');
+                })),
             Container(
                 height: ScreenUtil.instance.setHeight(50),
                 child: VerticalDivider(

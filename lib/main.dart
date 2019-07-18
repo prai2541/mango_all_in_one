@@ -1,7 +1,9 @@
 import 'dart:ui';
 import 'package:app_ui/approve_detail.dart';
+import 'package:app_ui/ca_asset_detail.dart';
 import 'package:app_ui/ca_menu.dart';
 import 'package:app_ui/ca_new_entry.dart';
+import 'package:app_ui/ca_report.dart';
 import 'package:app_ui/matadd.dart';
 import 'package:app_ui/po_main.dart';
 import 'package:app_ui/po_history.dart';
@@ -23,6 +25,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'PRmain.dart';
 import 'PRcon.dart';
 import 'PRadd.dart';
+import 'count_assets_main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 final List<String> imgList = [
@@ -104,7 +107,9 @@ class MyApp extends StatelessWidget {
         '/ca-main': (context) => new CountAssetsMain(),
         '/po-new-entry': (context) => new NewPoEntry(),
         '/ca-menu': (context) => new CAMenu(),
-        '/ca-new-entry': (context) => new NewCAEntry()
+        '/ca-new-entry': (context) => new NewCAEntry(),
+        '/ca-menu/report': (context) => new AssetReport(),
+        '/ca-asset-detail' : (context) => new AssetDetail()
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
