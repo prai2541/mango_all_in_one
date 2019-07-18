@@ -294,7 +294,6 @@ class NotificationPage extends StatelessWidget {
               IconButton(
                   icon: Icon(
                     Icons.home,
-                    size: ScreenUtil.instance.setSp(30),
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -302,16 +301,16 @@ class NotificationPage extends StatelessWidget {
                   })
             ],
             bottom: TabBar(
-              indicatorColor: Color(0xFFB8001C),
-                indicatorWeight: 3.0,
-                labelColor: Color(0xFFB8001C),
+              indicatorColor: Colors.white,
+              labelColor: Colors.white,
+
+              // indicatorWeight: 3.0,
+              // labelColor: Color(0xFFB8001C),
               tabs: <Widget>[
                 Tab(
                   child: Text(
                     "Normal Alert",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: ScreenUtil.instance.setSp(16)),
+                    style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                   ),
                 ),
                 Tab(
@@ -321,16 +320,14 @@ class NotificationPage extends StatelessWidget {
                       Expanded(
                           child: Text(
                         "Collateral Amount",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: ScreenUtil.instance.setSp(16)),
+                        style:
+                            TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                       )),
                       Expanded(
                           child: Text(
                         "Alert",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: ScreenUtil.instance.setSp(16)),
+                        style:
+                            TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
                       ))
                     ]))
               ],
@@ -338,10 +335,7 @@ class NotificationPage extends StatelessWidget {
             title: Text('Notification', style: TextStyle(color: Colors.white)),
           ),
           body: TabBarView(
-            children: <Widget>[
-              NormalAlert(), 
-              CollateralAlert()
-            ],
+            children: <Widget>[NormalAlert(), CollateralAlert()],
           ),
         ),
       ),
@@ -361,7 +355,10 @@ class NormalAlert extends StatelessWidget {
               style: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
           children: [
             Container(
-                margin: EdgeInsets.only(left: ScreenUtil.instance.setWidth(15), right: ScreenUtil.instance.setWidth(15), bottom: 10),
+                margin: EdgeInsets.only(
+                    left: ScreenUtil.instance.setWidth(15),
+                    right: ScreenUtil.instance.setWidth(15),
+                    bottom: 10),
                 child: ListView.builder(
                     shrinkWrap: true,
                     itemCount: rawData.years[i].months.length,

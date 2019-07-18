@@ -62,8 +62,8 @@ class DCSysState extends State<DCSys> {
   }
 
   Widget build(BuildContext context) {
-    double defaultScreenWidth = 1440/3.5;
-    double defaultScreenHeight = 2960/3.5;
+    double defaultScreenWidth = 1440 / 3.5;
+    double defaultScreenHeight = 2960 / 3.5;
 
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
@@ -88,236 +88,245 @@ class DCSysState extends State<DCSys> {
             child: Scaffold(
                 backgroundColor: Colors.white,
                 appBar: AppBar(
-                  title: Text('DC SYSTEM', style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
+                  title: Text('DC SYSTEM',
+                      style:
+                          TextStyle(fontFamily: 'Prompt', color: Colors.white)),
                   iconTheme: IconThemeData(color: Colors.white),
                   actions: <Widget>[
                     IconButton(
                       icon: Icon(
                         Icons.home,
-                        size: 30.0,
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/home', (Route<dynamic> route) => false);
                       },
                     )
                   ],
                 ),
                 body: Center(
-                  child: Container(
-                    child: ListView(
-                      physics: NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.all(ScreenUtil.instance.setWidth(32)),
-                        children: [
-                          SizedBox(
-                            height: ScreenUtil.instance.setWidth(50),
-                          ),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('DC System',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: ScreenUtil.instance.setSp(35),
-                                        color: Color(0xFF00b89c)))
-                              ]),
-                          SizedBox(
-                            height: ScreenUtil.instance.setWidth(75),
-                          ),
-                          
-                          searchTextField = AutoCompleteTextField<Players>(
-                              style: new TextStyle(
-                                  color: Colors.black,
-                                  fontSize: ScreenUtil.instance.setSp(16),
-                                  fontWeight: FontWeight.w300),
-                              keyboardType: TextInputType.number,
-                              decoration: new InputDecoration(
-                                fillColor: Colors.white,
-                                hintText: 'Project Number',
-                                hintStyle: TextStyle(
-                                    fontSize: ScreenUtil.instance.setSp(16),
-                                    fontWeight: FontWeight.w300,
-                                    color: Colors.black),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(5),borderSide: BorderSide(color: Colors.grey[600])),
-                                suffixIcon: IconButton(
-                                  icon: Icon(Icons.search),
-                                  onPressed: () {
-                                    if (prjid != null) {
-                                      setState(() {
-                                        prjname = prjnamehidden;
-                                      });
-                                      key.currentState.clear();
-                                      searchTextField.textField.controller.text =
-                                          prjid;
-                                    } else {
-                                      //prjid = searchTextField.textField.controller.text;
-
-                                    }
-                                  },
-                                ),
-                                //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
-                                filled: true,
-                                
-                              ),
-                              suggestionsAmount: 5,
-                              itemSubmitted: (item) {
-                                List emptylist = [];
-                                setState(() {
-                                  searchTextField.textField.controller.text =
-                                      item.id.toString();
-                                  prjnamehidden = item.autocompleteterm;
-                                  prjid = item.id.toString();
-                                });
-                                key.currentState.updateSuggestions(emptylist);
-                                //key.currentState.clear();
-                              },
-                              clearOnSubmit: false,
-                              submitOnSuggestionTap: true,
-                              key: key,
-                              suggestions: PlayersViewModel.players,
-                              itemBuilder: (context, item) {
-                                return Container(
-                                    padding: EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(20))),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: <Widget>[
-                                        Text(
-                                          item.id.toString(),
-                                          style: TextStyle(
-                                              fontSize: ScreenUtil.instance.setSp(16),
-                                              fontWeight: FontWeight.w300),
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.all(15.0),
-                                        ),
-                                        Text(
-                                          item.autocompleteterm,
-                                          style: TextStyle(
-                                              fontSize: 20.0,
-                                              fontWeight: FontWeight.w300),
-                                        )
-                                      ],
-                                    ));
-                              },
-                              itemSorter: (a, b) {
-                                return a.id.compareTo(b.id);
-                              },
-                              itemFilter: (item, query) {
-                                return item.id
-                                    .toString()
-                                    .startsWith(query.toLowerCase());
-                              }),
-                          SizedBox(
-                            height: ScreenUtil.instance.setHeight(25),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(
-                                bottom: 18, top: 18, left: 10, right: 10),
-                            child: Text(
-                              '$prjname',
-                              style: TextStyle(
-                                  fontSize: ScreenUtil.instance.setSp(16), fontWeight: FontWeight.w300),
-                            ),
-                            decoration: new BoxDecoration(
-                                border: Border.all(color: Colors.grey[600]),
-                                borderRadius: new BorderRadius.all(
-                                    Radius.circular(5.0))),
-                          ),
-                          SizedBox(
-                            height: ScreenUtil.instance.setHeight(25),
-                          ),
-                          Container(
-                            padding: EdgeInsets.only(
-                                bottom: ScreenUtil.instance.setHeight(5), top: ScreenUtil.instance.setHeight(5), left: 12, right: 10),
-                            decoration: new BoxDecoration(
-                                border: Border.all(color: Colors.grey[600]),
-                                borderRadius: new BorderRadius.all(
-                                    const Radius.circular(5.0))),
-                            child: DropdownButtonHideUnderline(
-                              child: DropdownButton<String>(
-                                icon: Icon(Icons.arrow_drop_down),
-                                iconSize: 35,
-                                isExpanded: true,
-                                value: dropdownValue,
+                    child: Container(
+                        child: ListView(
+                            physics: NeverScrollableScrollPhysics(),
+                            padding: EdgeInsets.all(
+                                ScreenUtil.instance.setWidth(32)),
+                            children: [
+                      SizedBox(
+                        height: ScreenUtil.instance.setWidth(50),
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text('DC System',
                                 style: TextStyle(
-                                    fontSize: ScreenUtil.instance.setSp(16),
-                                    fontWeight: FontWeight.w300,
-                                    color: Colors.black),
-                                //underline:,
-                                hint: Text(
-                                  'Select a job',
-                                  style: TextStyle(
-                                      fontSize: ScreenUtil.instance.setSp(16),
-                                      fontWeight: FontWeight.w300,
-                                      fontFamily: 'Prompt',
-                                      color: Colors.black),
-                                ),
-
-                                items: joblist
-                                    .map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                      value: value, child: Text('$value', style: TextStyle(fontFamily: 'Prompt')));
-                                }).toList(),
-                                onChanged: (String newValue) {
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: ScreenUtil.instance.setSp(35),
+                                    color: Color(0xFF00b89c)))
+                          ]),
+                      SizedBox(
+                        height: ScreenUtil.instance.setWidth(75),
+                      ),
+                      searchTextField = AutoCompleteTextField<Players>(
+                          style: new TextStyle(
+                              color: Colors.black,
+                              fontSize: ScreenUtil.instance.setSp(16),
+                              fontWeight: FontWeight.w300),
+                          keyboardType: TextInputType.number,
+                          decoration: new InputDecoration(
+                            fillColor: Colors.white,
+                            hintText: 'Project Number',
+                            hintStyle: TextStyle(
+                                fontSize: ScreenUtil.instance.setSp(16),
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide:
+                                    BorderSide(color: Colors.grey[600])),
+                            suffixIcon: IconButton(
+                              icon: Icon(Icons.search),
+                              onPressed: () {
+                                if (prjid != null) {
                                   setState(() {
-                                    dropdownValue = newValue;
+                                    prjname = prjnamehidden;
                                   });
-                                },
-                              ),
-                            ),
-                          ),
-                          
+                                  key.currentState.clear();
+                                  searchTextField.textField.controller.text =
+                                      prjid;
+                                } else {
+                                  //prjid = searchTextField.textField.controller.text;
 
-                          SizedBox(
-                            height: ScreenUtil.instance.setHeight(100),
+                                }
+                              },
+                            ),
+                            //contentPadding: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 20.0),
+                            filled: true,
                           ),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                RaisedButton(
-                                  onPressed: () {
-                                    Navigator.of(context)
-                                        .pushNamed('/dc-system/detail');
-                                  },
-                                  textColor: Colors.white,
-                                  padding: const EdgeInsets.all(0.0),
-                                  shape: new RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(30.0)),
+                          suggestionsAmount: 5,
+                          itemSubmitted: (item) {
+                            List emptylist = [];
+                            setState(() {
+                              searchTextField.textField.controller.text =
+                                  item.id.toString();
+                              prjnamehidden = item.autocompleteterm;
+                              prjid = item.id.toString();
+                            });
+                            key.currentState.updateSuggestions(emptylist);
+                            //key.currentState.clear();
+                          },
+                          clearOnSubmit: false,
+                          submitOnSuggestionTap: true,
+                          key: key,
+                          suggestions: PlayersViewModel.players,
+                          itemBuilder: (context, item) {
+                            return Container(
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20))),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Text(
+                                      item.id.toString(),
+                                      style: TextStyle(
+                                          fontSize:
+                                              ScreenUtil.instance.setSp(16),
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.all(15.0),
+                                    ),
+                                    Text(
+                                      item.autocompleteterm,
+                                      style: TextStyle(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w300),
+                                    )
+                                  ],
+                                ));
+                          },
+                          itemSorter: (a, b) {
+                            return a.id.compareTo(b.id);
+                          },
+                          itemFilter: (item, query) {
+                            return item.id
+                                .toString()
+                                .startsWith(query.toLowerCase());
+                          }),
+                      SizedBox(
+                        height: ScreenUtil.instance.setHeight(25),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            bottom: 18, top: 18, left: 10, right: 10),
+                        child: Text(
+                          '$prjname',
+                          style: TextStyle(
+                              fontSize: ScreenUtil.instance.setSp(16),
+                              fontWeight: FontWeight.w300),
+                        ),
+                        decoration: new BoxDecoration(
+                            border: Border.all(color: Colors.grey[600]),
+                            borderRadius:
+                                new BorderRadius.all(Radius.circular(5.0))),
+                      ),
+                      SizedBox(
+                        height: ScreenUtil.instance.setHeight(25),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            bottom: ScreenUtil.instance.setHeight(5),
+                            top: ScreenUtil.instance.setHeight(5),
+                            left: 12,
+                            right: 10),
+                        decoration: new BoxDecoration(
+                            border: Border.all(color: Colors.grey[600]),
+                            borderRadius: new BorderRadius.all(
+                                const Radius.circular(5.0))),
+                        child: DropdownButtonHideUnderline(
+                          child: DropdownButton<String>(
+                            icon: Icon(Icons.arrow_drop_down),
+                            iconSize: 35,
+                            isExpanded: true,
+                            value: dropdownValue,
+                            style: TextStyle(
+                                fontSize: ScreenUtil.instance.setSp(16),
+                                fontWeight: FontWeight.w300,
+                                color: Colors.black),
+                            //underline:,
+                            hint: Text(
+                              'Select a job',
+                              style: TextStyle(
+                                  fontSize: ScreenUtil.instance.setSp(16),
+                                  fontWeight: FontWeight.w300,
+                                  fontFamily: 'Prompt',
+                                  color: Colors.black),
+                            ),
+
+                            items: joblist
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text('$value',
+                                      style: TextStyle(fontFamily: 'Prompt')));
+                            }).toList(),
+                            onChanged: (String newValue) {
+                              setState(() {
+                                dropdownValue = newValue;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: ScreenUtil.instance.setHeight(100),
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RaisedButton(
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed('/dc-system/detail');
+                              },
+                              textColor: Colors.white,
+                              padding: const EdgeInsets.all(0.0),
+                              shape: new RoundedRectangleBorder(
+                                  borderRadius:
+                                      new BorderRadius.circular(30.0)),
+                              child: Container(
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    gradient: LinearGradient(
+                                      colors: <Color>[
+                                        Color(0xFF4BA092),
+                                        Color(0xFF8AD696),
+                                      ],
+                                    ),
+                                  ),
+                                  padding: const EdgeInsets.only(
+                                      left: 35, right: 35, top: 10, bottom: 10),
                                   child: Container(
-                                      decoration: const BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.all(Radius.circular(30)),
-                                        gradient: LinearGradient(
-                                          colors: <Color>[
-                                            Color(0xFF4BA092),
-                                            Color(0xFF8AD696),
-                                          ],
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          children: [
+                                        Text(
+                                          'Search  ',
+                                          style: TextStyle(
+                                            fontSize:
+                                                ScreenUtil.instance.setSp(21),
+                                            fontWeight: FontWeight.w300,
+                                          ),
                                         ),
-                                      ),
-                                      padding: const EdgeInsets.only(
-                                          left: 35, right: 35, top: 10, bottom: 10),
-                                      child: Container(
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              children: [
-                                            Text(
-                                              'Search  ',
-                                              style: TextStyle(
-                                                fontSize: ScreenUtil.instance.setSp(21),
-                                                fontWeight: FontWeight.w300,
-                                              ),
-                                            ),
-                                            Icon(Icons.search, color: Colors.white)
-                                          ]))),
-                                ),
-                              ]),
-                        ])))))
+                                        Icon(Icons.search, color: Colors.white)
+                                      ]))),
+                            ),
+                          ]),
+                    ])))))
       ],
     );
   }

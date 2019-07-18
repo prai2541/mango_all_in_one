@@ -18,7 +18,6 @@ class NewPoEntry extends StatelessWidget{
           IconButton(
             icon: Icon(
               Icons.home,
-              size: 30.0,
             ),
             onPressed: () {
               Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);

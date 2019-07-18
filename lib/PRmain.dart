@@ -39,15 +39,14 @@ class PRmain extends StatefulWidget {
   PRmainState createState() => PRmainState();
 }
 
-class PRmainState extends State<PRmain>{
-
+class PRmainState extends State<PRmain> {
   //String prjname = 'Project Name';
   TextEditingController pcodectrl = new TextEditingController();
   TextEditingController jcodectrl = new TextEditingController();
   TextEditingController dcodectrl = new TextEditingController();
-  
+
   //String dropdownValue;
-  
+
   // AutoCompleteTextField prjcode;
   // AutoCompleteTextField jobcode;
   // AutoCompleteTextField depcode;
@@ -59,10 +58,6 @@ class PRmainState extends State<PRmain>{
   String prjnum;
   String jobnum;
   String depnum;
-  
- 
-  
-
 
   void _loadData() async {
     await PlayersViewModel.loadPlayers();
@@ -76,182 +71,204 @@ class PRmainState extends State<PRmain>{
   }
 
   Widget createAutoComField(textctrl, hint) {
-    double defaultScreenWidth = 1440/3.5;
-    double defaultScreenHeight = 2960/3.5;
-    
+    double defaultScreenWidth = 1440 / 3.5;
+    double defaultScreenHeight = 2960 / 3.5;
+
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
-   )..init(context);
+    )..init(context);
     return TextFormField(
       controller: textctrl,
       keyboardType: TextInputType.number,
-      style: TextStyle(
-        fontSize: ScreenUtil.instance.setSp(16)
-      ),
+      style: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
       decoration: InputDecoration(
-        
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(5)),
-          borderSide: BorderSide(color: Colors.grey[600])
-        ),
-        suffixIcon: IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () {
-
-          },
-        ),
-        hintText: hint,
-        hintStyle: TextStyle(
-          fontSize: ScreenUtil.instance.setSp(16)
-        )
-      ),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+              borderSide: BorderSide(color: Colors.grey[600])),
+          suffixIcon: IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+          hintText: hint,
+          hintStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16))),
     );
   }
 
-
   Widget createPR() {
+    double defaultScreenWidth = 1440 / 3.5;
+    double defaultScreenHeight = 2960 / 3.5;
 
-    double defaultScreenWidth = 1440/3.5;
-    double defaultScreenHeight = 2960/3.5;
-    
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
-   )..init(context);
-    return Center(child:Container(child:ListView(
-            //physics: NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(20), left: ScreenUtil.instance.setWidth(32), right: ScreenUtil.instance.setWidth(32)),
-            shrinkWrap: true,
-              children: [
-                createAutoComField(pcodectrl, 'Project code'),
-                SizedBox(height: ScreenUtil.instance.setHeight(20),),
-                createAutoComField(jcodectrl, 'Job code'),
-                SizedBox(height: ScreenUtil.instance.setHeight(20),),
-                createAutoComField(dcodectrl, 'Department code'),
-                SizedBox(height: ScreenUtil.instance.setHeight(40),),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [  
-                    RaisedButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed('/pr-main/con');               
-                      },
-                      textColor: Colors.white,
-                      padding: const EdgeInsets.all(0.0),
-                      shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-                      child: Container(
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                          gradient: LinearGradient(
-                            colors: <Color>[
-                              Color(0xFF4BA092),
-                              Color(0xFF8AD696),
-                            ],
+    )..init(context);
+    return Center(
+        child: Container(
+            child: ListView(
+                //physics: NeverScrollableScrollPhysics(),
+                padding: EdgeInsets.only(
+                    top: ScreenUtil.instance.setHeight(20),
+                    left: ScreenUtil.instance.setWidth(32),
+                    right: ScreenUtil.instance.setWidth(32)),
+                shrinkWrap: true,
+                children: [
+          createAutoComField(pcodectrl, 'Project code'),
+          SizedBox(
+            height: ScreenUtil.instance.setHeight(20),
+          ),
+          createAutoComField(jcodectrl, 'Job code'),
+          SizedBox(
+            height: ScreenUtil.instance.setHeight(20),
+          ),
+          createAutoComField(dcodectrl, 'Department code'),
+          SizedBox(
+            height: ScreenUtil.instance.setHeight(40),
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/pr-main/con');
+              },
+              textColor: Colors.white,
+              padding: const EdgeInsets.all(0.0),
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(30.0)),
+              child: Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    gradient: LinearGradient(
+                      colors: <Color>[
+                        Color(0xFF4BA092),
+                        Color(0xFF8AD696),
+                      ],
+                    ),
+                  ),
+                  padding: EdgeInsets.only(
+                      left: ScreenUtil.instance.setWidth(35),
+                      right: ScreenUtil.instance.setWidth(35),
+                      top: ScreenUtil.instance.setHeight(10),
+                      bottom: ScreenUtil.instance.setHeight(10)),
+                  child: Container(
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                        Text(
+                          'Continue',
+                          style: TextStyle(
+                            fontSize: ScreenUtil.instance.setSp(25),
+                            fontWeight: FontWeight.w300,
                           ),
                         ),
-                        padding: EdgeInsets.only(left: ScreenUtil.instance.setWidth(35), right: ScreenUtil.instance.setWidth(35), top: ScreenUtil.instance.setHeight(10), bottom: ScreenUtil.instance.setHeight(10)),
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Text(
-                                'Continue',
-                                style: TextStyle(fontSize: ScreenUtil.instance.setSp(25),
-                                fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                              //Icon(Icons.search, color: Colors.white)
-                            ]
-                          )
-                        )
-                      ),
-                    ),
-                  ]
-                ),
-              ]
-            )));
+                        //Icon(Icons.search, color: Colors.white)
+                      ]))),
+            ),
+          ]),
+        ])));
   }
-  
 
+  Widget build(BuildContext context) {
+    double defaultScreenWidth = 1440 / 3.5;
+    double defaultScreenHeight = 2960 / 3.5;
 
-
- 
- Widget build(BuildContext context) {
-
-    double defaultScreenWidth = 1440/3.5;
-    double defaultScreenHeight = 2960/3.5;
-    
     ScreenUtil.instance = ScreenUtil(
       width: defaultScreenWidth,
       height: defaultScreenHeight,
       allowFontScaling: true,
-   )..init(context);
+    )..init(context);
 
     return DefaultTabController(
-        length: 2,
-        child: GestureDetector(
+      length: 2,
+      child: GestureDetector(
           onTap: () {
             FocusScope.of(context).requestFocus(new FocusNode());
-            
           },
           child: Scaffold(
-            appBar: AppBar(
-              iconTheme: IconThemeData(color: Colors.white),
-              
-              actions: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.home,
-                    size: ScreenUtil.instance.setSp(30),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/home', (Route<dynamic> route) => false);
-                  })
-              ],
-              title: Text(
-                'PR',
-                style: TextStyle(color: Colors.white),
+              appBar: AppBar(
+                iconTheme: IconThemeData(color: Colors.white),
+                actions: <Widget>[
+                  IconButton(
+                      icon: Icon(
+                        Icons.home,
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                            '/home', (Route<dynamic> route) => false);
+                      })
+                ],
+                title: Text(
+                  'PR',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
-            ),
-            body: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Container(
-                  color: Colors.black.withOpacity(0.08),
-                  padding: EdgeInsets.only(top: ScreenUtil.instance.setHeight(30), bottom: ScreenUtil.instance.setHeight(30), left: 0),
-                  child: ListBody(
-                    
-                    children: <Widget>[
-                      SizedBox(height: ScreenUtil.instance.setHeight(30),),
-                      Column(mainAxisAlignment: MainAxisAlignment.center, children: [Text('Purchase', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(40), color: Color(0xFF00b89c))), Text('Requisition', style: TextStyle(fontWeight: FontWeight.bold, fontSize: ScreenUtil.instance.setSp(40), color: Color(0xFF00b89c)))]),
-                      SizedBox(height: ScreenUtil.instance.setHeight(30),),
-                      
+              body: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    color: Colors.black.withOpacity(0.08),
+                    padding: EdgeInsets.only(
+                        top: ScreenUtil.instance.setHeight(30),
+                        bottom: ScreenUtil.instance.setHeight(30),
+                        left: 0),
+                    child: ListBody(
+                      children: <Widget>[
+                        SizedBox(
+                          height: ScreenUtil.instance.setHeight(30),
+                        ),
+                        Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('Purchase',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: ScreenUtil.instance.setSp(40),
+                                      color: Color(0xFF00b89c))),
+                              Text('Requisition',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: ScreenUtil.instance.setSp(40),
+                                      color: Color(0xFF00b89c)))
+                            ]),
+                        SizedBox(
+                          height: ScreenUtil.instance.setHeight(30),
+                        ),
+                      ],
+                    ),
+                  ),
+                  TabBar(
+                    indicatorColor: Color(0xFFB8001C),
+                    indicatorWeight: 3.0,
+                    labelColor: Color(0xFFB8001C),
+                    labelStyle:
+                        TextStyle(fontSize: ScreenUtil.instance.setSp(18)),
+                    unselectedLabelColor: Colors.black,
+                    tabs: [
+                      Tab(
+                          child: Text('CREATE',
+                              style: TextStyle(fontFamily: 'Prompt'))),
+                      Tab(
+                          child: Text('STATUS',
+                              style: TextStyle(fontFamily: 'Prompt'))),
                     ],
                   ),
-                ),
-                TabBar(
-                        indicatorColor: Color(0xFFB8001C),
-                        indicatorWeight: 3.0,
-                        labelColor: Color(0xFFB8001C),
-                        labelStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(18)),
-                        unselectedLabelColor: Colors.black,
-                        tabs: [
-                          Tab(child: Text('CREATE', style: TextStyle(fontFamily: 'Prompt'))),
-                          Tab(child: Text('STATUS', style: TextStyle(fontFamily: 'Prompt'))),
-                        ],
-                      ),
-                Expanded(
-                  child: TabBarView(
-                    children: <Widget>[createPR(), Center(child: Text('PLACEHOLDER STATUS', style: TextStyle(fontSize: 40),),)],
+                  Expanded(
+                    child: TabBarView(
+                      children: <Widget>[
+                        createPR(),
+                        Center(
+                          child: Text(
+                            'PLACEHOLDER STATUS',
+                            style: TextStyle(fontSize: 40),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ))),
+                ],
+              ))),
     );
   }
 }
@@ -259,9 +276,7 @@ class PRmainState extends State<PRmain>{
 class ProjectInfo {
   String prjNo;
   String prjName;
-  List <String> position;
+  List<String> position;
 
   ProjectInfo(this.prjNo, this.prjName, this.position);
-
 }
-

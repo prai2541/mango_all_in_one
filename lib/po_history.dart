@@ -128,7 +128,6 @@ class PoHist extends StatelessWidget {
             IconButton(
               icon: Icon(
                 Icons.home,
-                size: 30.0,
               ),
               onPressed: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(

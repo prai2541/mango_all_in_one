@@ -76,7 +76,6 @@ class DCDetail extends StatelessWidget {
                 IconButton(
                   icon: Icon(
                     Icons.home,
-                    size: 30.0,
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil(
@@ -85,11 +84,9 @@ class DCDetail extends StatelessWidget {
                 )
               ],
               bottom: TabBar(
-                indicatorColor: Color(0xFFB8001C),
                 indicatorWeight: 3.0,
-                labelColor: Color(0xFFB8001C),
+                labelColor: Colors.white,
                 labelStyle: TextStyle(fontSize: ScreenUtil.instance.setSp(16)),
-                unselectedLabelColor: Colors.white,
                 tabs: [
                   Tab(
                       child: Text(getDate().toUpperCase(),

@@ -74,7 +74,6 @@ class Projection extends StatelessWidget {
                   icon: Icon(
                     Icons.home,
                     color: Colors.white,
-                    size: ScreenUtil.instance.setSp(30),
                   ),
                   onPressed: () {
                     Navigator.of(context).pushNamedAndRemoveUntil(

@@ -55,8 +55,8 @@ class ApproveState extends State<Approve> with SingleTickerProviderStateMixin {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.home),
-            onPressed: () => Navigator.of(context).pushNamed('/home'),
-            iconSize: 30,
+            onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+                '/home', (Route<dynamic> route) => false),
           )
         ],
         bottom: TabBar(

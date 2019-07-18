@@ -47,7 +47,6 @@ class EmployeeDetail extends StatelessWidget {
                 icon: Icon(
                   Icons.home,
                   color: Colors.white,
-                  size: 30.0,
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(

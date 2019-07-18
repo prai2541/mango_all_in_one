@@ -2,27 +2,27 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class NewCAEntry extends StatelessWidget{
-
+class NewCAEntry extends StatelessWidget {
   Widget build(context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Count Assets', style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
-        iconTheme: IconThemeData(color: Colors.white),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.home,
-              size: 30.0,
-            ),
-            onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
-            },
-          )
-        ],
-      ),
-      body: NewCAEntrys(),
-      bottomNavigationBar: Container(
+        appBar: AppBar(
+          title: Text('Count Assets',
+              style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
+          iconTheme: IconThemeData(color: Colors.white),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.home,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/home', (Route<dynamic> route) => false);
+              },
+            )
+          ],
+        ),
+        body: NewCAEntrys(),
+        bottomNavigationBar: Container(
           margin: EdgeInsets.only(
               left: ScreenUtil.instance.setWidth(20),
               right: ScreenUtil.instance.setWidth(20),
@@ -37,7 +37,8 @@ class NewCAEntry extends StatelessWidget{
                   child: Text(
                     'Cancel',
                     style: TextStyle(
-                        fontSize: ScreenUtil.instance.setSp(16), color: Colors.white),
+                        fontSize: ScreenUtil.instance.setSp(16),
+                        color: Colors.white),
                   ),
                   onPressed: () {
                     // Navigator.of(context).pushNamed('/po-new-entry',
@@ -53,7 +54,8 @@ class NewCAEntry extends StatelessWidget{
                   child: Text(
                     'Save',
                     style: TextStyle(
-                        fontSize: ScreenUtil.instance.setSp(16), color: Colors.white),
+                        fontSize: ScreenUtil.instance.setSp(16),
+                        color: Colors.white),
                   ),
                   onPressed: () {
                     // Navigator.of(context).pushNamed('/po-new-entry',
@@ -63,11 +65,8 @@ class NewCAEntry extends StatelessWidget{
               ),
             ],
           ),
-        )
-    );
+        ));
   }
-
- 
 }
 
 class NewCAEntrys extends StatefulWidget {
@@ -75,11 +74,9 @@ class NewCAEntrys extends StatefulWidget {
   State<StatefulWidget> createState() {
     return NewCAEntryState();
   }
-
 }
 
 class NewCAEntryState extends State<NewCAEntrys> {
-
   TextEditingController docctrl = new TextEditingController();
   String doctext = '';
   bool doc = true;
@@ -114,124 +111,134 @@ class NewCAEntryState extends State<NewCAEntrys> {
   String usebytext = '';
   bool useby = true;
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).requestFocus(new FocusNode());
-      },
-      child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Column(
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.all(10),
-              color: Colors.grey[300],
-              child: Row(
-                children: <Widget>[
-                  Icon(Icons.format_list_bulleted),
-                  Text(' Project :  Project Name')
-                ],
+        onTap: () {
+          FocusScope.of(context).requestFocus(new FocusNode());
+        },
+        child: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(10),
+                color: Colors.grey[300],
+                child: Row(
+                  children: <Widget>[
+                    Icon(Icons.format_list_bulleted),
+                    Text(' Project :  Project Name')
+                  ],
+                ),
               ),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: ListView(
-                shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
-                children: <Widget>[
-                  textfield(Icons.insert_drive_file, ' Document No.', 'Document No', docctrl, doc),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: textfield(Icons.insert_drive_file, ' Asset Code', '$codetext', codectrl, code),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: IconButton(
-                          icon: Icon(Icons.search),
-                          iconSize: ScreenUtil.instance.setSp(40),
-                          onPressed: () {
-
-                          },
+              Container(
+                padding: EdgeInsets.all(20),
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  children: <Widget>[
+                    textfield(Icons.insert_drive_file, ' Document No.',
+                        'Document No', docctrl, doc),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: textfield(Icons.insert_drive_file,
+                              ' Asset Code', '$codetext', codectrl, code),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  textfield(Icons.apps, " Asset Name", nametext, namectrl, name),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  textfield(Icons.menu, " Serial Number", serialtext, serialctrl, serial),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 1,
-                        child: textfield(Icons.format_align_left, " Project", prjtext, prjctrl, prj),
-                      ),
-                      SizedBox(width: ScreenUtil.instance.setWidth(10),),
-                      Expanded(
-                        flex: 1,
-                        child: textfield(Icons.format_align_left, " Ref No.", reftext, refctrl, ref),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: textfield(Icons.format_align_left, " Quantity", qtytext, qtyctrl, qty),
-                      ),
-                      SizedBox(width: ScreenUtil.instance.setWidth(10),),
-                      Expanded(
-                        flex: 1,
-                        child: IconButton(
-                          icon: Icon(Icons.add_a_photo),
-                          onPressed: () {
-
-                          },
+                        Expanded(
+                          flex: 1,
+                          child: IconButton(
+                            icon: Icon(Icons.search),
+                            iconSize: ScreenUtil.instance.setSp(40),
+                            onPressed: () {},
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    textfield(
+                        Icons.apps, " Asset Name", nametext, namectrl, name),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    textfield(Icons.menu, " Serial Number", serialtext,
+                        serialctrl, serial),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 1,
+                          child: textfield(Icons.format_align_left, " Project",
+                              prjtext, prjctrl, prj),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: textfield(Icons.format_align_left, " Unit Name", unametext, unamectrl, uname),
-                      ),
-                      SizedBox(width: ScreenUtil.instance.setWidth(10),),
-                      Expanded(
-                        flex: 1,
-                        child: IconButton(
-                          icon: Icon(Icons.search),
-                          onPressed: () {
-                            
-                          },
+                        SizedBox(
+                          width: ScreenUtil.instance.setWidth(10),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  textfield(Icons.bookmark_border, " Asset Remark", remarktext, remarkctrl, remark),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  textfield(Icons.location_on, " Asset Location", loctext, locctrl, loc),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  textfield(Icons.person, " Used By", usebytext, usebyctrl, useby),
-                ],
+                        Expanded(
+                          flex: 1,
+                          child: textfield(Icons.format_align_left, " Ref No.",
+                              reftext, refctrl, ref),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: textfield(Icons.format_align_left, " Quantity",
+                              qtytext, qtyctrl, qty),
+                        ),
+                        SizedBox(
+                          width: ScreenUtil.instance.setWidth(10),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: IconButton(
+                            icon: Icon(Icons.add_a_photo),
+                            onPressed: () {},
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: textfield(Icons.format_align_left,
+                              " Unit Name", unametext, unamectrl, uname),
+                        ),
+                        SizedBox(
+                          width: ScreenUtil.instance.setWidth(10),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: IconButton(
+                            icon: Icon(Icons.search),
+                            onPressed: () {},
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    textfield(Icons.bookmark_border, " Asset Remark",
+                        remarktext, remarkctrl, remark),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    textfield(Icons.location_on, " Asset Location", loctext,
+                        locctrl, loc),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    textfield(
+                        Icons.person, " Used By", usebytext, usebyctrl, useby),
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ));
+            ],
+          ),
+        ));
   }
 
-   Widget textfield(icon, text, hinttext, controller, enabled) {
+  Widget textfield(icon, text, hinttext, controller, enabled) {
     return Column(
       children: <Widget>[
         Row(
@@ -241,9 +248,10 @@ class NewCAEntryState extends State<NewCAEntrys> {
             Text('$text'),
           ],
         ),
-        SizedBox(height: ScreenUtil.instance.setHeight(5),),
+        SizedBox(
+          height: ScreenUtil.instance.setHeight(5),
+        ),
         TextFormField(
-          
           enabled: enabled,
           decoration: InputDecoration(
             contentPadding: EdgeInsets.all(5),
@@ -255,9 +263,7 @@ class NewCAEntryState extends State<NewCAEntrys> {
             // ),
           ),
         )
-
       ],
     );
   }
-
 }

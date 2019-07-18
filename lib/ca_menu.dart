@@ -5,23 +5,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CAMenu extends StatelessWidget {
   Widget build(context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Assets Manager', style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
-        iconTheme: IconThemeData(color: Colors.white),
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.home,
-              size: 30.0,
-            ),
-            onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
-            },
-          )
-        ],
-      ),
-      body: body(context)
-    );
+        appBar: AppBar(
+          title: Text('Assets Manager',
+              style: TextStyle(fontFamily: 'Prompt', color: Colors.white)),
+          iconTheme: IconThemeData(color: Colors.white),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(
+                Icons.home,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/home', (Route<dynamic> route) => false);
+              },
+            )
+          ],
+        ),
+        body: body(context));
   }
 
   Widget body(context) {
