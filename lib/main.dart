@@ -25,7 +25,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'PRmain.dart';
 import 'PRcon.dart';
 import 'PRadd.dart';
-import 'count_assets_main.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 final List<String> imgList = [
@@ -109,7 +108,7 @@ class MyApp extends StatelessWidget {
         '/ca-menu': (context) => new CAMenu(),
         '/ca-new-entry': (context) => new NewCAEntry(),
         '/ca-menu/report': (context) => new AssetReport(),
-        '/ca-asset-detail' : (context) => new AssetDetail()
+        '/ca-asset-detail': (context) => new AssetDetail()
       },
       theme: ThemeData(primaryColor: Color(0xFF46B5A6), fontFamily: 'Prompt'),
       home: MyHomePage(title: 'Flutter Demo Home Page'),

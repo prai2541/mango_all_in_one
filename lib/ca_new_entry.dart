@@ -9,8 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'ca_unit_list.dart';
 import 'materialList.dart';
 
-class NewCAEntry extends StatelessWidget{
-
+class NewCAEntry extends StatelessWidget {
   Widget build(context) {
     return Scaffold(
         appBar: AppBar(
@@ -118,7 +117,7 @@ class NewCAEntryState extends State<NewCAEntrys> {
   TextEditingController usebyctrl = new TextEditingController();
   String usebytext = '';
   bool useby = true;
-  List<File> imglist = [];  
+  List<File> imglist = [];
 
   Future getImage1() async {
     var img = await ImagePicker.pickImage(source: ImageSource.camera);
@@ -127,7 +126,6 @@ class NewCAEntryState extends State<NewCAEntrys> {
       this.imglist.add(img);
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -149,117 +147,140 @@ class NewCAEntryState extends State<NewCAEntrys> {
                   ],
                 ),
               ),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: ListView(
-                shrinkWrap: true,
-                physics: BouncingScrollPhysics(),
-                children: <Widget>[
-                  textfield(Icons.insert_drive_file, ' Document No.', 'Document No', docctrl, doc),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: textfield(Icons.insert_drive_file, ' Asset Code', '$codetext', codectrl, code),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: IconButton(
-                          icon: Icon(Icons.search),
-                          iconSize: ScreenUtil.instance.setSp(30),
-                          onPressed: () async {
-                            AssetLists result = await Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => AssetList()));
-                            if (result != null) {
-                              setState(() {
-                              codetext = result.no;
-                              nametext = result.name;
-                              codectrl.text = result.no;
-                              namectrl.text = result.name;
-                              code = false;
-                              name = false;
-                            });
-              }
-                          },
+              Container(
+                padding: EdgeInsets.all(20),
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
+                  children: <Widget>[
+                    textfield(Icons.insert_drive_file, ' Document No.',
+                        'Document No', docctrl, doc),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: textfield(Icons.insert_drive_file,
+                              ' Asset Code', '$codetext', codectrl, code),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  textfield(Icons.apps, " Asset Name", nametext, namectrl, name),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  textfield(Icons.menu, " Serial Number", serialtext, serialctrl, serial),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 1,
-                        child: textfield(Icons.format_align_left, " Project", prjtext, prjctrl, prj),
-                      ),
-                      SizedBox(width: ScreenUtil.instance.setWidth(10),),
-                      Expanded(
-                        flex: 1,
-                        child: textfield(Icons.format_align_left, " Ref No.", reftext, refctrl, ref),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: textfield(Icons.format_align_left, " Quantity", qtytext, qtyctrl, qty),
-                      ),
-                      SizedBox(width: ScreenUtil.instance.setWidth(10),),
-                      Expanded(
-                        flex: 1,
-                        child: Stack(
-                          alignment: AlignmentDirectional.center,
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(Icons.add_a_photo),
-                              iconSize: ScreenUtil.instance.setSp(30),
-                              onPressed: getImage1
-                            ),
-                            Positioned(
-                              right: ScreenUtil.instance.setWidth(20),
-                              bottom: ScreenUtil.instance.setHeight(0),
-                              child: CircleAvatar(
-                                radius: ScreenUtil.instance.setSp(10),
-                                child: Text('${imglist.length}', style: TextStyle(color: Colors.white, fontSize: ScreenUtil.instance.setSp(13)),),
-                                backgroundColor: Color(0xFF46B5A6),
-                              ),
-                            )
-                          ],
+                        Expanded(
+                          flex: 1,
+                          child: IconButton(
+                            icon: Icon(Icons.search),
+                            iconSize: ScreenUtil.instance.setSp(30),
+                            onPressed: () async {
+                              AssetLists result = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => AssetList()));
+                              if (result != null) {
+                                setState(() {
+                                  codetext = result.no;
+                                  nametext = result.name;
+                                  codectrl.text = result.no;
+                                  namectrl.text = result.name;
+                                  code = false;
+                                  name = false;
+                                });
+                              }
+                            },
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    textfield(
+                        Icons.apps, " Asset Name", nametext, namectrl, name),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    textfield(Icons.menu, " Serial Number", serialtext,
+                        serialctrl, serial),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 1,
+                          child: textfield(Icons.format_align_left, " Project",
+                              prjtext, prjctrl, prj),
                         ),
-                      )
-                    ],
-                  ),
-                  SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                  Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 2,
-                        child: textfield(Icons.format_align_left, " Unit Name", unametext, unamectrl, uname),
-                      ),
-                      SizedBox(width: ScreenUtil.instance.setWidth(10),),
-                      Expanded(
-                        flex: 1,
-                        child: IconButton(
-                          icon: Icon(Icons.search),
-                          iconSize: ScreenUtil.instance.setSp(30),
-                          onPressed:() async {
-                            String result = await Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => UnitList()));
-                            if (result != null) {
-                              setState(() {
-                              unamectrl.text = result;
-                              uname = false;
-                            });
-              }
-                          },
+                        SizedBox(
+                          width: ScreenUtil.instance.setWidth(10),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: textfield(Icons.format_align_left, " Ref No.",
+                              reftext, refctrl, ref),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: textfield(Icons.format_align_left, " Quantity",
+                              qtytext, qtyctrl, qty),
+                        ),
+                        SizedBox(
+                          width: ScreenUtil.instance.setWidth(10),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Stack(
+                            alignment: AlignmentDirectional.center,
+                            children: <Widget>[
+                              IconButton(
+                                  icon: Icon(Icons.add_a_photo),
+                                  iconSize: ScreenUtil.instance.setSp(30),
+                                  onPressed: getImage1),
+                              Positioned(
+                                right: ScreenUtil.instance.setWidth(20),
+                                bottom: ScreenUtil.instance.setHeight(0),
+                                child: CircleAvatar(
+                                  radius: ScreenUtil.instance.setSp(10),
+                                  child: Text(
+                                    '${imglist.length}',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize:
+                                            ScreenUtil.instance.setSp(13)),
+                                  ),
+                                  backgroundColor: Color(0xFF46B5A6),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: textfield(Icons.format_align_left,
+                              " Unit Name", unametext, unamectrl, uname),
+                        ),
+                        SizedBox(
+                          width: ScreenUtil.instance.setWidth(10),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: IconButton(
+                            icon: Icon(Icons.search),
+                            iconSize: ScreenUtil.instance.setSp(30),
+                            onPressed: () async {
+                              String result = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UnitList()));
+                              if (result != null) {
+                                setState(() {
+                                  unamectrl.text = result;
+                                  uname = false;
+                                });
+                              }
+                            },
+                          ),
                         ),
                         Expanded(
                           flex: 1,
@@ -325,7 +346,7 @@ class NewCAEntryState extends State<NewCAEntrys> {
         ));
   }
 
-   Widget textfield(icon, text, hinttext, controller, enabled) {
+  Widget textfield(icon, text, hinttext, controller, enabled) {
     if (hinttext == '') {
       return Column(
         children: <Widget>[
@@ -336,7 +357,9 @@ class NewCAEntryState extends State<NewCAEntrys> {
               Text('$text'),
             ],
           ),
-          SizedBox(height: ScreenUtil.instance.setHeight(5),),
+          SizedBox(
+            height: ScreenUtil.instance.setHeight(5),
+          ),
           TextFormField(
             controller: controller,
             enabled: enabled,
@@ -350,7 +373,6 @@ class NewCAEntryState extends State<NewCAEntrys> {
               // ),
             ),
           )
-
         ],
       );
     } else {
@@ -363,7 +385,9 @@ class NewCAEntryState extends State<NewCAEntrys> {
               Text('$text'),
             ],
           ),
-          SizedBox(height: ScreenUtil.instance.setHeight(5),),
+          SizedBox(
+            height: ScreenUtil.instance.setHeight(5),
+          ),
           TextFormField(
             controller: controller,
             enabled: enabled,
@@ -377,10 +401,8 @@ class NewCAEntryState extends State<NewCAEntrys> {
               // ),
             ),
           )
-
         ],
       );
-
     }
   }
 }

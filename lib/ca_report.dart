@@ -67,16 +67,7 @@ class AssetReport extends StatelessWidget {
   Future scan(BuildContext context) async {
     try {
       String barcode = await BarcodeScanner.scan();
-      return Navigator.of(context).push(
-        MaterialPageRoute(
-            builder: (context) => new MaterialApp(
-                  home: Scaffold(
-                    appBar: AppBar(
-                      title: Text(barcode),
-                    ),
-                  ),
-                )),
-      );
+      return Navigator.of(context).pushNamed('/ca-asset-detail');
     } on PlatformException catch (e) {
       return showDialog<void>(
         context: context,
