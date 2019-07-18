@@ -17,6 +17,13 @@ class AssetReport extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.home, color: Colors.white),
+              onPressed: () => Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/home', (Route<dynamic> route) => false),
+            )
+          ],
           iconTheme: IconThemeData(color: Colors.white),
           title: Text(
             'Asset Report',

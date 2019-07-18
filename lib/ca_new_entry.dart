@@ -282,54 +282,12 @@ class NewCAEntryState extends State<NewCAEntrys> {
                             },
                           ),
                         ),
-                        Expanded(
-                          flex: 1,
-                          child: textfield(Icons.format_align_left, " Ref No.",
-                              reftext, refctrl, ref),
-                        )
+                        
                       ],
                     ),
                     SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 2,
-                          child: textfield(Icons.format_align_left, " Quantity",
-                              qtytext, qtyctrl, qty),
-                        ),
-                        SizedBox(
-                          width: ScreenUtil.instance.setWidth(10),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: IconButton(
-                            icon: Icon(Icons.add_a_photo),
-                            onPressed: () {},
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                    Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 2,
-                          child: textfield(Icons.format_align_left,
-                              " Unit Name", unametext, unamectrl, uname),
-                        ),
-                        SizedBox(
-                          width: ScreenUtil.instance.setWidth(10),
-                        ),
-                        Expanded(
-                          flex: 1,
-                          child: IconButton(
-                            icon: Icon(Icons.search),
-                            onPressed: () {},
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: ScreenUtil.instance.setHeight(20)),
+                    
+                    
                     textfield(Icons.bookmark_border, " Asset Remark",
                         remarktext, remarkctrl, remark),
                     SizedBox(height: ScreenUtil.instance.setHeight(20)),
