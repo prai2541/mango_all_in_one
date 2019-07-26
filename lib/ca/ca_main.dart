@@ -1,5 +1,5 @@
-import 'package:app_ui/ca_dapartment.dart';
-import 'package:app_ui/ca_project.dart';
+import 'package:app_ui/ca/ca_dapartment.dart';
+import 'package:app_ui/ca/ca_project.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

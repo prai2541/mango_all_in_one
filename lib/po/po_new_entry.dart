@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:app_ui/po_list_info.dart';
+import 'po_list_info.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

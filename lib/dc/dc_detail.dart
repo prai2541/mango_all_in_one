@@ -1,14 +1,14 @@
 //  import 'dart:io';
 
-import 'package:app_ui/employeeDetail.dart';
-import 'package:app_ui/newDCEntry.dart';
+import 'dc_employee_history.dart';
+import 'dc_new_entry.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'editDCEntry.dart';
+import 'dc_edit_entry.dart';
 
 List<String> name = [
   "Suzanne	Steele",

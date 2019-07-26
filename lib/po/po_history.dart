@@ -1,5 +1,5 @@
-import 'package:app_ui/po_info.dart';
-import 'package:app_ui/po_list_info.dart';
+import 'po_info.dart';
+import 'po_list_info.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

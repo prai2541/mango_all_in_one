@@ -1,4 +1,4 @@
-import 'package:app_ui/ca_report_checked.dart';
+import 'package:app_ui/ca/ca_report_checked.dart';
 import 'package:badges/badges.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 import 'package:flutter/material.dart';

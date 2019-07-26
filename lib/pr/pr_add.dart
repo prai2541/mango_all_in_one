@@ -1,11 +1,11 @@
-import 'package:app_ui/matadd.dart';
-import 'package:app_ui/materialList.dart';
+import 'matadd.dart';
+import 'package:app_ui/model/materialList.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'material.dart';
+import '../model/material.dart';
 
 List<String> name = [
   "Suzanne	Steele",

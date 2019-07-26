@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:app_ui/ca_asset_list.dart';
+import 'package:app_ui/ca/ca_asset_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'ca_unit_list.dart';
-import 'materialList.dart';
+import '../model/assetLists.dart';
 
 class NewCAEntry extends StatelessWidget {
   Widget build(context) {
@@ -282,12 +282,9 @@ class NewCAEntryState extends State<NewCAEntrys> {
                             },
                           ),
                         ),
-                        
                       ],
                     ),
                     SizedBox(height: ScreenUtil.instance.setHeight(20)),
-                    
-                    
                     textfield(Icons.bookmark_border, " Asset Remark",
                         remarktext, remarkctrl, remark),
                     SizedBox(height: ScreenUtil.instance.setHeight(20)),

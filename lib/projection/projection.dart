@@ -1,4 +1,4 @@
-import 'package:app_ui/projectionDetail.dart';
+import 'projection_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

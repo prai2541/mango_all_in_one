@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 //import 'portalPopup.dart';
 //import 'package:autocomplete_textfield/autocomplete_textfield.dart';
 //import 'package:autosuggest_demo/players.dart';
-import 'players.dart';
+import '../model/players.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 //import 'PRcon.dart';
 
